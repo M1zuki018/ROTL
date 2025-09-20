@@ -37,6 +37,14 @@ namespace CryStar.CommandBattle
         }
 
         /// <summary>
+        /// 編成画面を開く
+        /// </summary>
+        public void ChangeOrganization()
+        {
+            // TODO:
+        }
+
+        /// <summary>
         /// 逃走チェック
         /// </summary>
         public void TryEscape()

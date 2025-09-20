@@ -19,6 +19,7 @@ namespace CryStar.CommandBattle
             _model.Setup();
             _view.Setup(
                 startAction: _model.StartBattle, 
+                organizationAction: _model.ChangeOrganization,
                 escapeAction: _model.TryEscape);
         }
 
