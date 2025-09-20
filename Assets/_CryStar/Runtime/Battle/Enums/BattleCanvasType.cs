@@ -7,6 +7,7 @@ namespace CryStar.CommandBattle.Enums
     {
         Battle,
         FirstSelect,
+        Organization,
         TryEscape,
         CommandSelect,
         Execute,

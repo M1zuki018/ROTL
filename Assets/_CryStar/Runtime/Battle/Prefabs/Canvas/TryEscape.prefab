@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.12074661, b: 1, a: 0.9019608}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.9019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -219,7 +219,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: fc70d11028633814ca4e447cac4d780f, type: 3}
+    m_Font: {fileID: 12800000, guid: bef5480e84a91e349803621421fe777d, type: 3}
     m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
@@ -231,5 +231,5 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u25BC\u9003\u3052\u5834\u306A\u3069\u306A\u3044"
+  m_Text: "\u9003\u3052\u3089\u308C\u306A\u304B\u3063\u305F\uFF01"
   _wordingKey: BATTLE_FAILED_ESCAPE

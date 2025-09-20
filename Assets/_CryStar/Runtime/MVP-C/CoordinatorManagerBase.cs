@@ -20,8 +20,7 @@ public abstract class CoordinatorManagerBase : CustomBehaviour
     /// </summary>
     public CoordinatorBase CurrentCoordinator => _coordinators[_currentIndex];
     
-    [ContextMenu("A")]
-    public void A()
+    private void Start()
     {
         if (_defalutOpen)
         {

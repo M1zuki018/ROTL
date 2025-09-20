@@ -15,13 +15,23 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: 28a4d3d11191c4542bec5998672fad35
   m_SerializeEntries:
-  - m_GUID: 0d0830fe47ea0e24f8faedd4129a18a6
-    m_Address: Assets/AssetStoreTools/Images/Battle/Character/flos.png
+  - m_GUID: 1999ed92dd9437e45a330df5b96fc5f1
+    m_Address: Assets/AssetStoreTools/Images/Battle/Character/Speaker_H.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1d83e1fe31e85504195d85306326e710
     m_Address: Assets/AssetStoreTools/Sounds/SE/SE_Damaged.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 40fb203076ed0174b8caa21f9067104f
+    m_Address: Assets/AssetStoreTools/Images/Battle/Character/Stage_H.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 477bdc6d25e2b2f4d9428b81bb906c83
+    m_Address: Assets/AssetStoreTools/Images/Battle/Background/Background_Grass.jpg
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -60,6 +70,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a8a8ba46eb2d554db4229be48c5e43d
+    m_Address: Assets/AssetStoreTools/Images/Battle/Character/flos.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9e9d21106a86c08438993f5cfc566d18
     m_Address: Assets/AssetStoreTools/Sounds/SE/SE_Noise.mp3
     m_ReadOnly: 0
@@ -70,8 +85,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b2d354c0ae0e94946ab7f87c0d39e56d
+    m_Address: Assets/AssetStoreTools/Images/Battle/Character/Speaker_I.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d6a9040a7ef0abe44a71981d2b3e91c8
     m_Address: Assets/AssetStoreTools/Sounds/SE/SE_TurnOffThePower.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e133057dc2300064dafc1a595e325fc1
+    m_Address: Assets/AssetStoreTools/Images/Battle/Character/Stage_I.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

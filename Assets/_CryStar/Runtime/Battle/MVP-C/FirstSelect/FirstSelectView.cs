@@ -16,6 +16,12 @@ namespace CryStar.CommandBattle
         /// </summary>
         [SerializeField, HighlightIfNull] 
         private Button _battle;
+
+        /// <summary>
+        /// 編成ボタン
+        /// </summary>
+        [SerializeField, HighlightIfNull] 
+        private Button _organization;
         
         /// <summary>
         /// にげるボタン
@@ -26,10 +32,11 @@ namespace CryStar.CommandBattle
         /// <summary>
         /// Setup
         /// </summary>
-        public void Setup(Action startAction, Action escapeAction)
+        public void Setup(Action startAction, Action organizationAction, Action escapeAction)
         {
             // イベント登録
             _battle.onClick.SafeReplaceListener(() => startAction?.Invoke());
+            _organization.onClick.SafeReplaceListener(() => organizationAction?.Invoke());
             _escape.onClick.SafeReplaceListener(() => escapeAction?.Invoke());
         }
 
@@ -39,6 +46,7 @@ namespace CryStar.CommandBattle
         public void Exit()
         {
             _battle.onClick.SafeRemoveAllListeners();
+            _organization.onClick.SafeRemoveAllListeners();
             _escape.onClick.SafeRemoveAllListeners();
         }
     }

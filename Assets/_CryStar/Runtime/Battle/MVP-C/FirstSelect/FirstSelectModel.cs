@@ -1,6 +1,7 @@
 using CryStar.CommandBattle.Enums;
 using CryStar.CommandBattle.Execution;
 using CryStar.Core;
+using CryStar.Utility;
 using Cysharp.Threading.Tasks;
 
 namespace CryStar.CommandBattle
@@ -34,6 +35,15 @@ namespace CryStar.CommandBattle
             TryGetBattleManager();   
             _battleManager.PlaySelectedSe(true).Forget();
             _battleManager.CoordinatorManager.TransitionToPhase(BattlePhaseType.CommandSelect);
+        }
+
+        /// <summary>
+        /// 編成画面を開く
+        /// </summary>
+        public void ChangeOrganization()
+        {
+            // TODO:
+            LogUtility.Verbose("編成画面を開くボタンを押しました: 処理を作成してください");
         }
 
         /// <summary>
