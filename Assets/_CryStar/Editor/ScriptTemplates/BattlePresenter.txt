@@ -1,0 +1,31 @@
+namespace CryStar.CommandBattle
+{
+    /// <summary>
+    /// {ClassName}_Presenter
+    /// </summary>
+    public class {ClassName}Presenter
+    {
+        private {ClassName}View _view;
+        private {ClassName}Model _model;
+    
+        /// <summary>
+        /// Setup（Enterのタイミングで呼び出し）
+        /// </summary>
+        public void Setup({ClassName}View view)
+        {
+            _view = view;
+            _model = new {ClassName}Model();
+            
+            _model.Setup();
+            _view.Setup();
+        }
+
+        /// <summary>
+        /// Exit
+        /// </summary>
+        public void Exit()
+        {
+            _view?.Exit();
+        }
+    }
+}

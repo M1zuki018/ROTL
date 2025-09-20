@@ -1,0 +1,39 @@
+using CryStar.Attribute;
+using UnityEngine;
+
+namespace CryStar.Menu
+{
+    /// <summary>
+    /// {ClassName}_Coordinator
+    /// </summary>
+    public class {ClassName}Coordinator : CoordinatorBase
+    {
+        /// <summary>
+        /// CoordinatorManager
+        /// </summary>
+        [SerializeField, HighlightIfNull] 
+        private {ClassName}View _view;
+        
+        /// <summary>
+        /// Presenter
+        /// </summary>
+        private {ClassName}Presenter _presenter = new {ClassName}Presenter();
+        
+        public override void Enter()
+        {
+            base.Enter();
+            _presenter?.Setup(_view);
+        }
+        
+        public override void Cancel()
+        {
+            _presenter?.Cancel();
+        }        
+
+        public override void Exit()
+        {
+            _presenter?.Exit();
+            base.Exit();
+        }
+    }
+}

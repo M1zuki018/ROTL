@@ -1,0 +1,44 @@
+using CryStar.Core;
+using iCON.Enums;
+
+namespace CryStar.Menu
+{
+    /// <summary>
+    /// {ClassName}_Model
+    /// </summary>
+    public class {ClassName}Model
+    {
+        /// <summary>
+        /// MenuManager
+        /// </summary>
+        private MenuManager _manager;
+        
+        /// <summary>
+        /// Setup
+        /// </summary>
+        public void Setup()
+        {
+            // TODO
+        }
+
+        /// <summary>
+        /// Cancel
+        /// </summary>
+        public void Cancel()
+        {
+            TryGetMenuManager();
+            // 遷移処理など
+        }
+        
+        /// <summary>
+        /// メニューマネージャーが取得できているか確認し、取得できていなかったらServiceLocatorから取得する
+        /// </summary>
+        private void TryGetMenuManager()
+        {
+            if (_manager == null)
+            {
+                _manager = ServiceLocator.GetLocal<MenuManager>();
+            }
+        }
+    }
+}

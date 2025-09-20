@@ -1,0 +1,37 @@
+using CryStar.Core;
+using iCON.Battle;
+
+namespace CryStar.CommandBattle
+{
+    /// <summary>
+    /// {ClassName}_Model
+    /// </summary>
+    public class {ClassName}Model
+    {
+        /// <summary>
+        /// BattleManager
+        /// </summary>
+        private BattleManager _battleManager;
+
+        /// <summary>
+        /// Setup
+        /// </summary>
+        public void Setup()
+        {
+            _battleManager = ServiceLocator.GetLocal<BattleManager>();
+        }
+
+        // TODO: 実装
+
+        /// <summary>
+        /// バトルマネージャーが取得できているか確認し、取得できていなかったらServiceLocatorから取得する
+        /// </summary>
+        private void TryGetBattleManager()
+        {
+            if (_battleManager == null)
+            {
+                _battleManager = ServiceLocator.GetLocal<BattleManager>();
+            }
+        }
+    }
+}

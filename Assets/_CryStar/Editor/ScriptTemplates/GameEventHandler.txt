@@ -1,0 +1,27 @@
+using CryStar.GameEvent.Attributes;
+using CryStar.GameEvent.Data;
+using CryStar.GameEvent.Enums;
+using Cysharp.Threading.Tasks;
+using iCON.System;
+
+namespace CryStar.GameEvent.Execution
+{
+    /// <summary>
+    /// {ClassName} - イベントハンドラーの説明
+    /// </summary>
+    [GameEventHandler(GameEventType.{ClassName})]
+    public class {ClassName}GameEvent : GameEventHandlerBase
+    {
+        public override GameEventType SupportedGameEventType => GameEventType.{ClassName};
+        
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        public {ClassName}GameEvent(InGameManager inGameManager) : base(inGameManager) { }
+        
+        public override UniTask HandleGameEvent(GameEventParameters parameters)
+        {
+            return UniTask.CompletedTask;
+        }
+    }
+}
