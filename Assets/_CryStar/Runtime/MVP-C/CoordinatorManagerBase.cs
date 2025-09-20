@@ -20,14 +20,13 @@ public abstract class CoordinatorManagerBase : CustomBehaviour
     /// </summary>
     public CoordinatorBase CurrentCoordinator => _coordinators[_currentIndex];
     
-    public override UniTask OnStart()
+    [ContextMenu("A")]
+    public void A()
     {
         if (_defalutOpen)
         {
             TransitionTo(_defaultIndex);
         }
-        
-        return base.OnStart();
     }
 
     /// <summary>

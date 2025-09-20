@@ -19,6 +19,7 @@ namespace CryStar.CommandBattle.Execution
     /// <summary>
     /// バトルを管理するクラス
     /// </summary>
+    [DefaultExecutionOrder(-990)]
     public class BattleManager : MonoBehaviour
     {
         /// <summary>

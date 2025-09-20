@@ -75,41 +75,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &2000207703565459246
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5481857300067564266}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &5481857300067564266
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2000207703565459246}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2645920889907406468}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2305539225731988639
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,9 +388,9 @@ GameObject:
   - component: {fileID: 9130835914721195255}
   - component: {fileID: 4297485547815760813}
   - component: {fileID: 4506919203401993748}
-  - component: {fileID: 1172079534740235444}
   - component: {fileID: 9051221322698793319}
   - component: {fileID: 4214799092703513015}
+  - component: {fileID: 1172079534740235444}
   m_Layer: 5
   m_Name: BattleCanvas
   m_TagString: Untagged
@@ -447,7 +412,6 @@ RectTransform:
   m_Children:
   - {fileID: 2737149654270843126}
   - {fileID: 1938440369127184020}
-  - {fileID: 5481857300067564266}
   - {fileID: 4405045387324468573}
   - {fileID: 3457098376786943778}
   - {fileID: 5246749399173499888}
@@ -541,29 +505,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &1172079534740235444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7241587270615209574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd97087eef227645bf47049c5019a8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _coordinators:
-  - {fileID: 5924207755164192513}
-  - {fileID: 6357866751400260656}
-  - {fileID: 6837098415971405318}
-  - {fileID: 1937025985394078424}
-  - {fileID: 7098876480269299227}
-  - {fileID: 1709508912748071104}
-  - {fileID: 5149173895373670954}
-  - {fileID: 2579487709408030366}
-  _defaultIndex: 1
-  _defalutOpen: 1
 --- !u!114 &9051221322698793319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -600,6 +541,29 @@ MonoBehaviour:
   _enemyIconPrefab: {fileID: 2516883339381270862, guid: 6116d579175b09741837b72f978603fb, type: 3}
   _enemyIconParent: {fileID: 4405045387324468573}
   _damageTextPool: {fileID: 9015446354468515067}
+--- !u!114 &1172079534740235444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7241587270615209574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd97087eef227645bf47049c5019a8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coordinators:
+  - {fileID: 5924207755164192513}
+  - {fileID: 6357866751400260656}
+  - {fileID: 6837098415971405318}
+  - {fileID: 1937025985394078424}
+  - {fileID: 7098876480269299227}
+  - {fileID: 1709508912748071104}
+  - {fileID: 5149173895373670954}
+  - {fileID: 2579487709408030366}
+  _defaultIndex: 1
+  _defalutOpen: 1
 --- !u!1 &7821177172874759546
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,7 +948,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3570343536345582855, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0000015497208
+      value: 0.000076979515
       objectReference: {fileID: 0}
     - target: {fileID: 3814623804113940140, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_Name
@@ -1004,7 +968,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5707080960605190747, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0000015497208
+      value: 0.000076979515
       objectReference: {fileID: 0}
     - target: {fileID: 5992538947425722840, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_Size

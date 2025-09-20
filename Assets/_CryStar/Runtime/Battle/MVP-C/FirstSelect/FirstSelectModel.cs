@@ -20,7 +20,10 @@ namespace CryStar.CommandBattle
         /// </summary>
         public void Setup()
         {
-            _battleManager = ServiceLocator.GetLocal<BattleManager>();
+            if (ServiceLocator.IsRegisteredLocal<BattleManager>())
+            {
+                _battleManager = ServiceLocator.GetLocal<BattleManager>();
+            }
         }
 
         /// <summary>
