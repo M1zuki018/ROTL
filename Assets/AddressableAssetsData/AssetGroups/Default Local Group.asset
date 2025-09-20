@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_GUID: 28a4d3d11191c4542bec5998672fad35
+  m_SerializeEntries:
+  - m_GUID: 0d0830fe47ea0e24f8faedd4129a18a6
+    m_Address: Assets/AssetStoreTools/Images/Battle/Character/flos.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1d83e1fe31e85504195d85306326e710
+    m_Address: Assets/AssetStoreTools/Sounds/SE/SE_Damaged.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5faf1315a5424fc44bc4b180364f955d
+    m_Address: Assets/AssetStoreTools/Sounds/SE/SE_MenuOpen.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63c82b309970a7149ace2e4e91f81870
+    m_Address: Assets/AssetStoreTools/Sounds/BGM/DrenchedInSinAndGin_Loop.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6c53dcdbdf3205c46aab5d4ccc95d7c9
+    m_Address: Assets/AssetStoreTools/Sounds/SE/SE_Select1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 802d6a11d8f06c64280ea8ccbcfb2127
+    m_Address: Assets/AssetStoreTools/Sounds/SE/SE_Cancel.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 875d84c9c692236428068362a593a00c
+    m_Address: Assets/AssetStoreTools/Sounds/SE/SE_RegulatoryNoise.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 937242a744062ce42a1954597f9e935d
+    m_Address: Assets/AssetStoreTools/Sounds/SE/SE_TitleSelect.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 97eb8bbd38d3a7247a7aae296eb4dfb9
+    m_Address: Assets/AssetStoreTools/Images/Battle/Character/stage.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9e9d21106a86c08438993f5cfc566d18
+    m_Address: Assets/AssetStoreTools/Sounds/SE/SE_Noise.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ac731b2f4e570d641b2033f8a18b16d2
+    m_Address: Assets/AssetStoreTools/Sounds/SE/SE_Select2.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d6a9040a7ef0abe44a71981d2b3e91c8
+    m_Address: Assets/AssetStoreTools/Sounds/SE/SE_TurnOffThePower.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 9a7cf7b10808c5f4cb1579ce17d834d3, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c4e931b04e1fd6b48b42dbc3ca773ebb, type: 2}
+    - {fileID: 11400000, guid: 347edbf9038dac84e981ef55fc3b6130, type: 2}
