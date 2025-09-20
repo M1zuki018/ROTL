@@ -2,6 +2,7 @@ using CryStar.CommandBattle.Enums;
 using CryStar.CommandBattle.Execution;
 using CryStar.Core;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace CryStar.CommandBattle
 {
@@ -21,6 +22,14 @@ namespace CryStar.CommandBattle
         public void Setup()
         {
             _battleManager = ServiceLocator.GetLocal<BattleManager>();
+        }
+
+        /// <summary>
+        /// 行動選択中のキャラクターアイコンのパスを取得する
+        /// </summary>
+        public string GetCharacterSprite()
+        {
+            return _battleManager.CurrentSelectingUnitData.UserData.IconPath;
         }
 
         /// <summary>

@@ -1,6 +1,7 @@
 using System;
 using CryStar.Attribute;
 using CryStar.Utility;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,10 @@ namespace CryStar.CommandBattle
     /// </summary>
     public class CommandSelectView : MonoBehaviour
     {
+        [Header("画像")]
+        [SerializeField, HighlightIfNull] private CustomImage _characterPreview;
+        
+        [Header("ボタン")]
         [SerializeField, HighlightIfNull] private Button _attack;
         [SerializeField, HighlightIfNull] private Button _idea;
         [SerializeField, HighlightIfNull] private Button _item;
@@ -26,6 +31,14 @@ namespace CryStar.CommandBattle
             _item.onClick.SafeReplaceListener(() => onItem?.Invoke());
             _guard.onClick.SafeReplaceListener(() => onGuard?.Invoke());
         }
+
+        /// <summary>
+        /// キャラクターの画像を設定する
+        /// </summary>
+        public async UniTask SetCharacterPreview(string iconPath)
+        {
+            await _characterPreview.ChangeSpriteAsync(iconPath);
+        } 
 
         /// <summary>
         /// Exit

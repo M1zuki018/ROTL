@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+
 namespace CryStar.CommandBattle
 {
     /// <summary>
@@ -22,6 +24,9 @@ namespace CryStar.CommandBattle
                 onIdea: _model.Idea,
                 onItem: _model.Item,
                 onGuard: _model.Guard);
+            
+            // 左側のキャラクターの画像を設定する
+            _view.SetCharacterPreview(_model.GetCharacterSprite()).Forget();
         }
 
         /// <summary>
