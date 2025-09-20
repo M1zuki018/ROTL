@@ -1,6 +1,7 @@
 using CryStar.CommandBattle.Enums;
 using CryStar.CommandBattle.Execution;
 using CryStar.Core;
+using CryStar.Utility;
 using Cysharp.Threading.Tasks;
 
 namespace CryStar.CommandBattle
@@ -42,6 +43,7 @@ namespace CryStar.CommandBattle
         public void ChangeOrganization()
         {
             // TODO:
+            LogUtility.Verbose("編成画面を開くボタンを押しました: 処理を作成してください");
         }
 
         /// <summary>
