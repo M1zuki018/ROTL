@@ -1,3 +1,4 @@
+using CryStar.CommandBattle.Data;
 using CryStar.Utility;
 using CryStar.Utility.Enum;
 using Cysharp.Threading.Tasks;
@@ -28,12 +29,24 @@ namespace CryStar.CommandBattle.UI
         /// </summary>
         [SerializeField]
         private Slider _hpSlider;
+
+        /// <summary>
+        /// のこりHP量を示すText
+        /// </summary>
+        [SerializeField] 
+        private CustomText _hpAmount;
         
         /// <summary>
         /// スキルポイントバー
         /// </summary>
         [SerializeField]
         private Slider _spSlider;
+        
+        /// <summary>
+        /// のこりスキルポイント量を示すText
+        /// </summary>
+        [SerializeField]
+        private CustomText _spAmount;
         
         /// <summary>
         /// ダメージテキストのオブジェクトプールの参照
@@ -60,9 +73,13 @@ namespace CryStar.CommandBattle.UI
         /// <summary>
         /// Setup
         /// </summary>
-        public void Setup(DamageTextPool damageTextPool)
+        public void Setup(DamageTextPool damageTextPool, BattleUnitData unitData)
         {
             _damageTextPool = damageTextPool;
+            
+            // Viewの初期化
+            SetHpSlider(unitData.CurrentHp, unitData.UserData.MaxHp);
+            SetSpSlider(unitData.CurrentSp, unitData.UserData.MaxSp);
         }
 
         /// <summary>
@@ -84,6 +101,9 @@ namespace CryStar.CommandBattle.UI
                 
                 // 0以下にならないようにしてvalueに代入
                 _hpSlider.value = Mathf.Max(value, 0);
+                
+                // テキスト表示も更新
+                _hpAmount.text = value.ToString();
             }
         }
 
@@ -118,7 +138,8 @@ namespace CryStar.CommandBattle.UI
             if (_spSlider != null)
             {
                 _spSlider.maxValue = maxValue;
-                _spSlider.value = Mathf.Max((float)value / maxValue, 0);
+                _spSlider.value = Mathf.Max(value, 0);
+                _spAmount.text = value.ToString();
             }
         }
 

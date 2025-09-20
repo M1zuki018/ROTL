@@ -17,7 +17,7 @@ public static class MasterCharacter
             }
         },
         {
-            2, new int[] { 200, 250 }
+            2, new int[] { 30000, 30000 }
         },
         {
             3, new int[]

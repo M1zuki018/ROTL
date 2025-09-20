@@ -49,7 +49,7 @@ namespace CryStar.CommandBattle.UI
             {
                 var icon = Instantiate(_unitIconPrefab, _unitIconParent);
                 _icons.Add(icon);
-                icon.Setup(_damageTextPool);
+                icon.Setup(_damageTextPool, unitData[i]);
                 await icon.SetIcon(unitData[i].UserData.IconPath);
             }
             
