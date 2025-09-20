@@ -25,6 +25,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 477bdc6d25e2b2f4d9428b81bb906c83
+    m_Address: Assets/AssetStoreTools/Images/Battle/Background/Background_Grass.jpg
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5faf1315a5424fc44bc4b180364f955d
     m_Address: Assets/AssetStoreTools/Sounds/SE/SE_MenuOpen.mp3
     m_ReadOnly: 0
