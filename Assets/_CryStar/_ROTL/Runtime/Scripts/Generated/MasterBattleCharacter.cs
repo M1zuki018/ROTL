@@ -4,14 +4,14 @@ public static class MasterBattleCharacter
 {
     private static readonly Dictionary<int, string> _name = new Dictionary<int, string>()
     {
-        { 1, "ユキノ" },
-        { 2, "???" }
+        { 1, "ステージ" },
+        { 2, "フロース" }
     };
     
     private static readonly Dictionary<int, string> _iconPath = new Dictionary<int, string>()
     {
-        { 1, "Assets/AssetStoreTools/Images/Battle/Character/Yuki.png" },
-        { 2, "Assets/AssetStoreTools/Images/Battle/Character/Enemy.png" }
+        { 1, "Assets/AssetStoreTools/Images/Battle/Character/stage.png" },
+        { 2, "Assets/AssetStoreTools/Images/Battle/Character/flos.png" }
     };
     
     public static string GetName(int id) => _name[id];
