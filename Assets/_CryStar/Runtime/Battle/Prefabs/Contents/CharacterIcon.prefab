@@ -583,7 +583,9 @@ MonoBehaviour:
   _background: {fileID: 5457954181863026021}
   _icon: {fileID: 2732063577364056787}
   _hpSlider: {fileID: 1953065963915449524}
+  _hpAmount: {fileID: 8750825266979156209}
   _spSlider: {fileID: 3073627924540207060}
+  _spAmount: {fileID: 913458602772415259}
 --- !u!1 &4527260612828399547
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,7 +789,7 @@ GameObject:
   - component: {fileID: 2286601249527804536}
   - component: {fileID: 8662939178357109559}
   m_Layer: 0
-  m_Name: Text (1)
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
