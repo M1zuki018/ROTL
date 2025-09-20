@@ -111,7 +111,7 @@ namespace CryStar.CommandBattle.Execution
         private void Start()
         {
             // バトルデータ作成
-            _data = new BattleData(new List<int>{1}, new List<int>{2}, _bgmPath);
+            _data = new BattleData(new List<int>{1, 3}, new List<int>{2}, _bgmPath);
             
             // アイコンを用意する
             _view.SetupIcons(_data.UnitData, _data.EnemyData).Forget();

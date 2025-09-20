@@ -70,8 +70,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b2d354c0ae0e94946ab7f87c0d39e56d
+    m_Address: Assets/AssetStoreTools/Images/Battle/Character/Speaker_I.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d6a9040a7ef0abe44a71981d2b3e91c8
     m_Address: Assets/AssetStoreTools/Sounds/SE/SE_TurnOffThePower.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e133057dc2300064dafc1a595e325fc1
+    m_Address: Assets/AssetStoreTools/Images/Battle/Character/Stage_I.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

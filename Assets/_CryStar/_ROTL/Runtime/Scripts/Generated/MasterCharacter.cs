@@ -161,7 +161,7 @@ public static class MasterCharacter
             2, CreateConstantIntArray(30, 2)
         },
         {
-            1, CreateConstantIntArray(30, 100)
+            3, CreateConstantIntArray(30, 100)
         },
     };
 
@@ -174,7 +174,7 @@ public static class MasterCharacter
             2, CreateConstantIntArray(5, 2)
         },
         {
-            1, CreateConstantIntArray(5, 100)
+            3, CreateConstantIntArray(5, 100)
         },
     };
 
@@ -187,7 +187,7 @@ public static class MasterCharacter
             2, CreateConstantIntArray(5, 2)
         },
         {
-            1, CreateConstantIntArray(5, 100)
+            3, CreateConstantIntArray(5, 100)
         },
     };
 
@@ -200,7 +200,7 @@ public static class MasterCharacter
             2, CreateConstantIntArray(5, 2)
         },
         {
-            1, CreateConstantIntArray(5, 100)
+            3, CreateConstantIntArray(5, 100)
         },
     };
 
@@ -213,7 +213,7 @@ public static class MasterCharacter
             2, CreateConstantIntArray(100, 2)
         },
         {
-            1, CreateConstantIntArray(100, 100)
+            3, CreateConstantIntArray(100, 100)
         },
     };
     
