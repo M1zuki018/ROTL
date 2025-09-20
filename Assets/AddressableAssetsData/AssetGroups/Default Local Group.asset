@@ -15,13 +15,18 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: 28a4d3d11191c4542bec5998672fad35
   m_SerializeEntries:
-  - m_GUID: 0d0830fe47ea0e24f8faedd4129a18a6
-    m_Address: Assets/AssetStoreTools/Images/Battle/Character/flos.png
+  - m_GUID: 1999ed92dd9437e45a330df5b96fc5f1
+    m_Address: Assets/AssetStoreTools/Images/Battle/Character/Speaker_H.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1d83e1fe31e85504195d85306326e710
     m_Address: Assets/AssetStoreTools/Sounds/SE/SE_Damaged.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 40fb203076ed0174b8caa21f9067104f
+    m_Address: Assets/AssetStoreTools/Images/Battle/Character/Stage_H.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -62,6 +67,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 97eb8bbd38d3a7247a7aae296eb4dfb9
     m_Address: Assets/AssetStoreTools/Images/Battle/Character/stage.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a8a8ba46eb2d554db4229be48c5e43d
+    m_Address: Assets/AssetStoreTools/Images/Battle/Character/flos.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
