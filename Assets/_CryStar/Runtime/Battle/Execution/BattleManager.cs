@@ -126,6 +126,15 @@ namespace CryStar.CommandBattle.Execution
             _audioManager.PlayBGM(_bgmPath).Forget();
         }
 
+        /// <summary>
+        /// Validate
+        /// </summary>
+        private void OnValidate()
+        {
+            // BGMを切り替えられるように
+            _audioManager.PlayBGM(_bgmPath).Forget();
+        }
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
