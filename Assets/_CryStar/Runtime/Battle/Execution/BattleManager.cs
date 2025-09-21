@@ -242,6 +242,23 @@ namespace CryStar.CommandBattle.Execution
         }
 
         /// <summary>
+        /// 一つ前のキャラクター選択にもどる
+        /// </summary>
+        public bool CheckBackCommandSelect()
+        {
+            if (_currentCommandSelectIndex > 0)
+            {
+                _currentCommandSelectIndex--;
+                
+                // 対象キャラクターのコマンドをリストから取り除く
+                RemoveCommands(_currentCommandSelectIndex);
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// コマンドリストを作成する
         /// </summary>
         /// <returns></returns>
@@ -345,7 +362,7 @@ namespace CryStar.CommandBattle.Execution
         }
         
         /// <summary>
-        /// ダメージを受けたときのSEを再生する
+        /// キャンセルのSEを再生する
         /// </summary>
         public async UniTask PlayCancelSound()
         {
@@ -409,6 +426,25 @@ namespace CryStar.CommandBattle.Execution
                 CommandType.Guard => new BattleUnitData[] { CurrentSelectingUnitData },
                 _ => Array.Empty<BattleUnitData>()
             };
+        }
+
+        /// <summary>
+        /// 操作を戻したときに登録されているコマンドリストから対象者のものを削除する
+        /// </summary>
+        private void RemoveCommands(int targetUnitIndex)
+        {
+            var target = _data.UnitData[targetUnitIndex];
+            var initialCount = _commandList.Count;
+    
+            // 対象キャラクター以外のコマンドのみを残す
+            _commandList = _commandList.Where(command => 
+                command.Executor.UserData.CharacterID != target.UserData.CharacterID).ToList();
+    
+            var removedCount = initialCount - _commandList.Count;
+            if (removedCount > 0)
+            {
+                LogUtility.Info($"{target.Name}のコマンドを{removedCount}個削除しました");
+            }
         }
         
         /// <summary>

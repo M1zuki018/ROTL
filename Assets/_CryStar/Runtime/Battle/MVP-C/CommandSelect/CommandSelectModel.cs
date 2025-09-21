@@ -82,6 +82,26 @@ namespace CryStar.CommandBattle
             _battleManager.AddCommandList(CommandType.Guard);
             Next();
         }
+
+        /// <summary>
+        /// もどる
+        /// </summary>
+        public void Back()
+        {
+            // キャンセルSEを再生
+            _battleManager.PlayCancelSound().Forget();
+            
+            // 一つ前のキャラクターのコマンド選択にもどれるか確認
+            if (_battleManager.CheckBackCommandSelect())
+            {
+                _battleManager.CoordinatorManager.TransitionToPhase(BattlePhaseType.CommandSelect);
+            }
+            else
+            {
+                // 自分より前にキャラクターがいなかった場合は、最初の行動選択にもどる
+                _battleManager.CoordinatorManager.TransitionToPhase(BattlePhaseType.FirstSelect);
+            }
+        }
         
         /// <summary>
         /// 次の行動に進める
