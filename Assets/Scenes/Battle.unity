@@ -124,42 +124,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7241587270615209574, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
   m_PrefabInstance: {fileID: 1050439740}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &329403556 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6688556067770646647, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
-  m_PrefabInstance: {fileID: 1050439740}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &329403560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 329403556}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bd478f742f815e4d9056a5728614452, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7bcc8ffd5087ef148ae035cf835ab63f, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
-  _assetName: Assets/AssetStoreTools/Images/Battle/UI/Selector/Selector_Bokeh.png
 --- !u!1 &400727851
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,10 +506,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 56044283805564001, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
-      propertyPath: _wordingKey
-      value: BATTLE_COMMAND_BACK
-      objectReference: {fileID: 0}
     - target: {fileID: 1589449183755271990, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -560,7 +520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1680207235532724104, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000043588574
+      value: -0.00006406732
       objectReference: {fileID: 0}
     - target: {fileID: 2645920889907406468, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
       propertyPath: m_Pivot.x
@@ -676,7 +636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7633246186647970004, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000043588574
+      value: -0.00006406732
       objectReference: {fileID: 0}
     - target: {fileID: 7640500056675563176, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
       propertyPath: m_AnchorMax.x
@@ -690,30 +650,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8198062024410067226, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
-      propertyPath: m_Color.b
-      value: 0.90188676
-      objectReference: {fileID: 0}
-    - target: {fileID: 8198062024410067226, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
-      propertyPath: m_Color.g
-      value: 0.3387763
-      objectReference: {fileID: 0}
-    - target: {fileID: 8198062024410067226, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
-      propertyPath: m_Color.r
-      value: 0.03913838
-      objectReference: {fileID: 0}
     - target: {fileID: 9051221322698793319, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
       propertyPath: _volume
       value: 
       objectReference: {fileID: 995430795}
-    m_RemovedComponents:
-    - {fileID: 8198062024410067226, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6688556067770646647, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 329403560}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
 --- !u!1 &1635825926
 GameObject:
