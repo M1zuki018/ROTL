@@ -14,6 +14,7 @@ using CryStar.Utility;
 using CryStar.Utility.Enum;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace CryStar.CommandBattle.Execution
 {
@@ -72,6 +73,24 @@ namespace CryStar.CommandBattle.Execution
         private string _cancelSePath;
 
         /// <summary>
+        /// Volume
+        /// </summary>
+        [Header("ポストプロセスの設定")][SerializeField, HighlightIfNull]
+        private Volume _volume;
+        
+        /// <summary>
+        /// ターゲット情報を表示しているときのプロファイル
+        /// </summary>
+        [SerializeField] 
+        private VolumeProfile _targetInfoProfile;
+        
+        /// <summary>
+        /// 戦闘中のデフォルトのプロファイル
+        /// </summary>
+        [SerializeField]
+        private VolumeProfile _defaultProfile;
+
+        /// <summary>
         /// バトルで使用する変数をまとめたクラス
         /// </summary>
         private BattleData _data;
@@ -106,6 +125,11 @@ namespace CryStar.CommandBattle.Execution
         /// </summary>
         public BattleUnitData CurrentSelectingUnitData => _currentCommandSelectIndex < _data.UnitCount ? 
             _data.UnitData[_currentCommandSelectIndex] : null;
+
+        /// <summary>
+        /// 行動選択中のキャラクターアイコンのパス
+        /// </summary>
+        public string SelectingUnitIconPath => CurrentSelectingUnitData.UserData.IconPath;
 
         #region Life cycle
 
@@ -288,6 +312,18 @@ namespace CryStar.CommandBattle.Execution
             
             // TODO: 経験値取得処理
             return (name, 300);
+        }
+
+        /// <summary>
+        /// Volumeの設定をデフォルトに変更する
+        /// </summary>
+        public void ChangeVolumeProfile(bool useDefault)
+        {
+            if (_volume != null)
+            {
+                // デフォルトか、ターゲット情報表示用のプロファイルを引数に合わせて設定
+                _volume.profile = useDefault ? _defaultProfile : _targetInfoProfile;
+            }
         }
 
         #region サウンド関連

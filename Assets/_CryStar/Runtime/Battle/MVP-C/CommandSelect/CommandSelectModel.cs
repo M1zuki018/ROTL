@@ -29,7 +29,7 @@ namespace CryStar.CommandBattle
         /// </summary>
         public string GetCharacterSprite()
         {
-            return _battleManager.CurrentSelectingUnitData.UserData.IconPath;
+            return _battleManager.SelectingUnitIconPath;
         }
 
         /// <summary>

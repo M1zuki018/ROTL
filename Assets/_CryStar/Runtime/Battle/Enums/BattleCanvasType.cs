@@ -6,6 +6,7 @@ namespace CryStar.CommandBattle.Enums
     public enum BattlePhaseType
     {
         Battle,
+        TargetInfo,
         FirstSelect,
         Organization,
         TryEscape,

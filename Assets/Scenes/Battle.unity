@@ -482,7 +482,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: a3b2f6d9f6820ca438f7f365e2d73d47, type: 2}
+  sharedProfile: {fileID: 11400000, guid: ded293c4744f8bc4e8c166bc8fcdc54a, type: 2}
 --- !u!4 &995430796
 Transform:
   m_ObjectHideFlags: 0
@@ -520,11 +520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1680207235532724104, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0002786372
-      objectReference: {fileID: 0}
-    - target: {fileID: 2377086089589423117, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
-      propertyPath: m_Alpha
-      value: 0
+      value: -0.0009751507
       objectReference: {fileID: 0}
     - target: {fileID: 2645920889907406468, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
       propertyPath: m_Pivot.x
@@ -606,26 +602,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2791568118696929793, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3741640626978764870, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3741640626978764870, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3741640626978764870, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3741640626978764870, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3875196025248956791, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -637,14 +613,6 @@ PrefabInstance:
     - target: {fileID: 3875196025248956791, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4353168138714400029, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4353168138714400029, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -156
       objectReference: {fileID: 0}
     - target: {fileID: 4943837291101685377, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
       propertyPath: m_Camera
@@ -662,17 +630,29 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5856902285039216594, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -188993840774760933, guid: 2a73942f6ee81514c8d7943854d53e0e, type: 3}
+    - target: {fileID: 5978894765922254702, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5978894765922254702, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5978894765922254702, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6467884442142531200, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
+      propertyPath: _exitDuration
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 7241587270615209574, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
       propertyPath: m_Name
       value: BattleCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 7633246186647970004, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0002786372
+      value: -0.0009751507
       objectReference: {fileID: 0}
     - target: {fileID: 7640500056675563176, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
       propertyPath: m_AnchorMax.x
@@ -686,22 +666,18 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8499670734657125207, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
-      propertyPath: m_Size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 9051221322698793319, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
-      propertyPath: _bgmPath
-      value: Assets/AssetStoreTools/Sounds/BGM/DirgeOfSeverance.mp3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9051221322698793319, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
-      propertyPath: _soundPathData
+      propertyPath: _volume
       value: 
-      objectReference: {fileID: 11400000, guid: 46aefffc39deea64e81a8d6705d2891b, type: 2}
-    - target: {fileID: 9125172929888706966, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
-      propertyPath: m_Size
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 995430795}
+    - target: {fileID: 9051221322698793319, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
+      propertyPath: _defaultProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: ded293c4744f8bc4e8c166bc8fcdc54a, type: 2}
+    - target: {fileID: 9051221322698793319, guid: 8d48e8f7173fe4f45a2b8dbbabace2c1, type: 3}
+      propertyPath: _targetInfoProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: a3b2f6d9f6820ca438f7f365e2d73d47, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
