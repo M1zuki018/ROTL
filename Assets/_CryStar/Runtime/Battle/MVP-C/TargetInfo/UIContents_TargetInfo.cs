@@ -10,5 +10,16 @@ namespace CryStar.CommandBattle
         [SerializeField] private CustomText _firstLine;
         [SerializeField] private CustomText _secondLine;
         [SerializeField] private CustomText _thirdLine;
+        [SerializeField] private CanvasGroup _canvasGroup;
+        
+        public CanvasGroup CanvasGroup => _canvasGroup;
+
+        private void Awake()
+        {
+            if (_canvasGroup == null)
+            {
+                _canvasGroup = GetComponent<CanvasGroup>();
+            }
+        }
     }
 }
