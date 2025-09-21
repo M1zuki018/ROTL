@@ -37,6 +37,12 @@ namespace CryStar.CommandBattle.UI
         private CustomText _hpAmount;
         
         /// <summary>
+        /// 最大HP量を示すText
+        /// </summary>
+        [SerializeField]
+        private CustomText _hpMaxValue;
+        
+        /// <summary>
         /// スキルポイントバー
         /// </summary>
         [SerializeField]
@@ -47,6 +53,12 @@ namespace CryStar.CommandBattle.UI
         /// </summary>
         [SerializeField]
         private CustomText _spAmount;
+        
+        /// <summary>
+        /// 最大SP量を示すText
+        /// </summary>
+        [SerializeField]
+        private CustomText _spMaxValue;
         
         /// <summary>
         /// ダメージテキストのオブジェクトプールの参照
@@ -103,7 +115,8 @@ namespace CryStar.CommandBattle.UI
                 _hpSlider.value = Mathf.Max(value, 0);
                 
                 // テキスト表示も更新
-                _hpAmount.text = value.ToString();
+                _hpAmount.text = $"{value}";
+                _hpMaxValue.text = $" /{maxValue}"; 
             }
         }
 
@@ -139,7 +152,10 @@ namespace CryStar.CommandBattle.UI
             {
                 _spSlider.maxValue = maxValue;
                 _spSlider.value = Mathf.Max(value, 0);
-                _spAmount.text = value.ToString();
+                
+                // テキスト表示も更新
+                _spAmount.text = $"{value}";
+                _spMaxValue.text = $" /{maxValue}";
             }
         }
 
