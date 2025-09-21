@@ -21,6 +21,11 @@ namespace CryStar.CommandBattle
         public void Setup()
         {
             _battleManager = ServiceLocator.GetLocal<BattleManager>();
+            if (_battleManager != null)
+            {
+                // ターゲット情報表示中のVolumeを利用する
+                _battleManager.ChangeVolumeProfile(false);
+            }
         }
 
         /// <summary>
@@ -33,6 +38,9 @@ namespace CryStar.CommandBattle
             
             // 最初の行動選択へ移る
             _battleManager.CoordinatorManager.TransitionToPhase(BattlePhaseType.FirstSelect);
+            
+            // デフォルトのVolumeに切り替え
+            _battleManager.ChangeVolumeProfile(true);
         }
         
         /// <summary>
