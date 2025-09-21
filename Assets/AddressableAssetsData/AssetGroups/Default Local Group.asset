@@ -101,7 +101,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9b4b8f8e5297d87468b108a2403dc800
-    m_Address: Assets/AssetStoreTools/Sounds/BGM/DirgeOfSeverance.mp3
+    m_Address: Assets/AssetStoreTools/Sounds/BGM/ROTLBGMs/DirgeOfSeverance.mp3
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
