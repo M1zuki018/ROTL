@@ -19,9 +19,9 @@ public static class MasterBattleCharacter
 
     private static readonly Dictionary<int, Color> _characterColor = new Dictionary<int, Color>()
     {
-        { 1, new Color(185, 0, 0) },
-        { 2, new Color(193, 68, 205)},
-        { 3, new Color(10, 86, 230) },
+        { 1, new Color32(185, 0, 0, 255) },
+        { 2, new Color32(193, 68, 205, 255)},
+        { 3, new Color32(10, 86, 230, 255) },
     };
     
     public static string GetName(int id) => _name[id];
