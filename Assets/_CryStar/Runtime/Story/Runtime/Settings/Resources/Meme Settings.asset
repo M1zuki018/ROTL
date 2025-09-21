@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65216df8ebada2348b55f0c6f5b67dc4, type: 3}
+  m_Name: Meme Settings
+  m_EditorClassIdentifier: 
+  _beatInterval: 0.5
+  _rearHeight: 1
+  _bodyHeight: 1
+  _faceHeight: 1
+  _hairHeight: 1
+  _animationDuration: 0.5
+  _easeType: 30
