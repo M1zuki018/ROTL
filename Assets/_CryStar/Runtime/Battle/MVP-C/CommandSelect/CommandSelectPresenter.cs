@@ -23,7 +23,8 @@ namespace CryStar.CommandBattle
                 onAttack: _model.Attack,
                 onIdea: _model.Idea,
                 onItem: _model.Item,
-                onGuard: _model.Guard);
+                onGuard: _model.Guard,
+                onBack: _model.Back);
             
             // 左側のキャラクターの画像を設定する
             _view.SetCharacterPreview(_model.GetCharacterSprite()).Forget();

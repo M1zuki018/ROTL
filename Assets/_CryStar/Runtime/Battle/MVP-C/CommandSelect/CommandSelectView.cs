@@ -22,16 +22,18 @@ namespace CryStar.CommandBattle
         [SerializeField, HighlightIfNull] private Button _idea;
         [SerializeField, HighlightIfNull] private Button _item;
         [SerializeField, HighlightIfNull] private Button _guard;
+        [SerializeField, HighlightIfNull] private Button _back;
         
         /// <summary>
         /// Setup
         /// </summary>
-        public void Setup(Action onAttack, Action onIdea, Action onItem, Action onGuard)
+        public void Setup(Action onAttack, Action onIdea, Action onItem, Action onGuard, Action onBack)
         {
             _attack.onClick.SafeReplaceListener(() => onAttack?.Invoke());
             _idea.onClick.SafeReplaceListener(() => onIdea?.Invoke());
             _item.onClick.SafeReplaceListener(() => onItem?.Invoke());
             _guard.onClick.SafeReplaceListener(() => onGuard?.Invoke());
+            _back.onClick.SafeReplaceListener(() => onBack?.Invoke());
         }
 
         /// <summary>
@@ -62,6 +64,7 @@ namespace CryStar.CommandBattle
             _idea.onClick.SafeRemoveAllListeners();
             _item.onClick.SafeRemoveAllListeners();
             _guard.onClick.SafeRemoveAllListeners();
+            _back.onClick.SafeRemoveAllListeners();
         }
     }
 }
