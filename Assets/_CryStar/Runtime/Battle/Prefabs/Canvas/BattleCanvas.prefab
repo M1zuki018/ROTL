@@ -414,7 +414,6 @@ RectTransform:
   - {fileID: 1938440369127184020}
   - {fileID: 4405045387324468573}
   - {fileID: 3457098376786943778}
-  - {fileID: 4297097542068889320}
   - {fileID: 5246749399173499888}
   - {fileID: 3280636521509508208}
   - {fileID: 8630261606856545894}
@@ -424,6 +423,7 @@ RectTransform:
   - {fileID: 4463672914602504899}
   - {fileID: 8585467007055531593}
   - {fileID: 2218223167905826049}
+  - {fileID: 4297097542068889320}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -986,6 +986,10 @@ PrefabInstance:
       propertyPath: m_FontData.m_Font
       value: 
       objectReference: {fileID: 12800000, guid: bef5480e84a91e349803621421fe777d, type: 3}
+    - target: {fileID: 3364437218037004533, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3518429027998229945, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1004,7 +1008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3570343536345582855, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00000295043
+      value: -0.000011108518
       objectReference: {fileID: 0}
     - target: {fileID: 3764305982898282148, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_FontData.m_Font
@@ -1013,6 +1017,10 @@ PrefabInstance:
     - target: {fileID: 3814623804113940140, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_Name
       value: Idea
+      objectReference: {fileID: 0}
+    - target: {fileID: 4417745022367751435, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4810029509979902730, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_FontData.m_Font
@@ -1036,23 +1044,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5707080960605190747, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00000295043
+      value: -0.000011108518
       objectReference: {fileID: 0}
     - target: {fileID: 5992538947425722840, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_Size
-      value: 1
+      value: 0.99985147
       objectReference: {fileID: 0}
     - target: {fileID: 5992538947425722840, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_Value
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6376537957926664985, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
-      propertyPath: m_Size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6376537957926664985, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
+      propertyPath: m_Size
+      value: 0.99985147
+      objectReference: {fileID: 0}
+    - target: {fileID: 6376537957926664985, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_Value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7300842422626318850, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_FontData.m_Font
@@ -1332,13 +1340,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3426916228427799561, guid: 58d533db2eb62bd4db91692e702359fb, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 62.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6649771733080386436, guid: 58d533db2eb62bd4db91692e702359fb, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -283.6
+    - target: {fileID: 6261199769251196458, guid: 58d533db2eb62bd4db91692e702359fb, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7207471753061708524, guid: 58d533db2eb62bd4db91692e702359fb, type: 3}
       propertyPath: m_Name
