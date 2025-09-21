@@ -290,6 +290,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7176171935868136679}
+  - component: {fileID: 4328024806789328949}
   m_Layer: 0
   m_Name: ButtonContents
   m_TagString: Untagged
@@ -322,6 +323,18 @@ RectTransform:
   m_AnchoredPosition: {x: 26.409973, y: 0}
   m_SizeDelta: {x: 140, y: 1034}
   m_Pivot: {x: 0, y: 0.5}
+--- !u!225 &4328024806789328949
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4346586617162384636}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5477162644141740722
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,6 +506,7 @@ GameObject:
   - component: {fileID: 4697140924848409606}
   - component: {fileID: 4341475727303658670}
   - component: {fileID: 4845418427753016382}
+  - component: {fileID: 2390931081075219282}
   m_Layer: 0
   m_Name: CharacterPreview
   m_TagString: Untagged
@@ -558,6 +572,18 @@ MonoBehaviour:
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
   _assetName: 
+--- !u!225 &2390931081075219282
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5883409363734461995}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &6169332459645719832
 GameObject:
   m_ObjectHideFlags: 0
