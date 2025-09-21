@@ -17,7 +17,7 @@ namespace CryStar.CommandBattle
             _model = new TargetInfoModel();
             
             _model.Setup();
-            _view.Setup();
+            _view.Setup(_model.StartBattle);
         }
 
         /// <summary>

@@ -1,4 +1,7 @@
+using System;
+using CryStar.Utility;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CryStar.CommandBattle
 {
@@ -7,6 +10,12 @@ namespace CryStar.CommandBattle
     /// </summary>
     public class TargetInfoView : MonoBehaviour
     {
+        /// <summary>
+        /// カバー
+        /// </summary>
+        [SerializeField] 
+        private Button _cover;
+        
         /// <summary>
         /// ターゲット情報を表示するUI群を管理するクラス
         /// </summary>
@@ -46,9 +55,10 @@ namespace CryStar.CommandBattle
         /// <summary>
         /// Setup
         /// </summary>
-        public void Setup()
+        public void Setup(Action transitionAction)
         {
-            // 引数にActionを羅列する
+            // イベント登録
+            _cover.onClick.SafeReplaceListener(() => transitionAction?.Invoke());
         }
 
         // TODO: 実装
@@ -58,7 +68,7 @@ namespace CryStar.CommandBattle
         /// </summary>
         public void Exit()
         {
-            // Actionの解放処理
+            _cover.onClick.SafeRemoveAllListeners();
         }
     }
 }
