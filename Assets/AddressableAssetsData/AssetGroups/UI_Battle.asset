@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: UI_Battle
   m_GUID: fbb674666149f3540ac470d7c06b15cb
   m_SerializeEntries:
+  - m_GUID: 161585b2586dc0443a6527cebe634550
+    m_Address: Assets/AssetStoreTools/Images/Battle/UI/FirstSelect/Button_Blur.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3f9ca627df6bcb846b6f014862c7ae6a
     m_Address: Assets/AssetStoreTools/Images/Battle/UI/TargetInfo/TargetInfo_CharacterFrame.png
     m_ReadOnly: 0
@@ -25,8 +30,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6c63cebb6b284044aac41e5e538aaa59
+    m_Address: Assets/AssetStoreTools/Images/Battle/UI/FirstSelect/FirstSelectBase.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7357cea8753354e4b858cf1d1e80e209
     m_Address: Assets/AssetStoreTools/Images/Battle/UI/TargetInfo/TargetInfo_CharacterFrame_Background.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a3c46952ae4c754482734ee3ef3483c
+    m_Address: Assets/AssetStoreTools/Images/Battle/UI/FirstSelect/Button_Select.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

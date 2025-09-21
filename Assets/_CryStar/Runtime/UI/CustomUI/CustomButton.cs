@@ -71,7 +71,18 @@ public class CustomButton : Button
     /// </summary>
     public void SetText(string text)
     {
-        _text.text = text;
+        if (_text != null)
+        {
+            _text.text = text;   
+        }
+    }
+
+    public void ChangeTextColor(Color color)
+    {
+        if (_text != null)
+        {
+            _text.color = color;
+        }
     }
 
     /// <summary>
