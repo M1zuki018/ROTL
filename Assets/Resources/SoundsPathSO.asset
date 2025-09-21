@@ -12,4 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89160f09574c7294a9c9968e8d5ea103, type: 3}
   m_Name: SoundsPathSO
   m_EditorClassIdentifier: 
-  _dataArray: []
+  _soundPaths:
+  - _pathType: 0
+    _path: Assets/AssetStoreTools/Sounds/BGM/ROTLBGMs/FirstWillBeyondHisEnd.mp3
+  - _pathType: 1
+    _path: Assets/AssetStoreTools/Sounds/BGM/ROTLBGMs/InTheKeyOfPerseverance.mp3
+  - _pathType: 2
+    _path: Assets/AssetStoreTools/Sounds/BGM/ROTLBGMs/DrenchedInSinAndGin_Loop.mp3
+  - _pathType: 3
+    _path: Assets/AssetStoreTools/Sounds/BGM/ROTLBGMs/Lazward.mp3
+  - _pathType: 4
+    _path: Assets/AssetStoreTools/Sounds/BGM/ROTLBGMs/Osmanthus .mp3
+  - _pathType: 5
+    _path: Assets/AssetStoreTools/Sounds/BGM/ROTLBGMs/DirgeOfSeverance.mp3
