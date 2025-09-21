@@ -306,10 +306,10 @@ namespace CryStar.CommandBattle
                     .SetEase(Ease.InCubic)
             );
 
-            // キャラクターをスケールダウン + 右に移動 + フェードアウト
+            // キャラクターのアニメーション
             _exitSequence.Append(
                 DOTween.To(() => _character.transform.localScale, x => _character.transform.localScale = x, Vector3.zero, _exitDuration * 0.4f)
-                    .SetEase(Ease.InBack, 1.2f)
+                    .SetEase(Ease.OutQuint, 1.2f)
             );
             
             _exitSequence.Join(
