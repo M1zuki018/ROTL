@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1e5b2a66b112b644c9605f37edac29d2
+    m_Address: Assets/AssetStoreTools/Images/Battle/UI/Selector/Selector_Attack.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3f9ca627df6bcb846b6f014862c7ae6a
     m_Address: Assets/AssetStoreTools/Images/Battle/UI/TargetInfo/TargetInfo_CharacterFrame.png
     m_ReadOnly: 0
@@ -35,8 +40,18 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 730c2ae5c8d93694d9f5838f20e05957
+    m_Address: Assets/AssetStoreTools/Images/Battle/UI/Selector/Selector_Skill.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7357cea8753354e4b858cf1d1e80e209
     m_Address: Assets/AssetStoreTools/Images/Battle/UI/TargetInfo/TargetInfo_CharacterFrame_Background.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7bcc8ffd5087ef148ae035cf835ab63f
+    m_Address: Assets/AssetStoreTools/Images/Battle/UI/Selector/Selector_Bokeh.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -47,6 +62,21 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 91fc4f8095d41b24b900f08c8297afd9
     m_Address: Assets/AssetStoreTools/Images/Battle/UI/TargetInfo/TargetInfo_Frame.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: be3162346b9f92b448014c630188d388
+    m_Address: Assets/AssetStoreTools/Images/Battle/UI/Selector/Selector_Back.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cdb41ea4c5595ad4d9364d254ca62202
+    m_Address: Assets/AssetStoreTools/Images/Battle/UI/Selector/Selector_Base.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d4e70256e9ec9714a9bbe936eb3b9d79
+    m_Address: Assets/AssetStoreTools/Images/Battle/UI/Selector/Selector_Item.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
