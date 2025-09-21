@@ -9,6 +9,7 @@ using CryStar.CommandBattle.Enums;
 using CryStar.CommandBattle.UI;
 using CryStar.Core;
 using CryStar.Core.Enums;
+using CryStar.PerProject;
 using CryStar.Utility;
 using CryStar.Utility.Enum;
 using Cysharp.Threading.Tasks;
@@ -35,11 +36,17 @@ namespace CryStar.CommandBattle.Execution
         private BattleView _view;
         
         /// <summary>
+        /// サウンドパスの情報をまとめているスクリプタブルオブジェクト
+        /// </summary>
+        [Header("サウンド素材")][SerializeField]
+        private SoundsPathSO _soundPathData;
+        
+        /// <summary>
         /// 戦闘BGMのPath　TODO: 仮
         /// </summary>
         [SerializeField] 
-        private string _bgmPath;
-
+        private SoundsPathType _bgmType;
+        
         /// <summary>
         /// ダメージを受けたときのSEのPath TODO: 仮
         /// </summary>
@@ -110,8 +117,14 @@ namespace CryStar.CommandBattle.Execution
 
         private void Start()
         {
+            var bgmPath = _soundPathData.GetPath(_bgmType);
+            if (bgmPath == null)
+            {
+                LogUtility.Warning($"サウンドのパスが見つかりませんでした SoundType: {_bgmType}", LogCategory.Audio, this);
+            }
+            
             // バトルデータ作成
-            _data = new BattleData(new List<int>{1, 3}, new List<int>{2}, _bgmPath);
+            _data = new BattleData(new List<int>{1, 3}, new List<int>{2}, bgmPath);
             
             // アイコンを用意する
             _view.SetupIcons(_data.UnitData, _data.EnemyData).Forget();
@@ -121,9 +134,12 @@ namespace CryStar.CommandBattle.Execution
                 // 参照が無ければServiceLocatorから取得
                 _audioManager = ServiceLocator.GetGlobal<AudioManager>();
             }
-            
-            // 戦闘BGMを再生する
-            _audioManager.PlayBGM(_bgmPath).Forget();
+
+            if (bgmPath != null)
+            {
+                // 戦闘BGMを再生する
+                _audioManager.PlayBGM(bgmPath).Forget();
+            }
         }
 
         /// <summary>
@@ -131,8 +147,20 @@ namespace CryStar.CommandBattle.Execution
         /// </summary>
         private void OnValidate()
         {
+            if (_soundPathData == null || _audioManager == null)
+            {
+                return;
+            }
+            
+            var bgmPath = _soundPathData.GetPath(_bgmType);
+            if (bgmPath == null)
+            {
+                LogUtility.Warning($"サウンドのパスが見つかりませんでした SoundType: {_bgmType}", LogCategory.Audio, this);
+                return;
+            }
+            
             // BGMを切り替えられるように
-            _audioManager.PlayBGM(_bgmPath).Forget();
+            _audioManager.PlayBGM(bgmPath).Forget();
         }
 
         private void Update()
