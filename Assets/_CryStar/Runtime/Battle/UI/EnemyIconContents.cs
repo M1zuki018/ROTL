@@ -30,6 +30,13 @@ namespace CryStar.CommandBattle.UI
         private float _floatDuration = 2.0f;
         
         /// <summary>
+        /// ランダム化範囲
+        /// NOTE: 敵が複数いるときに全てが同じ動きにならないようにしたい
+        /// </summary>
+        [SerializeField, Range(0f, 1f)]
+        private float _randomRange = 0.3f;
+        
+        /// <summary>
         /// 浮遊アニメーションの振幅
         /// </summary>
         [SerializeField]
@@ -49,10 +56,19 @@ namespace CryStar.CommandBattle.UI
         /// 初期位置
         /// </summary>
         private Vector3 _initialPosition;
+        
+        /// <summary>
+        /// 実際に使用される浮遊時間（ランダムの値＋デフォルトで設定している値）
+        /// </summary>
+        private float _actualFloatDuration;
 
         private void Awake()
         {
             _initialPosition = transform.localPosition;
+            
+            // アニメーションで利用する時間を計算
+            var randomOffset = Random.Range(-_randomRange, _randomRange);
+            _actualFloatDuration = _floatDuration + randomOffset;
         }
         
         /// <summary>
@@ -114,7 +130,7 @@ namespace CryStar.CommandBattle.UI
             _floatTween?.Kill();
             
             _floatTween = transform.DOLocalMoveY(
-                    _initialPosition.y + _floatAmplitude, _floatDuration
+                    _initialPosition.y + _floatAmplitude, _actualFloatDuration
                 )
                 .SetEase(Ease.InOutSine)
                 .SetLoops(-1, LoopType.Yoyo);
