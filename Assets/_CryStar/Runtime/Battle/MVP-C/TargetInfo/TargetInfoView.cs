@@ -88,9 +88,9 @@ namespace CryStar.CommandBattle
         private Vector3 _nameInitialPosition;
         
         // アニメーション用Sequence
-        private DG.Tweening.Sequence _entranceSequence;
+        private Sequence _entranceSequence;
         private Tween _floatTween;
-        private DG.Tweening.Sequence _exitSequence;
+        private Sequence _exitSequence;
 
         #endregion
 
@@ -124,8 +124,6 @@ namespace CryStar.CommandBattle
         {
             // パネルを閉じるときのアニメーションを登録
             _cover.onClick.SafeReplaceListener(() => PlayExitAnimation(() => transitionAction?.Invoke()));
-            
-            
         }
 
         /// <summary>
