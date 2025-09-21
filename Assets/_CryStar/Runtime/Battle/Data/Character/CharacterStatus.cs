@@ -53,6 +53,11 @@ namespace CryStar.CommandBattle.Data
         public string IconPath => MasterBattleCharacter.GetIconPath(_characterID);
         
         /// <summary>
+        /// キャラクターカラー
+        /// </summary>
+        public Color CharacterColor => MasterBattleCharacter.GetCharacterColor(_characterID);
+        
+        /// <summary>
         /// 最大HP
         /// </summary>
         public int MaxHp => MasterCharacter.GetHp(_characterID, _data.Level) + _data.BonusHp;
