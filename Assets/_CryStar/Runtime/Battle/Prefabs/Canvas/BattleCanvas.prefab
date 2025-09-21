@@ -521,7 +521,7 @@ MonoBehaviour:
   _coordinatorManager: {fileID: 1172079534740235444}
   _view: {fileID: 4214799092703513015}
   _soundPathData: {fileID: 11400000, guid: 46aefffc39deea64e81a8d6705d2891b, type: 2}
-  _bgmType: 0
+  _bgmType: 2
   _damagedSePath: Assets/AssetStoreTools/Sounds/SE/SE_Damaged.mp3
   _selectSePath: Assets/AssetStoreTools/Sounds/SE/SE_Select1.mp3
   _selectSePath2: Assets/AssetStoreTools/Sounds/SE/SE_Select2.mp3
@@ -1011,7 +1011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3570343536345582855, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0009751507
+      value: -0.0006775005
       objectReference: {fileID: 0}
     - target: {fileID: 3764305982898282148, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_FontData.m_Font
@@ -1047,7 +1047,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5707080960605190747, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0009751507
+      value: -0.0006775005
       objectReference: {fileID: 0}
     - target: {fileID: 5992538947425722840, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_Size
@@ -1666,14 +1666,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2645920889907406468}
     m_Modifications:
-    - target: {fileID: 2854248061279677297, guid: f37898787cd8d164f967f00b4d31ba32, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4697140924848409606, guid: f37898787cd8d164f967f00b4d31ba32, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -156
-      objectReference: {fileID: 0}
     - target: {fileID: 5403365789712677090, guid: f37898787cd8d164f967f00b4d31ba32, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

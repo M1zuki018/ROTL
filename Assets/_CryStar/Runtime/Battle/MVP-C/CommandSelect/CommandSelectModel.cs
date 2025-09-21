@@ -33,6 +33,15 @@ namespace CryStar.CommandBattle
         }
 
         /// <summary>
+        /// 行動選択中のキャラクターのテーマカラーを取得する
+        /// </summary>
+        /// <returns></returns>
+        public Color GetCharacterColor()
+        {
+            return _battleManager.CurrentSelectingUnitData.UserData.CharacterColor;
+        }
+
+        /// <summary>
         /// 攻撃コマンドを選択したときの処理
         /// </summary>
         public void Attack()
@@ -72,6 +81,26 @@ namespace CryStar.CommandBattle
             
             _battleManager.AddCommandList(CommandType.Guard);
             Next();
+        }
+
+        /// <summary>
+        /// もどる
+        /// </summary>
+        public void Back()
+        {
+            // キャンセルSEを再生
+            _battleManager.PlayCancelSound().Forget();
+            
+            // 一つ前のキャラクターのコマンド選択にもどれるか確認
+            if (_battleManager.CheckBackCommandSelect())
+            {
+                _battleManager.CoordinatorManager.TransitionToPhase(BattlePhaseType.CommandSelect);
+            }
+            else
+            {
+                // 自分より前にキャラクターがいなかった場合は、最初の行動選択にもどる
+                _battleManager.CoordinatorManager.TransitionToPhase(BattlePhaseType.FirstSelect);
+            }
         }
         
         /// <summary>
