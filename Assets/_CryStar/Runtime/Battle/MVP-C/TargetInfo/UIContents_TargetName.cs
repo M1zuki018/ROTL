@@ -14,12 +14,24 @@ namespace CryStar.CommandBattle
         
         public CanvasGroup CanvasGroup => _canvasGroup;
 
+        #region Life cycle
+
         private void Awake()
         {
             if (_canvasGroup == null)
             {
                 _canvasGroup = GetComponent<CanvasGroup>();
             }
+        }
+
+        #endregion
+
+        /// <summary>
+        /// 名前を設定する
+        /// </summary>
+        public void SetTargetName(string targetName)
+        {
+            _name.text = targetName;
         }
     }
 }
