@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89160f09574c7294a9c9968e8d5ea103, type: 3}
+  m_Name: SoundsPathSO
+  m_EditorClassIdentifier: 
+  _soundPaths:
+  - _pathType: 0
+    _path: Assets/AssetStoreTools/Sounds/BGM/ROTLBGMs/FirstWillBeyondHisEnd.mp3
+  - _pathType: 1
+    _path: Assets/AssetStoreTools/Sounds/BGM/ROTLBGMs/InTheKeyOfPerseverance.mp3
+  - _pathType: 2
+    _path: Assets/AssetStoreTools/Sounds/BGM/ROTLBGMs/DrenchedInSinAndGin_Loop.mp3
+  - _pathType: 3
+    _path: Assets/AssetStoreTools/Sounds/BGM/ROTLBGMs/Lazward.mp3
+  - _pathType: 4
+    _path: Assets/AssetStoreTools/Sounds/BGM/ROTLBGMs/Osmanthus .mp3
+  - _pathType: 5
+    _path: Assets/AssetStoreTools/Sounds/BGM/ROTLBGMs/DirgeOfSeverance.mp3

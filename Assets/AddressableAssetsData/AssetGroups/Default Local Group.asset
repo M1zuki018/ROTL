@@ -20,18 +20,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1b2a1887d00ee824292a54c2d3104b57
-    m_Address: Assets/AssetStoreTools/Sounds/BGM/InTheKeyOfPerseverance.mp3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1d83e1fe31e85504195d85306326e710
     m_Address: Assets/AssetStoreTools/Sounds/SE/SE_Damaged.mp3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 29e7d6f52b15f524aa662c44b0d8fb2e
-    m_Address: Assets/AssetStoreTools/Sounds/BGM/Osmanthus .mp3
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -50,18 +40,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4e8883de0dc1f4d42badedc448b0036a
-    m_Address: Assets/AssetStoreTools/Sounds/BGM/FirstWillBeyondHisEnd.mp3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5faf1315a5424fc44bc4b180364f955d
     m_Address: Assets/AssetStoreTools/Sounds/SE/SE_MenuOpen.mp3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 63c82b309970a7149ace2e4e91f81870
-    m_Address: Assets/AssetStoreTools/Sounds/BGM/DrenchedInSinAndGin_Loop.mp3
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -80,11 +60,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9194c2c0839136b4197111bc6ca693af
-    m_Address: Assets/AssetStoreTools/Sounds/BGM/Lazward.mp3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 937242a744062ce42a1954597f9e935d
     m_Address: Assets/AssetStoreTools/Sounds/SE/SE_TitleSelect.mp3
     m_ReadOnly: 0
@@ -97,11 +72,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9a8a8ba46eb2d554db4229be48c5e43d
     m_Address: Assets/AssetStoreTools/Images/Battle/Character/flos.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9b4b8f8e5297d87468b108a2403dc800
-    m_Address: Assets/AssetStoreTools/Sounds/BGM/DirgeOfSeverance.mp3
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
