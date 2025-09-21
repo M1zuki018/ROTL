@@ -14,6 +14,8 @@ namespace CryStar.CommandBattle
     {
         [Header("画像")]
         [SerializeField, HighlightIfNull] private CustomImage _characterPreview;
+
+        [SerializeField] private CustomImage _selectorEffect;
         
         [Header("ボタン")]
         [SerializeField, HighlightIfNull] private Button _attack;
@@ -38,7 +40,18 @@ namespace CryStar.CommandBattle
         public async UniTask SetCharacterPreview(string iconPath)
         {
             await _characterPreview.ChangeSpriteAsync(iconPath);
-        } 
+        }
+
+        /// <summary>
+        /// セレクターUIのキャラクターカラーのぼかし素材のカラーを設定する
+        /// </summary>
+        public void SetEffectColor(Color characterColor)
+        {
+            if (_selectorEffect != null)
+            {
+                _selectorEffect.color = characterColor;
+            }
+        }
 
         /// <summary>
         /// Exit

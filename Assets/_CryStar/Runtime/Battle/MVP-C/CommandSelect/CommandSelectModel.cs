@@ -33,6 +33,15 @@ namespace CryStar.CommandBattle
         }
 
         /// <summary>
+        /// 行動選択中のキャラクターのテーマカラーを取得する
+        /// </summary>
+        /// <returns></returns>
+        public Color GetCharacterColor()
+        {
+            return _battleManager.CurrentSelectingUnitData.UserData.CharacterColor;
+        }
+
+        /// <summary>
         /// 攻撃コマンドを選択したときの処理
         /// </summary>
         public void Attack()

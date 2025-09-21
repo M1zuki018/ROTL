@@ -27,6 +27,9 @@ namespace CryStar.CommandBattle
             
             // 左側のキャラクターの画像を設定する
             _view.SetCharacterPreview(_model.GetCharacterSprite()).Forget();
+            
+            // ぼかしの色をキャラクターカラーに変更する
+            _view.SetEffectColor(_model.GetCharacterColor());
         }
 
         /// <summary>
