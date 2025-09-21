@@ -30,11 +30,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3f9ca627df6bcb846b6f014862c7ae6a
-    m_Address: Assets/AssetStoreTools/Images/Battle/UI/TargetInfo/TargetInfo_CharacterFrame.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 40fb203076ed0174b8caa21f9067104f
     m_Address: Assets/AssetStoreTools/Images/Battle/Character/Stage_H.png
     m_ReadOnly: 0
@@ -50,18 +45,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 65f798466c5fa4d46a3816560ff2de05
-    m_Address: Assets/AssetStoreTools/Images/Battle/UI/TargetInfo/TargetInfo_LowerRight.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6c53dcdbdf3205c46aab5d4ccc95d7c9
     m_Address: Assets/AssetStoreTools/Sounds/SE/SE_Select1.mp3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7357cea8753354e4b858cf1d1e80e209
-    m_Address: Assets/AssetStoreTools/Images/Battle/UI/TargetInfo/TargetInfo_CharacterFrame_Background.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -72,11 +57,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 875d84c9c692236428068362a593a00c
     m_Address: Assets/AssetStoreTools/Sounds/SE/SE_RegulatoryNoise.mp3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 91fc4f8095d41b24b900f08c8297afd9
-    m_Address: Assets/AssetStoreTools/Images/Battle/UI/TargetInfo/TargetInfo_Frame.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
