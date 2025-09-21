@@ -34,6 +34,14 @@ namespace CryStar.CommandBattle
         }
 
         /// <summary>
+        /// Cancel
+        /// </summary>
+        public void Cancel()
+        {
+            _model.Back();
+        }
+        
+        /// <summary>
         /// Exit
         /// </summary>
         public void Exit()

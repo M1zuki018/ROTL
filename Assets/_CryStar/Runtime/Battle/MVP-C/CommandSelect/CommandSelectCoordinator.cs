@@ -24,6 +24,11 @@ namespace CryStar.CommandBattle
             base.Enter();
             _presenter?.Setup(_view);
         }
+        
+        public override void Cancel()
+        {
+            _presenter?.Cancel();
+        }
 
         public override void Exit()
         {
