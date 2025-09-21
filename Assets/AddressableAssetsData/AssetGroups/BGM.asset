@@ -12,9 +12,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
   m_Name: BGM
   m_EditorClassIdentifier: 
-  m_GroupName: Packed Assets
+  m_GroupName: BGM
   m_GUID: 5c27870bc27ee9b45af58512d584385f
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 1b2a1887d00ee824292a54c2d3104b57
+    m_Address: Assets/AssetStoreTools/Sounds/BGM/ROTLBGMs/InTheKeyOfPerseverance.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29e7d6f52b15f524aa662c44b0d8fb2e
+    m_Address: Assets/AssetStoreTools/Sounds/BGM/ROTLBGMs/Osmanthus .mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4e8883de0dc1f4d42badedc448b0036a
+    m_Address: Assets/AssetStoreTools/Sounds/BGM/ROTLBGMs/FirstWillBeyondHisEnd.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 63c82b309970a7149ace2e4e91f81870
+    m_Address: Assets/AssetStoreTools/Sounds/BGM/ROTLBGMs/DrenchedInSinAndGin_Loop.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9194c2c0839136b4197111bc6ca693af
+    m_Address: Assets/AssetStoreTools/Sounds/BGM/ROTLBGMs/Lazward.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9b4b8f8e5297d87468b108a2403dc800
+    m_Address: Assets/AssetStoreTools/Sounds/BGM/ROTLBGMs/DirgeOfSeverance.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9a7cf7b10808c5f4cb1579ce17d834d3, type: 2}
   m_SchemaSet:
