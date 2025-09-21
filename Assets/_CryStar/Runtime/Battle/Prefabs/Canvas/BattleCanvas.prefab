@@ -202,7 +202,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 477bdc6d25e2b2f4d9428b81bb906c83, type: 3}
+  m_Sprite: {fileID: -188993840774760933, guid: 2a73942f6ee81514c8d7943854d53e0e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -519,7 +519,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _coordinatorManager: {fileID: 1172079534740235444}
   _view: {fileID: 4214799092703513015}
-  _bgmPath: Assets/AssetStoreTools/Sounds/BGM/DrenchedInSinAndGin_Loop.mp3
+  _soundPathData: {fileID: 11400000, guid: 46aefffc39deea64e81a8d6705d2891b, type: 2}
+  _bgmType: 0
   _damagedSePath: Assets/AssetStoreTools/Sounds/SE/SE_Damaged.mp3
   _selectSePath: Assets/AssetStoreTools/Sounds/SE/SE_Select1.mp3
   _selectSePath2: Assets/AssetStoreTools/Sounds/SE/SE_Select2.mp3
