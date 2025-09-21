@@ -1,9 +1,9 @@
 using System;
 using CryStar.Utility;
+using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
-using Sequence = Unity.VisualScripting.Sequence;
 
 namespace CryStar.CommandBattle
 {
@@ -125,8 +125,7 @@ namespace CryStar.CommandBattle
             // パネルを閉じるときのアニメーションを登録
             _cover.onClick.SafeReplaceListener(() => PlayExitAnimation(() => transitionAction?.Invoke()));
             
-            // エントランスアニメーション開始
-            PlayEntranceAnimation();
+            
         }
 
         /// <summary>
@@ -140,6 +139,23 @@ namespace CryStar.CommandBattle
             _exitSequence?.Kill();
             
             _cover.onClick.SafeRemoveAllListeners();
+        }
+
+        /// <summary>
+        /// エントランスアニメーションを開始する
+        /// NOTE: UIを更新し終わったあとに開始したい
+        /// </summary>
+        public void PlayAnimation()
+        {
+            PlayEntranceAnimation();
+        }
+        
+        /// <summary>
+        /// キャラクターの画像を設定する
+        /// </summary>
+        public async UniTask SetCharacterPreview(string iconPath)
+        {
+            await _character.ChangeSpriteAsync(iconPath);
         }
 
         #region Animation

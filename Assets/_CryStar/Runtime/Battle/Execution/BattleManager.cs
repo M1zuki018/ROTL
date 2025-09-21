@@ -107,6 +107,11 @@ namespace CryStar.CommandBattle.Execution
         public BattleUnitData CurrentSelectingUnitData => _currentCommandSelectIndex < _data.UnitCount ? 
             _data.UnitData[_currentCommandSelectIndex] : null;
 
+        /// <summary>
+        /// 行動選択中のキャラクターアイコンのパス
+        /// </summary>
+        public string SelectingUnitIconPath => CurrentSelectingUnitData.UserData.IconPath;
+
         #region Life cycle
 
         private void Awake()

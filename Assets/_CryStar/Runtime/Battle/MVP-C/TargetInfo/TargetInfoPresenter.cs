@@ -1,3 +1,5 @@
+using Cysharp.Threading.Tasks;
+
 namespace CryStar.CommandBattle
 {
     /// <summary>
@@ -18,6 +20,8 @@ namespace CryStar.CommandBattle
             
             _model.Setup();
             _view.Setup(_model.StartBattle);
+            
+            SetupSequence().Forget();
         }
 
         /// <summary>
@@ -26,6 +30,19 @@ namespace CryStar.CommandBattle
         public void Exit()
         {
             _view?.Exit();
+        }
+
+        /// <summary>
+        /// セットアップの一連の処理
+        /// </summary>
+        private async UniTask SetupSequence()
+        {
+            // キャラクターの画像差し替え
+            await _view.SetCharacterPreview(_model.GetCharacterSprite());
+            
+            // TODO: 名前などほかのコンテンツの初期化を行う
+            
+            _view.PlayAnimation();
         }
     }
 }
