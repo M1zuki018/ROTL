@@ -63,8 +63,8 @@ namespace CryStar.CommandBattle
         {
             TryGetBattleManager();
             
-            _battleManager.PlaySelectedSe(false).Forget();
-            _battleManager.CoordinatorManager.TransitionToPhase(BattlePhaseType.Idea);
+            // スキル画面を表示する
+            _battleManager.CoordinatorManager.PushCoordinator(BattlePhaseType.Idea);
         }
 
         /// <summary>

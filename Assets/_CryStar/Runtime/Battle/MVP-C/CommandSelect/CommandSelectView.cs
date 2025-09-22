@@ -479,6 +479,15 @@ namespace CryStar.CommandBattle
                 clickSequence.Play();
             }
 
+            if (clickedButton == _idea || clickedButton == _item)
+            {
+                // スキルかアイテムの場合はパネルを非表示にしたくないのですぐにコールバックを呼ぶ
+                _isAnimating = false;
+                callback?.Invoke();
+                return;
+            }
+
+            // 退場演出を再生
             PlayExitAnimation().OnComplete(() =>
             {
                 _isAnimating = false;
