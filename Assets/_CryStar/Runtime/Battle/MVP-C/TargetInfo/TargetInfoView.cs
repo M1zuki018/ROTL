@@ -113,7 +113,30 @@ namespace CryStar.CommandBattle
         public void Setup(Action transitionAction)
         {
             // パネルを閉じるときのアニメーションを登録
-            _cover.onClick.SafeReplaceListener(() => PlayExitAnimation(() => transitionAction?.Invoke()));
+            _cover.onClick.SafeReplaceListener(() => HandleCoverClicked(() => transitionAction?.Invoke()));
+        }
+
+        /// <summary>
+        ///  カバーボタンがおされたときの処理
+        /// </summary>
+        private void HandleCoverClicked(Action transitionAction)
+        {
+            // 登場アニメーション中かつ、浮遊アニメーションがまだ未再生であればアニメーションをスキップする
+            // NOTE: 一度登場アニメーションが終わると浮遊アニメーションが始まるためこのように条件を付けている
+            if (_entranceSequence != null && _floatTween == null)
+            {
+                // エントランスアニメーションを完了させた状態でキル
+                _entranceSequence.Kill(true);
+                return;
+            }
+
+            // 登場アニメーションが終了済み
+            // 浮遊アニメーション再生中
+            // 退場アニメーション未再生の場合、退場アニメーションと次の画面遷移処理を呼び出す
+            if (_floatTween != null && _exitSequence == null)
+            {
+                PlayExitAnimation(() => transitionAction?.Invoke());
+            }
         }
 
         /// <summary>
@@ -122,7 +145,7 @@ namespace CryStar.CommandBattle
         public void Exit()
         {
             // 全てのアニメーションを停止
-            _entranceSequence?.Kill();
+            _entranceSequence?.Kill(true);
             _floatTween?.Kill();
             _exitSequence?.Kill();
 

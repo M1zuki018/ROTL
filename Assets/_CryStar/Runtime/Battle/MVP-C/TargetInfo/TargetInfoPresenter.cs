@@ -37,6 +37,8 @@ namespace CryStar.CommandBattle
         /// </summary>
         private async UniTask SetupSequence()
         {
+            // TODO: ボイス再生
+            
             // キャラクターの画像差し替え
             await _view.SetCharacterPreview(_model.GetCharacterSprite());
             
