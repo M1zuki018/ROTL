@@ -46,5 +46,14 @@ namespace CryStar.CommandBattle
             
             base.Block();
         }
+
+        /// <summary>
+        /// 次の選択へ進める処理
+        /// NOTE: アイデアやスキルのコーディネーターが利用する
+        /// </summary>
+        public void NextPhase()
+        {
+            _presenter.NextPhase();
+        }
     }
 }

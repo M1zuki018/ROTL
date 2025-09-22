@@ -120,6 +120,25 @@ namespace CryStar.CommandBattle
         }
         
         /// <summary>
+        /// 次の行動に進める
+        /// </summary>
+        public void Next()
+        {
+            _battleManager.PlaySelectedSe(true).Forget();
+            
+            // 次のコマンド選択に移れるか確認
+            if (_battleManager.CheckNextCommandSelect())
+            {
+                _battleManager.CoordinatorManager.TransitionToPhase(BattlePhaseType.CommandSelect);
+            }
+            else
+            {
+                // バトル実行に移る
+                _battleManager.CoordinatorManager.TransitionToPhase(BattlePhaseType.Execute);
+            }
+        }
+        
+        /// <summary>
         /// 最初のキャラクターの選択を始めるときのSEを再生する
         /// </summary>
         private void PlayFirstSelectSe()
@@ -134,25 +153,6 @@ namespace CryStar.CommandBattle
             
             TryGetBattleManager();
             _battleManager.PlayStartCommandSelectSe().Forget();
-        }
-        
-        /// <summary>
-        /// 次の行動に進める
-        /// </summary>
-        private void Next()
-        {
-            _battleManager.PlaySelectedSe(true).Forget();
-            
-            // 次のコマンド選択に移れるか確認
-            if (_battleManager.CheckNextCommandSelect())
-            {
-                _battleManager.CoordinatorManager.TransitionToPhase(BattlePhaseType.CommandSelect);
-            }
-            else
-            {
-                // バトル実行に移る
-                _battleManager.CoordinatorManager.TransitionToPhase(BattlePhaseType.Execute);
-            }
         }
 
         /// <summary>

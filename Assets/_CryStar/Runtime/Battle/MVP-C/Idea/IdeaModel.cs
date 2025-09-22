@@ -77,10 +77,19 @@ namespace CryStar.CommandBattle
         /// </summary>
         private void Next()
         {
-            _battleManager.PlaySelectedSe(true).Forget();
+            // 画面を閉じる
+            _battleManager.CoordinatorManager.PopCoordinator();
+            
             // 次のコマンド選択があるかチェックし、適切な状態に遷移
-            _battleManager.CoordinatorManager.TransitionToPhase(_battleManager.CheckNextCommandSelect()
-            ? BattlePhaseType.CommandSelect : BattlePhaseType.Execute);
+            var commandSelectCoordinator =
+                _battleManager.CoordinatorManager.GetCoordinator((int)BattlePhaseType.CommandSelect)
+                as CommandSelectCoordinator;
+
+            if (commandSelectCoordinator != null)
+            {
+                // 次のフェーズへ進める処理をコマンドセレクトコーディネーター側で行う
+                commandSelectCoordinator.NextPhase();
+            }
         }
         
         /// <summary>

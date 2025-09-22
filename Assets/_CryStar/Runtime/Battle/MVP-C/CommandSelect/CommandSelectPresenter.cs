@@ -60,5 +60,14 @@ namespace CryStar.CommandBattle
         {
             return _model.CheckShowedOverlay();
         }
+
+        /// <summary>
+        /// 次へ進める処理
+        /// </summary>
+        public void NextPhase()
+        {
+            // 退場アニメーションと次へ進む処理を実行
+            _view.CallExitAnimationWithSkill(_model.Next);
+        }
     }
 }
