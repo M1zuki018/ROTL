@@ -68,19 +68,7 @@ namespace CryStar.CommandBattle.UI
         /// <summary>
         /// 自身のRectTransform
         /// </summary>
-        private RectTransform _rectTransform;
-        
-        /// <summary>
-        /// Awake
-        /// </summary>
-        private void Awake()
-        {
-            // ダメージ量のテキストの位置を変更するために自身のRectTransformの参照を取得しておく
-            if (!TryGetComponent(out _rectTransform))
-            {
-                LogUtility.Error("RectTransform が見つかりません", LogCategory.UI, this);
-            }
-        }
+        private RectTransform RectTransform => _background.rectTransform;
         
         /// <summary>
         /// Setup
@@ -135,10 +123,10 @@ namespace CryStar.CommandBattle.UI
             var damageText = _damageTextPool.Get();
             
             // 位置を調整し表示を変更
-            damageText.rectTransform.localPosition = _rectTransform.localPosition;
+            damageText.transform.position = _background.transform.position;
             damageText.SetText(value.ToString());
             
-            await UniTask.Delay(500); // TODO: 仮置き。ここでアニメーションをする
+            await UniTask.Delay(200); // TODO: 仮置き。ここでアニメーションをする
 
             _damageTextPool.Release(damageText);
         }
