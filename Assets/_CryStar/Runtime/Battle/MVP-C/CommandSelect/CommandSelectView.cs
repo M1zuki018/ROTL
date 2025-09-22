@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Sequence = DG.Tweening.Sequence;
 
 namespace CryStar.CommandBattle
 {
@@ -50,6 +51,9 @@ namespace CryStar.CommandBattle
         
         private Tween _breathTween;
         private Tween _effectPulseTween;
+       
+        private Sequence _enteranceSequence;
+        private Sequence _exitSequence;
         
         private bool _isAnimating = false;
 
@@ -102,6 +106,8 @@ namespace CryStar.CommandBattle
         public void Exit()
         {
             // アニメーション停止
+            _enteranceSequence?.Kill();
+            _exitSequence?.Kill();
             _breathTween?.Kill();
             _effectPulseTween?.Kill();
             
@@ -153,9 +159,6 @@ namespace CryStar.CommandBattle
         /// </summary>
         public void CallEntranceAnimation()
         {
-            if (_isAnimating) return;
-            _isAnimating = true;
-            
             PlayEntranceAnimation();
         }
 
@@ -164,12 +167,16 @@ namespace CryStar.CommandBattle
         /// </summary>
         public void CallExitAnimation(Action cancelAction)
         {
-            // 退場アニメーションを再生したあとにコールバックを呼び出す
-            PlayExitAnimation().OnComplete(() =>
-            {
-                _isAnimating = false;
-                cancelAction?.Invoke();
-            });
+            OnButtonClicked(_back, () => cancelAction?.Invoke());
+        }
+
+        /// <summary>
+        /// スキルボタン押下アニメーションとともに退場アニメーションを再生する
+        /// </summary>
+        public void CallExitAnimationWithSkill(Action action)
+        {
+            _isAnimating = false;
+            OnButtonClickedFarce(_idea, () => action?.Invoke());
         }
 
         #region Private Method
@@ -264,20 +271,25 @@ namespace CryStar.CommandBattle
         /// </summary>
         private void PlayEntranceAnimation()
         {
-            var sequence = DOTween.Sequence();
+            // 退場アニメーション再生中であれば強制的に最終位置へ
+            _exitSequence?.Kill(true);
+            
+            // 念のためキルしてからシーケンスを作成
+            _enteranceSequence?.Kill();
+            _enteranceSequence = DOTween.Sequence();
             
             // キャラクタープレビューのフェードイン
             if (_characterCanvasGroup != null)
             {
-                sequence.Append(_characterCanvasGroup.DOFade(1f, _entranceDuration).SetEase(Ease.OutCubic));
-                sequence.Join(_characterCanvasGroup.transform.DOLocalMove(_characterInitialPosition, _entranceDuration).SetEase(Ease.OutCubic));
-                sequence.Join(_characterCanvasGroup.transform.DOScale(Vector3.one, _entranceDuration).SetEase(Ease.OutBack));
+                _enteranceSequence.Append(_characterCanvasGroup.DOFade(1f, _entranceDuration).SetEase(Ease.OutCubic));
+                _enteranceSequence.Join(_characterCanvasGroup.transform.DOLocalMove(_characterInitialPosition, _entranceDuration).SetEase(Ease.OutCubic));
+                _enteranceSequence.Join(_characterCanvasGroup.transform.DOScale(Vector3.one, _entranceDuration).SetEase(Ease.OutBack));
             }
             
             // セレクター全体のフェードイン
             if (_selectorCanvasGroup != null)
             {
-                sequence.Join(_selectorCanvasGroup.DOFade(1f, _entranceDuration).SetEase(Ease.OutCubic));
+                _enteranceSequence.Join(_selectorCanvasGroup.DOFade(1f, _entranceDuration).SetEase(Ease.OutCubic));
             }
             
             // エフェクトのフェードイン
@@ -286,8 +298,8 @@ namespace CryStar.CommandBattle
                 var effectCanvasGroup = _selectorEffect.GetComponent<CanvasGroup>();
                 if (effectCanvasGroup != null)
                 {
-                    sequence.Join(effectCanvasGroup.DOFade(0.8f, _entranceDuration).SetEase(Ease.OutCubic));
-                    sequence.Join(_selectorEffect.transform.DOScale(Vector3.one, _entranceDuration).SetEase(Ease.OutBack));
+                    _enteranceSequence.Join(effectCanvasGroup.DOFade(0.8f, _entranceDuration).SetEase(Ease.OutCubic));
+                    _enteranceSequence.Join(_selectorEffect.transform.DOScale(Vector3.one, _entranceDuration).SetEase(Ease.OutBack));
                 }
             }
             
@@ -304,26 +316,26 @@ namespace CryStar.CommandBattle
                 float delay = _buttonInterval * index * 0.5f;
                 
                 // フェードイン
-                sequence.Insert(delay, buttonCanvasGroup.DOFade(1f, _entranceDuration * 0.4f).SetEase(Ease.OutCubic));
+                _enteranceSequence.Insert(delay, buttonCanvasGroup.DOFade(1f, _entranceDuration * 0.4f).SetEase(Ease.OutCubic));
                 
                 // スライドイン（左から）
-                sequence.Insert(delay, button.transform.DOLocalMove(_buttonInitialPosition[index], _entranceDuration * 0.6f)
+                _enteranceSequence.Insert(delay, button.transform.DOLocalMove(_buttonInitialPosition[index], _entranceDuration * 0.6f)
                     .SetEase(Ease.OutBack));
                 
                 // スケールアニメーション
-                sequence.Insert(delay, button.transform.DOScale(_buttonInitialScale, _entranceDuration * 0.6f)
+                _enteranceSequence.Insert(delay, button.transform.DOScale(_buttonInitialScale, _entranceDuration * 0.6f)
                     .SetEase(Ease.OutBack));
             }
             
             // アニメーション完了後の処理
-            sequence.OnComplete(() =>
+            _enteranceSequence.OnComplete(() =>
             {
-                _isAnimating = false;
+                _enteranceSequence = null;
                 StartBreathAnimation();
                 StartEffectPulseAnimation();
             });
             
-            sequence.Play();
+            _enteranceSequence.Play();
         }
 
         /// <summary>
@@ -373,14 +385,16 @@ namespace CryStar.CommandBattle
         /// </summary>
         private Tween PlayExitAnimation()
         {
-            _isAnimating = true;
+            // 入場アニメーションが再生中だったら強制的に最終位置にずらす
+            _enteranceSequence?.Kill(true);
             
             // 継続アニメーション停止
             _breathTween?.Kill();
             _effectPulseTween?.Kill();
             
-            var sequence = DOTween.Sequence();
-            
+            _exitSequence?.Kill();
+            _exitSequence = DOTween.Sequence();
+
             // ボタンを逆順でフェードアウト
             for (int i = _allButtons.Length - 1; i >= 0; i--)
             {
@@ -389,31 +403,31 @@ namespace CryStar.CommandBattle
                 var button = _allButtons[i];
                 float delay = (_allButtons.Length - 1 - i) * _buttonInterval * 0.1f;
                 
-                sequence.Insert(delay, _buttonCanvasGroups[i].DOFade(0f, 0.1f).SetEase(Ease.OutCubic));
-                sequence.Insert(delay, button.transform.DOLocalMoveX(_buttonInitialPosition[i].x - 200f, 0.1f)
+                _exitSequence.Insert(delay, _buttonCanvasGroups[i].DOFade(0f, 0.1f).SetEase(Ease.OutCubic));
+                _exitSequence.Insert(delay, button.transform.DOLocalMoveX(_buttonInitialPosition[i].x - 200f, 0.1f)
                     .SetEase(Ease.InBack));
             }
             
             // エフェクトとキャラクタープレビューをフェードアウト
             if (_selectorEffect != null)
             {
-                sequence.Join(_selectorEffect.DOFade(0f, 0.1f).SetEase(Ease.OutCubic));
+                _exitSequence.Join(_selectorEffect.DOFade(0f, 0.1f).SetEase(Ease.OutCubic));
             }
             
             if (_characterCanvasGroup != null)
             {
-                sequence.Append(_characterCanvasGroup.DOFade(0f, 0.1f).SetEase(Ease.OutCubic));
-                sequence.Join(_characterCanvasGroup.transform.DOLocalMove(_characterInitialPosition + Vector3.left * 100f, 0.1f).SetEase(Ease.OutCubic));
-                sequence.Join(_characterCanvasGroup.transform.DOScale(Vector3.one * 0.8f, 0.1f).SetEase(Ease.InBack));
+                _exitSequence.Append(_characterCanvasGroup.DOFade(0f, 0.1f).SetEase(Ease.OutCubic));
+                _exitSequence.Join(_characterCanvasGroup.transform.DOLocalMove(_characterInitialPosition + Vector3.left * 100f, 0.1f).SetEase(Ease.OutCubic));
+                _exitSequence.Join(_characterCanvasGroup.transform.DOScale(Vector3.one * 0.8f, 0.1f).SetEase(Ease.InBack));
             }
             
             // セレクター全体をフェードアウト
             if (_selectorCanvasGroup != null)
             {
-                sequence.Join(_selectorCanvasGroup.DOFade(0f, 0.1f).SetEase(Ease.OutCubic));
+                _exitSequence.Join(_selectorCanvasGroup.DOFade(0f, 0.1f).SetEase(Ease.OutCubic));
             }
             
-            return sequence;
+            return _exitSequence;
         }
 
         #region ボタンのエフェクト・アニメーション
@@ -458,7 +472,7 @@ namespace CryStar.CommandBattle
         /// </summary>
         private void OnButtonHover(Button button, bool isHovering)
         {
-            if (button == null || _isAnimating) return;
+            if (button == null || _enteranceSequence != null) return;
             
             button.transform.DOKill();
             
@@ -506,11 +520,6 @@ namespace CryStar.CommandBattle
         /// </summary>
         private void OnButtonClicked(Button clickedButton, Action callback)
         {
-            if (_isAnimating)
-            {
-                return;
-            }
-            
             // クリックエフェクト
             if (clickedButton != null)
             {
@@ -523,7 +532,6 @@ namespace CryStar.CommandBattle
             if (clickedButton == _idea || clickedButton == _item)
             {
                 // スキルかアイテムの場合はパネルを非表示にしたくないのですぐにコールバックを呼ぶ
-                _isAnimating = false;
                 callback?.Invoke();
                 return;
             }
@@ -531,7 +539,25 @@ namespace CryStar.CommandBattle
             // 退場演出を再生
             PlayExitAnimation().OnComplete(() =>
             {
-                _isAnimating = false;
+                callback?.Invoke();
+            });
+        }
+
+        private void OnButtonClickedFarce(Button clickedButton, Action callback)
+        {
+            // クリックエフェクト
+            if (clickedButton != null)
+            {
+                var clickSequence = DOTween.Sequence();
+                clickSequence.Append(clickedButton.transform.DOScale(_buttonInitialScale * 0.9f, 0.1f).SetEase(Ease.OutCubic));
+                clickSequence.Append(clickedButton.transform.DOScale(_buttonInitialScale, 0.2f).SetEase(Ease.OutBack));
+                clickSequence.Play();
+            }
+
+            // 退場演出を再生
+            PlayExitAnimation().OnComplete(() =>
+            {
+                _exitSequence = null;
                 callback?.Invoke();
             });
         }
