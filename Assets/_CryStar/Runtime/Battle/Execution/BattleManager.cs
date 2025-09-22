@@ -24,6 +24,8 @@ namespace CryStar.CommandBattle.Execution
     [DefaultExecutionOrder(-990)]
     public class BattleManager : MonoBehaviour
     {
+        #region Private Fields
+        
         /// <summary>
         /// Coordinator Manager
         /// </summary>
@@ -71,6 +73,12 @@ namespace CryStar.CommandBattle.Execution
         /// </summary>
         [SerializeField]
         private string _cancelSePath;
+        
+        /// <summary>
+        /// バトル開始時のSEのPath TODO: 仮
+        /// </summary>
+        [SerializeField]
+        private string _commandSelectStartSePath;
 
         /// <summary>
         /// Volume
@@ -109,6 +117,8 @@ namespace CryStar.CommandBattle.Execution
         /// AudioManager
         /// </summary>
         private AudioManager _audioManager;
+        
+        #endregion
 
         /// <summary>
         /// CanvasManager
@@ -119,6 +129,11 @@ namespace CryStar.CommandBattle.Execution
         /// バトルで使用する変数をまとめたクラス
         /// </summary>
         public BattleData Data => _data;
+        
+        /// <summary>
+        /// 現在コマンドを選んでいるキャラクターのIndex
+        /// </summary>
+        public int CurrentCommandSelectIndex => _currentCommandSelectIndex;
         
         /// <summary>
         /// 現在コマンドを選んでいるキャラクターのデータ
@@ -437,6 +452,19 @@ namespace CryStar.CommandBattle.Execution
             {
                 await _audioManager.PlaySE(isImportant ? _selectSePath2 : _selectSePath, 1f);
             }
+        }
+
+        /// <summary>
+        /// コマンド選択開始時のSEを再生
+        /// </summary>
+        public async UniTask PlayStartCommandSelectSe()
+        {
+            if (_audioManager == null)
+            {
+                _audioManager = ServiceLocator.GetGlobal<AudioManager>();
+            }
+            
+            await _audioManager.PlaySE(_commandSelectStartSePath, 1f);
         }
 
         #endregion
