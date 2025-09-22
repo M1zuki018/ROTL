@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using CryStar.CommandBattle.Data;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -44,6 +45,11 @@ namespace CryStar.CommandBattle.UI
         /// </summary>
         [SerializeField]
         private DamageTextPool _damageTextPool;
+        
+        /// <summary>
+        /// 表示中のアイコンのリスト
+        /// </summary>
+        private List<CommandIcon> _activeIcons = new List<CommandIcon>();
         
         private List<CharacterIconContents> _icons;
         private List<EnemyIconContents> _enemyIcons;
@@ -96,9 +102,44 @@ namespace CryStar.CommandBattle.UI
         public async UniTask AddCommandIcon(BattleCommandEntryData commandData)
         {
             var icon = _commandIconPool.Get();
+            _activeIcons.Add(icon);
             
             //TODO: コマンドデータが持っている情報から適切なPathを渡す
-            await icon.OnGet("Assets/AssetStoreTools/Images/Battle/UI/Selector/Selector_Attack.png");
+            await icon.OnGet(commandData);
+        }
+
+        /// <summary>
+        /// コマンドアイコンを実行順に並び変える
+        /// </summary>
+        public async UniTask SortingCommandIcons()
+        {
+            // TODO:
+        }
+
+        /// <summary>
+        /// リストから削除する
+        /// </summary>
+        public async UniTask RemoveCommandIcon(BattleCommandEntryData commandData)
+        {
+            var icon = _activeIcons.FirstOrDefault(icon => icon.EntryData.Equals(commandData));
+            if (icon != null)
+            {
+                _activeIcons.Remove(icon);
+                _commandIconPool.Release(icon);
+            }
+        }
+
+        /// <summary>
+        /// 全てのアイコン表示をクリア
+        /// </summary>
+        public async UniTask AllRemoveCommandIcons()
+        {
+            foreach (var icon in _activeIcons)
+            {
+                // 全てをオブジェクトプールに返却
+                _commandIconPool.Release(icon);
+            }
+            _activeIcons.Clear();
         }
 
         #region Private Methods
@@ -161,6 +202,8 @@ namespace CryStar.CommandBattle.UI
         /// </summary>
         private void DisEnableIcon(int index, bool isPlayer)
         {
+            // TODO: コマンドアイコンを非表示にしたりもする
+            
             if (isPlayer)
             {
                 _icons[index].Hide();

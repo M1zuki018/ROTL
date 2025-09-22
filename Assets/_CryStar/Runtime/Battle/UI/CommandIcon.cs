@@ -1,3 +1,4 @@
+using CryStar.CommandBattle.Data;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -14,13 +15,19 @@ namespace CryStar.CommandBattle.UI
         /// </summary>
         [SerializeField]
         private CustomImage _icon;
+        
+        private BattleCommandEntryData _entryData;
 
+        public BattleCommandEntryData EntryData => _entryData;
+        
         /// <summary>
         /// アイコンを設定したあとに表示する
         /// </summary>
-        public async UniTask OnGet(string iconPath)
+        public async UniTask OnGet(BattleCommandEntryData commandData)
         {
-            await _icon.ChangeSpriteAsync(iconPath);
+            _entryData = commandData;
+            
+            await _icon.ChangeSpriteAsync("Assets/AssetStoreTools/Images/Battle/UI/Selector/Selector_Attack.png");
             gameObject.SetActive(true);
         }
 

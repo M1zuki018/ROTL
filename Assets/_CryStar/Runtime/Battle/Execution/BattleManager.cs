@@ -284,6 +284,9 @@ namespace CryStar.CommandBattle.Execution
         /// </summary>
         public async UniTask<string> ExecuteCommandAsync(BattleCommandEntryData entry)
         {
+            // コマンドアイコンを非表示にする
+            await _view.RemoveCommandIcon(entry);
+            
             // コマンドの実行終了を待機
             var result = await entry.Command.ExecuteAsync(entry.Executor, entry.Targets);
             
@@ -317,6 +320,9 @@ namespace CryStar.CommandBattle.Execution
             // コマンドリストをクリア
             _commandList.Clear();
             ResetCommandSelectIndex();
+            
+            // コマンドアイコンの表示をクリア
+            await _view.AllRemoveCommandIcons();
             
             return CheckBattleEnd();
         }
@@ -443,6 +449,8 @@ namespace CryStar.CommandBattle.Execution
             _commandList = _commandList.Where(command => 
                 command.Executor.UserData.CharacterID != target.UserData.CharacterID).ToList();
     
+            // TODO: コマンドを削除するときに_view.RemoveCommandIcon(BattleCommandEntryData)を呼ぶ
+            
             var removedCount = initialCount - _commandList.Count;
             if (removedCount > 0)
             {
