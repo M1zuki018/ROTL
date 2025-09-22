@@ -109,6 +109,9 @@ namespace CryStar.CommandBattle
             _item?.onClick.SafeRemoveAllListeners();
             _guard?.onClick.SafeRemoveAllListeners();
             _back?.onClick.SafeRemoveAllListeners();
+
+            _onIdea = null;
+            _onItem = null;
             
             // DOTweenアニメーション停止
             transform.DOKill();
