@@ -44,6 +44,7 @@ namespace CryStar.CommandBattle
         private Button[] _allButtons;
         private Vector3 _buttonInitialScale;
         private Vector3[] _buttonInitialPosition;
+        private Vector3 _characterInitialPosition;
         private CanvasGroup[] _buttonCanvasGroups;
         private float _glowDefaultIntensity;
         
@@ -194,6 +195,8 @@ namespace CryStar.CommandBattle
             if (_characterCanvasGroup != null)
             {
                 _characterCanvasGroup.alpha = 0f;
+                _characterInitialPosition = _characterCanvasGroup.transform.localPosition;
+                _characterCanvasGroup.transform.localPosition = _characterInitialPosition + Vector3.left * 200f;
                 _characterCanvasGroup.transform.localScale = Vector3.one * 0.8f;
             }
             
@@ -204,7 +207,7 @@ namespace CryStar.CommandBattle
                 {
                     // 左側にずらす
                     var buttonTransform = _allButtons[i].transform;
-                    buttonTransform.localPosition = _buttonInitialPosition[i] + Vector3.left * 200f;
+                    buttonTransform.localPosition = _buttonInitialPosition[i] + Vector3.left * 100f;
                     buttonTransform.localScale = _buttonInitialScale * 0.8f;
                     
                     // キャンバスグループ非表示
@@ -241,6 +244,7 @@ namespace CryStar.CommandBattle
             if (_characterCanvasGroup != null)
             {
                 sequence.Append(_characterCanvasGroup.DOFade(1f, _entranceDuration).SetEase(Ease.OutCubic));
+                sequence.Join(_characterCanvasGroup.transform.DOLocalMove(_characterInitialPosition, _entranceDuration).SetEase(Ease.OutCubic));
                 sequence.Join(_characterCanvasGroup.transform.DOScale(Vector3.one, _entranceDuration).SetEase(Ease.OutBack));
             }
             
@@ -373,6 +377,7 @@ namespace CryStar.CommandBattle
             if (_characterCanvasGroup != null)
             {
                 sequence.Append(_characterCanvasGroup.DOFade(0f, 0.1f).SetEase(Ease.OutCubic));
+                sequence.Join(_characterCanvasGroup.transform.DOLocalMove(_characterInitialPosition + Vector3.left * 100f, 0.1f).SetEase(Ease.OutCubic));
                 sequence.Join(_characterCanvasGroup.transform.DOScale(Vector3.one * 0.8f, 0.1f).SetEase(Ease.InBack));
             }
             
