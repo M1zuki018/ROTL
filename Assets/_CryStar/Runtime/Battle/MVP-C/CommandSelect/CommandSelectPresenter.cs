@@ -33,7 +33,7 @@ namespace CryStar.CommandBattle
             // ぼかしの色をキャラクターカラーに変更する
             _view.SetEffectColor(_model.GetCharacterColor());
             
-            _view.PlayAnimation();
+            _view.CallEntranceAnimation();
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace CryStar.CommandBattle
         /// </summary>
         public void Cancel()
         {
-            _model.Back();
+            _view.CallExitAnimation(_model.Back);
         }
         
         /// <summary>

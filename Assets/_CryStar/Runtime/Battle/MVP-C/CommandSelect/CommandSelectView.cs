@@ -138,12 +138,25 @@ namespace CryStar.CommandBattle
         /// <summary>
         /// アニメーション再生
         /// </summary>
-        public void PlayAnimation()
+        public void CallEntranceAnimation()
         {
             if (_isAnimating) return;
             _isAnimating = true;
             
             PlayEntranceAnimation();
+        }
+
+        /// <summary>
+        /// 退場アニメーションを再生
+        /// </summary>
+        public void CallExitAnimation(Action cancelAction)
+        {
+            // 退場アニメーションを再生したあとにコールバックを呼び出す
+            PlayExitAnimation().OnComplete(() =>
+            {
+                _isAnimating = false;
+                cancelAction?.Invoke();
+            });
         }
 
         #region Private Method
