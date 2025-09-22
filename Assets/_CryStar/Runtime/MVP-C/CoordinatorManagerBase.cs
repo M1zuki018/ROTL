@@ -82,7 +82,7 @@ public abstract class CoordinatorManagerBase : CustomBehaviour
             return;
         
         // 現在のコーディネーターの切り替わり処理を実行
-        _coordinators[_currentIndex]?.Exit();
+        //_coordinators[_currentIndex]?.Exit();
         
         // キャンバス切り替え
         for (int i = 0; i < _coordinators.Count; i++)
