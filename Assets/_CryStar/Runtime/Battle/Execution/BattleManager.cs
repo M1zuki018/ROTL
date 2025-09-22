@@ -296,7 +296,7 @@ namespace CryStar.CommandBattle.Execution
         {
             // コマンドを優先度順にソート（コマンドの優先順->攻撃速度）
             _commandList = _commandList
-                .OrderByDescending(entry => entry.Priority)
+                .OrderBy(entry => entry.Priority)
                 .ThenByDescending(entry => entry.Executor.Speed)
                 .ToList();
             
