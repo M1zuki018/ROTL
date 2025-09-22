@@ -24,6 +24,8 @@ namespace CryStar.CommandBattle.Execution
     [DefaultExecutionOrder(-990)]
     public class BattleManager : MonoBehaviour
     {
+        #region Private Fields
+        
         /// <summary>
         /// Coordinator Manager
         /// </summary>
@@ -71,6 +73,12 @@ namespace CryStar.CommandBattle.Execution
         /// </summary>
         [SerializeField]
         private string _cancelSePath;
+        
+        /// <summary>
+        /// バトル開始時のSEのPath TODO: 仮
+        /// </summary>
+        [SerializeField]
+        private string _commandSelectStartSePath;
 
         /// <summary>
         /// Volume
@@ -109,6 +117,8 @@ namespace CryStar.CommandBattle.Execution
         /// AudioManager
         /// </summary>
         private AudioManager _audioManager;
+        
+        #endregion
 
         /// <summary>
         /// CanvasManager
@@ -119,6 +129,11 @@ namespace CryStar.CommandBattle.Execution
         /// バトルで使用する変数をまとめたクラス
         /// </summary>
         public BattleData Data => _data;
+        
+        /// <summary>
+        /// 現在コマンドを選んでいるキャラクターのIndex
+        /// </summary>
+        public int CurrentCommandSelectIndex => _currentCommandSelectIndex;
         
         /// <summary>
         /// 現在コマンドを選んでいるキャラクターのデータ
@@ -228,6 +243,9 @@ namespace CryStar.CommandBattle.Execution
             var entry = new BattleCommandEntryData(executor, command, targets);
             _commandList.Add(entry);
             
+            // コマンドアイコンを表示
+            _view.AddCommandIcon(entry).Forget();
+            
             LogUtility.Info($"{executor.Name}のコマンド登録: {commandType}");
         }
         
@@ -259,17 +277,40 @@ namespace CryStar.CommandBattle.Execution
         }
 
         /// <summary>
+        /// 敵のAI行動を追加
+        /// </summary>
+        public async UniTask AddEnemyCommands()
+        {
+            foreach (var enemy in _data.EnemyData.Where(u => u.IsAlive))
+            {
+                // TODO: 仮実装として常に攻撃としている
+                var command = BattleCommandFactory.GetCommand(CommandType.Attack);
+                var aliveUnits = _data.UnitData.Where(u => u.IsAlive).ToArray();
+        
+                if (command != null && aliveUnits.Length > 0)
+                {
+                    // ランダムにターゲットを選択
+                    var randomIndex = UnityEngine.Random.Range(0, aliveUnits.Length);
+                    var targets = new[] { aliveUnits[randomIndex] };
+            
+                    var entry = new BattleCommandEntryData(enemy, command, targets);
+                    _commandList.Add(entry);
+            
+                    // コマンドアイコンを表示
+                    await _view.AddCommandIcon(entry);
+                }
+            }
+        }
+        
+        /// <summary>
         /// コマンドリストを作成する
         /// </summary>
         /// <returns></returns>
         public List<BattleCommandEntryData> CreateCommandList()
         {
-            // 敵のAI行動を追加
-            AddEnemyCommands();
-            
             // コマンドを優先度順にソート（コマンドの優先順->攻撃速度）
             _commandList = _commandList
-                .OrderByDescending(entry => entry.Priority)
+                .OrderBy(entry => entry.Priority)
                 .ThenByDescending(entry => entry.Executor.Speed)
                 .ToList();
             
@@ -281,6 +322,9 @@ namespace CryStar.CommandBattle.Execution
         /// </summary>
         public async UniTask<string> ExecuteCommandAsync(BattleCommandEntryData entry)
         {
+            // コマンドアイコンを非表示にする
+            await _view.RemoveCommandIcon(entry);
+            
             // コマンドの実行終了を待機
             var result = await entry.Command.ExecuteAsync(entry.Executor, entry.Targets);
             
@@ -314,6 +358,9 @@ namespace CryStar.CommandBattle.Execution
             // コマンドリストをクリア
             _commandList.Clear();
             ResetCommandSelectIndex();
+            
+            // コマンドアイコンの表示をクリア
+            await _view.AllRemoveCommandIcons();
             
             return CheckBattleEnd();
         }
@@ -407,6 +454,19 @@ namespace CryStar.CommandBattle.Execution
             }
         }
 
+        /// <summary>
+        /// コマンド選択開始時のSEを再生
+        /// </summary>
+        public async UniTask PlayStartCommandSelectSe()
+        {
+            if (_audioManager == null)
+            {
+                _audioManager = ServiceLocator.GetGlobal<AudioManager>();
+            }
+            
+            await _audioManager.PlaySE(_commandSelectStartSePath, 1f);
+        }
+
         #endregion
 
         #region Battle Private Methods
@@ -440,29 +500,12 @@ namespace CryStar.CommandBattle.Execution
             _commandList = _commandList.Where(command => 
                 command.Executor.UserData.CharacterID != target.UserData.CharacterID).ToList();
     
+            // TODO: コマンドを削除するときに_view.RemoveCommandIcon(BattleCommandEntryData)を呼ぶ
+            
             var removedCount = initialCount - _commandList.Count;
             if (removedCount > 0)
             {
                 LogUtility.Info($"{target.Name}のコマンドを{removedCount}個削除しました");
-            }
-        }
-        
-        /// <summary>
-        /// 敵のAI行動を追加
-        /// </summary>
-        private void AddEnemyCommands()
-        {
-            foreach (var enemy in _data.EnemyData.Where(u => u.IsAlive))
-            {
-                // TODO: 仮実装として常に攻撃としている
-                var command = BattleCommandFactory.GetCommand(CommandType.Attack);
-                var targets = _data.UnitData.Where(u => u.IsAlive).Take(1).ToArray();
-                
-                if (command != null && targets.Length > 0)
-                {
-                    var entry = new BattleCommandEntryData(enemy, command, targets);
-                    _commandList.Add(entry);
-                }
             }
         }
         

@@ -74,8 +74,8 @@ namespace CryStar.CommandBattle.Command
         {
             // 攻撃力 * 知力 // TODO: 更にスキルごとの倍率をかける
             int baseDamage = (int)(attacker.Attack * ((100 + attacker.SkillMultiplier) * 0.01f));
-            // 実効防御力: ディフェンダーの物理防御 × (1 - アタッカーの防御無視率)
-            int defense = (int)(defender.Defense * (1 - attacker.ArmorPenetration / 100f));
+            // 実効防御力: ディフェンダーの物理防御 × 0.5 × (1 - アタッカーの防御無視率)
+            int defense = (int)(defender.Defense * 0.5f * (1 - attacker.ArmorPenetration / 100f));
             // 最終物理ダメージ = 物理攻撃 × (100 / (100 + 実効防御力))
             int damage = Mathf.Max(1, (int)(baseDamage * (100f / (100f + defense))));
             

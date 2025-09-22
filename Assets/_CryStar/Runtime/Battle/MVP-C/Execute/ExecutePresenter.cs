@@ -37,6 +37,10 @@ namespace CryStar.CommandBattle
         /// </summary>
         private async UniTask Execute()
         {
+            // 敵AIのコマンドを追加
+            await _model.AddEnemyCommands();
+            
+            // コマンドリストを取得する
             var commandList = _model.GetCommandList();
 
             foreach (var entry in commandList)
@@ -50,7 +54,7 @@ namespace CryStar.CommandBattle
                 _view.SetText($"{entry.Executor.Name}の{entry.Command.DisplayName}");
                 
                 // 少し待つ
-                await UniTask.Delay(1000);
+                await UniTask.Delay(500);
 
                 var message = await _model.ExecuteCommandAndGetMessage(entry);
                 
@@ -58,7 +62,7 @@ namespace CryStar.CommandBattle
                 _view.SetText(message);
                 
                 // 少し待つ
-                await UniTask.Delay(1000);
+                await UniTask.Delay(300);
             }
             
             // バトル結果を元に次の処理を行う

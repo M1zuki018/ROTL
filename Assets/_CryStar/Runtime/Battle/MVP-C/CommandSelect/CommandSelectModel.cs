@@ -22,6 +22,9 @@ namespace CryStar.CommandBattle
         public void Setup()
         {
             _battleManager = ServiceLocator.GetLocal<BattleManager>();
+            
+            // 最初のキャラクターのみ、SEの再生を行う
+            PlayFirstSelectSe();
         }
 
         /// <summary>
@@ -101,6 +104,23 @@ namespace CryStar.CommandBattle
                 // 自分より前にキャラクターがいなかった場合は、最初の行動選択にもどる
                 _battleManager.CoordinatorManager.TransitionToPhase(BattlePhaseType.FirstSelect);
             }
+        }
+        
+        /// <summary>
+        /// 最初のキャラクターの選択を始めるときのSEを再生する
+        /// </summary>
+        private void PlayFirstSelectSe()
+        {
+            return;
+            
+            // TODO: 若干微妙かもと思いコメントアウト
+            if (_battleManager.CurrentCommandSelectIndex != 0)
+            {
+                return;
+            }
+            
+            TryGetBattleManager();
+            _battleManager.PlayStartCommandSelectSe().Forget();
         }
         
         /// <summary>

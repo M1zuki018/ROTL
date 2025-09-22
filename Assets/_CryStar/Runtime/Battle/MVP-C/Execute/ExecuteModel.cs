@@ -26,6 +26,14 @@ namespace CryStar.CommandBattle
         }
 
         /// <summary>
+        /// 敵AIの行動を追加する
+        /// </summary>
+        public async UniTask AddEnemyCommands()
+        {
+            await _battleManager.AddEnemyCommands();
+        }
+        
+        /// <summary>
         /// 登録されているコマンドのリストを取得する
         /// </summary>
         /// <returns></returns>
