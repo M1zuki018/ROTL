@@ -795,6 +795,7 @@ MonoBehaviour:
   _spSlider: {fileID: 3073627924540207060}
   _spAmount: {fileID: 4937410442489704101}
   _spMaxValue: {fileID: 8694371823432709730}
+  _damagedColor: {r: 0.93333334, g: 0.43529412, b: 0.5529412, a: 1}
 --- !u!1 &4527260612828399547
 GameObject:
   m_ObjectHideFlags: 0
