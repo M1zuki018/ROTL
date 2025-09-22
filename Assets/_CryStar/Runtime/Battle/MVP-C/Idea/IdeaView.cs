@@ -3,27 +3,34 @@ using CryStar.Attribute;
 using CryStar.CommandBattle.UI;
 using CryStar.Utility;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace CryStar.CommandBattle
 {
     /// <summary>
     /// Idea_View
     /// </summary>
-    public class IdeaView : MonoBehaviour
+    public class IdeaView : MonoBehaviour, IPointerExitHandler
     {
         /// <summary>
         /// Ideaを選択したときのコールバック
         /// </summary>
         private event Action<int> _onIdeaSelected;
+
+        /// <summary>
+        /// 画面を閉じるコールバック
+        /// </summary>
+        private Action _onClose;
         
         [SerializeField, HighlightIfNull] private IdeaContents _commandIdeaContents;
         
         /// <summary>
         /// Setup
         /// </summary>
-        public void Setup(Action<int> onIdeaSelected)
+        public void Setup(Action<int> onIdeaSelected, Action onClose)
         {
             _onIdeaSelected += onIdeaSelected;
+            _onClose = onClose;
             
             // キャンバスを表示
             CanvasSetActive(_commandIdeaContents.CanvasGroup, true);
@@ -40,8 +47,17 @@ namespace CryStar.CommandBattle
             CleanupButtonListeners();
             
             _onIdeaSelected = null;
+            _onClose = null;
             
             CanvasSetActive(_commandIdeaContents.CanvasGroup, false);
+        }
+        
+        /// <summary>
+        /// ターゲットから出た場合にセレクターを閉じる処理を呼ぶ
+        /// </summary>
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            _onClose?.Invoke();
         }
 
         /// <summary>

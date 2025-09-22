@@ -62,6 +62,15 @@ namespace CryStar.CommandBattle
             _battleManager.AddCommandList(CommandType.Idea);
             Next();
         }
+
+        /// <summary>
+        /// 画面を閉じる処理
+        /// </summary>
+        public void HandleClose()
+        {
+            TryGetBattleManager();
+            _battleManager.CoordinatorManager.PopCoordinator();
+        }
         
         /// <summary>
         /// 次の行動に進める
