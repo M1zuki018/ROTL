@@ -274,7 +274,6 @@ namespace CryStar.CommandBattle.Execution
         
                 if (command != null && aliveUnits.Length > 0)
                 {
-                    
                     // ランダムにターゲットを選択
                     var randomIndex = UnityEngine.Random.Range(0, aliveUnits.Length);
                     var targets = new[] { aliveUnits[randomIndex] };

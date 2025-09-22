@@ -50,6 +50,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 735cb32fc929dec4faa69fc8b892261f
+    m_Address: Assets/AssetStoreTools/Images/Battle/CutIn/Stage_NormalAttack.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 802d6a11d8f06c64280ea8ccbcfb2127
     m_Address: Assets/AssetStoreTools/Sounds/SE/SE_Cancel.mp3
     m_ReadOnly: 0
