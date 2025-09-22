@@ -55,6 +55,7 @@ namespace CryStar.CommandBattle
 
         private Action _onIdea;
         private Action _onItem;
+        private Action _onHover;
 
         #region Life cycle
 
@@ -80,7 +81,7 @@ namespace CryStar.CommandBattle
         /// <summary>
         /// Setup
         /// </summary>
-        public void Setup(Action onAttack, Action onIdea, Action onItem, Action onGuard, Action onBack)
+        public void Setup(Action onAttack, Action onIdea, Action onItem, Action onGuard, Action onBack, Action onHover)
         {
             // ボタンイベント設定（アニメーション付き）
             _attack.onClick.SafeReplaceListener(() => OnButtonClicked(_attack, () => onAttack?.Invoke()));
@@ -92,6 +93,7 @@ namespace CryStar.CommandBattle
             // パネル表示のために保存しておく
             _onIdea = onIdea;
             _onItem = onItem;
+            _onHover = onHover;
         }
         
         /// <summary>
@@ -112,6 +114,7 @@ namespace CryStar.CommandBattle
 
             _onIdea = null;
             _onItem = null;
+            _onHover = null;
             
             // DOTweenアニメーション停止
             transform.DOKill();
@@ -463,6 +466,9 @@ namespace CryStar.CommandBattle
             
             if (isHovering)
             {
+                // 既になにかしらのオーバーレイが開かれていたら閉じる
+                _onHover?.Invoke();
+                
                 targetScale *= 1.1f;
                 
                 // ホバー時のパンチエフェクト
@@ -485,8 +491,6 @@ namespace CryStar.CommandBattle
                 // ホバー時のグローエフェクトの座標移動・表示させる
                 _glowEffect.transform.position = button.transform.position;
                 _glowEffect.DOFade(_glowDefaultIntensity, 0.2f).SetEase(Ease.OutCubic);
-
-                
             }
             else
             {

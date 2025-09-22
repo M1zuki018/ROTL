@@ -84,18 +84,19 @@ public abstract class CoordinatorManagerBase : CustomBehaviour
         // 現在のコーディネーターの切り替わり処理を実行
         //_coordinators[_currentIndex]?.Exit();
         
+        _coordinatorStack.Push(coordinatorIndex); // スタックに新しいインデックスをプッシュ
+        _currentIndex = coordinatorIndex; // 現在のインデックスを更新
+        
         // キャンバス切り替え
         for (int i = 0; i < _coordinators.Count; i++)
         {
-            if (i != coordinatorIndex)
+            if (i != _currentIndex)
             {
                 // 対象以外のコーディネーターは反応しないようにする
                 _coordinators[i]?.Block();
             }
         }
         
-        _coordinatorStack.Push(coordinatorIndex); // スタックに新しいインデックスをプッシュ
-        _currentIndex = coordinatorIndex; // 現在のインデックスを更新
         _coordinators[coordinatorIndex].Enter(); // 新しいコーディネーターの切り替わり処理を実行
     }
 
@@ -107,7 +108,6 @@ public abstract class CoordinatorManagerBase : CustomBehaviour
         // スタックが空または1つしかない場合は何もしない
         if (_coordinatorStack.Count <= 1)
         {
-            Debug.Log("これ以上前の画面に戻れません");
             return;
         }
         

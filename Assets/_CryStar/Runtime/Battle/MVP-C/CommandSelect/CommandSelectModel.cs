@@ -107,6 +107,19 @@ namespace CryStar.CommandBattle
         }
         
         /// <summary>
+        /// ボタンのホバー時の処理
+        /// </summary>
+        public void Hover()
+        {
+            // オーバーレイが表示されていた場合はそれを閉じる
+            if (_battleManager.CoordinatorManager.GetCurrentCoordinatorIndex()
+                != (int)BattlePhaseType.CommandSelect)
+            {
+                _battleManager.CoordinatorManager.PopCoordinator();
+            }
+        }
+        
+        /// <summary>
         /// 最初のキャラクターの選択を始めるときのSEを再生する
         /// </summary>
         private void PlayFirstSelectSe()
@@ -151,6 +164,15 @@ namespace CryStar.CommandBattle
             {
                 _battleManager = ServiceLocator.GetLocal<BattleManager>();
             }
+        }
+
+        /// <summary>
+        /// オーバーレイが開かれているか確認
+        /// </summary>
+        public bool CheckShowedOverlay()
+        {
+            return _battleManager.CoordinatorManager.GetCurrentCoordinatorIndex()
+                != (int)BattlePhaseType.CommandSelect;
         }
     }
 }

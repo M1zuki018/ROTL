@@ -25,7 +25,8 @@ namespace CryStar.CommandBattle
                 onIdea: _model.Idea,
                 onItem: _model.Item,
                 onGuard: _model.Guard,
-                onBack: _model.Back);
+                onBack: _model.Back,
+                onHover: _model.Hover);
             
             // 左側のキャラクターの画像を設定する
             _view.SetCharacterPreview(_model.GetCharacterSprite()).Forget();
@@ -50,6 +51,14 @@ namespace CryStar.CommandBattle
         public void Exit()
         {
             _view?.Exit();
+        }
+
+        /// <summary>
+        /// オーバーレイが開かれているか確認
+        /// </summary>
+        public bool CheckShowedOverlay()
+        {
+            return _model.CheckShowedOverlay();
         }
     }
 }
