@@ -467,13 +467,17 @@ namespace CryStar.CommandBattle.Execution
             {
                 // TODO: 仮実装として常に攻撃としている
                 var command = BattleCommandFactory.GetCommand(CommandType.Attack);
-                var targets = _data.UnitData.Where(u => u.IsAlive).Take(1).ToArray();
-                
-                if (command != null && targets.Length > 0)
+                var aliveUnits = _data.UnitData.Where(u => u.IsAlive).ToArray();
+        
+                if (command != null && aliveUnits.Length > 0)
                 {
+                    // ランダムにターゲットを選択
+                    var randomIndex = UnityEngine.Random.Range(0, aliveUnits.Length);
+                    var targets = new[] { aliveUnits[randomIndex] };
+            
                     var entry = new BattleCommandEntryData(enemy, command, targets);
                     _commandList.Add(entry);
-                    
+            
                     // コマンドアイコンを表示
                     _view.AddCommandIcon(entry).Forget();
                 }
