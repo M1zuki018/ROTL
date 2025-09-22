@@ -228,6 +228,9 @@ namespace CryStar.CommandBattle.Execution
             var entry = new BattleCommandEntryData(executor, command, targets);
             _commandList.Add(entry);
             
+            // コマンドアイコンを表示
+            _view.AddCommandIcon(entry).Forget();
+            
             LogUtility.Info($"{executor.Name}のコマンド登録: {commandType}");
         }
         
