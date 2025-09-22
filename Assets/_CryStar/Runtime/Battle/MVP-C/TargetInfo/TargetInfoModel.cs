@@ -54,6 +54,14 @@ namespace CryStar.CommandBattle
         }
 
         /// <summary>
+        /// ターゲットの名前を取得する
+        /// </summary>
+        public string GetTargetName()
+        {
+            return _battleManager.Data.EnemyData[0].UserData.Name;
+        }
+
+        /// <summary>
         /// バトルマネージャーが取得できているか確認し、取得できていなかったらServiceLocatorから取得する
         /// </summary>
         private void TryGetBattleManager()

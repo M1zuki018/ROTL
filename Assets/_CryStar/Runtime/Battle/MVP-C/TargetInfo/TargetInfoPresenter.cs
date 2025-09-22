@@ -40,6 +40,8 @@ namespace CryStar.CommandBattle
             // キャラクターの画像差し替え
             await _view.SetCharacterPreview(_model.GetCharacterSprite());
             
+            _view.SetTargetName(_model.GetTargetName());
+            
             // TODO: 名前などほかのコンテンツの初期化を行う
             
             _view.PlayAnimation();

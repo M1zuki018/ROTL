@@ -31,6 +31,8 @@ namespace CryStar.CommandBattle
             
             // ぼかしの色をキャラクターカラーに変更する
             _view.SetEffectColor(_model.GetCharacterColor());
+            
+            _view.PlayAnimation();
         }
 
         /// <summary>

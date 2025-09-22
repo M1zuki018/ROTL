@@ -13,72 +13,62 @@ namespace CryStar.CommandBattle
     public class TargetInfoView : MonoBehaviour
     {
         #region Field
-        
+
         /// <summary>
         /// カバー
         /// </summary>
-        [SerializeField] 
-        private Button _cover;
-        
+        [SerializeField] private Button _cover;
+
         /// <summary>
         /// ターゲット情報を表示するUI群を管理するクラス
         /// </summary>
-        [SerializeField] 
-        private UIContents_TargetInfo _infomation;
-        
+        [SerializeField] private UIContents_TargetInfo _infomation;
+
         /// <summary>
         /// ターゲットの名前を表示するUI群を管理するクラス
         /// </summary>
-        [SerializeField]
-        private UIContents_TargetName _name;
+        [SerializeField] private UIContents_TargetName _name;
 
         /// <summary>
         /// 左上の敵の分析テキストの参照
         /// </summary>
-        [SerializeField] 
-        private CustomText _analysis;
+        [SerializeField] private CustomText _analysis;
 
         /// <summary>
         /// 左上のUI群のCanvasGroup
         /// </summary>
-        [SerializeField] 
-        private CanvasGroup _upperLeftCanvasGourp;
+        [SerializeField] private CanvasGroup _upperLeftCanvasGourp;
 
         /// <summary>
         /// キャラクターの立ち絵を表示するコンポーネントの参照
         /// </summary>
-        [SerializeField] 
-        private CustomImage _character;
-        
+        [SerializeField] private CustomImage _character;
+
         /// <summary>
         /// キャラクターの立ち絵を表示するUI群のCanvasGroup
         /// </summary>
-        [SerializeField]
-        private CanvasGroup _characterCanvasGroup;
-        
+        [SerializeField] private CanvasGroup _characterCanvasGroup;
+
         /// <summary>
         /// パネルを表示するアニメーションにかける時間
         /// </summary>
-        [Header("アニメーションの設定")][SerializeField]
+        [Header("アニメーションの設定")] [SerializeField]
         private float _entranceDuration = 0.8f;
-        
+
         /// <summary>
         /// パネルを非表示にするアニメーションにかける時間
         /// </summary>
-        [SerializeField]
-        private float _exitDuration = 0.5f;
-        
+        [SerializeField] private float _exitDuration = 0.5f;
+
         /// <summary>
         /// キャラクターの浮遊アニメーションの時間
         /// </summary>
-        [SerializeField]
-        private float _floatDuration = 2.0f;
-        
+        [SerializeField] private float _floatDuration = 2.0f;
+
         /// <summary>
         /// キャラクターの浮遊アニメーションの振幅
         /// </summary>
-        [SerializeField]
-        private float _floatAmplitude = 10f;
+        [SerializeField] private float _floatAmplitude = 10f;
 
         // 初期位置とスケールを保存
         private Vector3 _characterInitialPosition;
@@ -86,11 +76,11 @@ namespace CryStar.CommandBattle
         private Vector3 _upperLeftInitialPosition;
         private Vector3 _infoInitialPosition;
         private Vector3 _nameInitialPosition;
-        
+
         // アニメーション用Sequence
-        private DG.Tweening.Sequence _entranceSequence;
+        private Sequence _entranceSequence;
         private Tween _floatTween;
-        private DG.Tweening.Sequence _exitSequence;
+        private Sequence _exitSequence;
 
         #endregion
 
@@ -116,7 +106,7 @@ namespace CryStar.CommandBattle
         }
 
         #endregion
-        
+
         /// <summary>
         /// Setup
         /// </summary>
@@ -124,8 +114,6 @@ namespace CryStar.CommandBattle
         {
             // パネルを閉じるときのアニメーションを登録
             _cover.onClick.SafeReplaceListener(() => PlayExitAnimation(() => transitionAction?.Invoke()));
-            
-            
         }
 
         /// <summary>
@@ -137,7 +125,7 @@ namespace CryStar.CommandBattle
             _entranceSequence?.Kill();
             _floatTween?.Kill();
             _exitSequence?.Kill();
-            
+
             _cover.onClick.SafeRemoveAllListeners();
         }
 
@@ -149,13 +137,22 @@ namespace CryStar.CommandBattle
         {
             PlayEntranceAnimation();
         }
-        
+
         /// <summary>
         /// キャラクターの画像を設定する
         /// </summary>
         public async UniTask SetCharacterPreview(string iconPath)
         {
             await _character.ChangeSpriteAsync(iconPath);
+        }
+
+        /// <summary>
+        /// キャラクター名を設定する
+        /// </summary>
+        
+        public void SetTargetName(string name)
+        {
+            _name.SetTargetName(name);
         }
 
         #region Animation
@@ -168,7 +165,7 @@ namespace CryStar.CommandBattle
             // キャラクターの画像
             _characterInitialPosition = _character.transform.localPosition;
             _characterInitialScale = _character.transform.localScale;
-            
+
             // 左上のテキスト
             _upperLeftInitialPosition = _upperLeftCanvasGourp.transform.localPosition;
 
@@ -189,17 +186,18 @@ namespace CryStar.CommandBattle
             _characterCanvasGroup.alpha = 0f;
             _infomation.CanvasGroup.alpha = 0f;
             _name.CanvasGroup.alpha = 0f;
-            
+
             // キャラクターを小さくして右に配置
             _character.transform.localScale = Vector3.zero;
             _character.transform.localPosition = _characterInitialPosition + Vector3.right * 200f;
-            
+
             // 左上UIを左上に移動
-            _upperLeftCanvasGourp.transform.localPosition = _upperLeftInitialPosition + Vector3.up * 100f + Vector3.left * 100f;
-            
+            _upperLeftCanvasGourp.transform.localPosition =
+                _upperLeftInitialPosition + Vector3.up * 100f + Vector3.left * 100f;
+
             // 情報UIを下に移動
             _infomation.transform.localPosition = _infoInitialPosition + Vector3.down * 300f;
-            
+
             // 名前UIを上に移動
             _name.transform.localPosition = _nameInitialPosition + Vector3.up * 50f;
         }
@@ -212,59 +210,59 @@ namespace CryStar.CommandBattle
             // 念のため最初にキルしておく
             _entranceSequence?.Kill();
             _entranceSequence = DOTween.Sequence();
-            
-            // キャラクター登場（スケールアップ + 位置移動 + フェードイン）
-            _entranceSequence.Append(
-                DOTween.To(() => _character.transform.localScale, x => _character.transform.localScale = x, _characterInitialScale, _entranceDuration * 0.4f)
+
+            // キャラクター登場（0秒から開始）
+            _entranceSequence.Insert(0f,
+                DOTween.To(() => _character.transform.localScale, x => _character.transform.localScale = x,
+                        _characterInitialScale, _entranceDuration * 0.6f)
                     .SetEase(Ease.OutBack, 1.2f)
             );
-            
-            _entranceSequence.Join(
-                _character.transform.DOLocalMove(_characterInitialPosition, _entranceDuration * 0.4f)
+
+            _entranceSequence.Insert(0f,
+                _character.transform.DOLocalMove(_characterInitialPosition, _entranceDuration * 0.6f)
                     .SetEase(Ease.OutCubic)
             );
-            
-            _entranceSequence.Join(
+
+            _entranceSequence.Insert(0f,
                 _characterCanvasGroup.DOFade(1f, _entranceDuration * 0.3f)
             );
 
-            // 左上UI（位置移動 + フェードイン）
-            _entranceSequence.Append(
+            // 左上UI（キャラクターの少し後）
+            _entranceSequence.Insert(_entranceDuration * 0.2f,
                 _upperLeftCanvasGourp.transform.DOLocalMove(_upperLeftInitialPosition, _entranceDuration * 0.3f)
                     .SetEase(Ease.OutCubic)
             );
-            
-            _entranceSequence.Join(
+
+            _entranceSequence.Insert(_entranceDuration * 0.2f,
                 _upperLeftCanvasGourp.DOFade(1f, _entranceDuration * 0.25f)
             );
 
             // 情報UI
-            // アニメーション全体の半分のタイミングで遅れて登場する
-            _entranceSequence.Insert(_entranceDuration * 0.5f,
+            _entranceSequence.Insert(_entranceDuration * 0.3f,
                 _infomation.transform.DOLocalMove(_infoInitialPosition, _entranceDuration * 0.3f)
                     .SetEase(Ease.OutCubic)
             );
-            
-            _entranceSequence.Insert(_entranceDuration * 0.5f,
+
+            _entranceSequence.Insert(_entranceDuration * 0.3f,
                 _infomation.CanvasGroup.DOFade(1f, _entranceDuration * 0.3f)
             );
 
             // 名前UI
-            // 情報UIの少し後に登場
-            _entranceSequence.Insert(_entranceDuration * 0.6f,
+            _entranceSequence.Insert(_entranceDuration * 0.4f,
                 _name.transform.DOLocalMove(_nameInitialPosition, _entranceDuration * 0.3f)
                     .SetEase(Ease.OutCubic)
             );
-            
-            _entranceSequence.Insert(_entranceDuration * 0.6f,
+
+            _entranceSequence.Insert(_entranceDuration * 0.4f,
                 _name.CanvasGroup.DOFade(1f, _entranceDuration * 0.3f)
             );
-
-            // アニメーション完了後にアイドルアニメーション開始（キャラクターがふよふよする）
+            
+            // アニメーション完了後にアイドルアニメーション開始
             _entranceSequence.OnComplete(StartFloatingAnimation);
         }
+    
 
-        /// <summary>
+    /// <summary>
         /// キャラクターの浮遊アニメーション開始（ずっと繰り返す）
         /// </summary>
         private void StartFloatingAnimation()
