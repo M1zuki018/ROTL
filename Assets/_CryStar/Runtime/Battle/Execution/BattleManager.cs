@@ -314,6 +314,9 @@ namespace CryStar.CommandBattle.Execution
                 .ThenByDescending(entry => entry.Executor.Speed)
                 .ToList();
             
+            // アイコンのソートも実行する
+            _view.SortingCommandIcons();
+            
             return _commandList;
         }
 
