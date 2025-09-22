@@ -39,7 +39,7 @@ namespace CryStar.CommandBattle.Command
             {
                 // 小数点以下は丸める
                 // NOTE: クリティカルダメージは100%といった単位で渡されるので、0.01fをかける
-                damage = Mathf.RoundToInt(damage * executor.UserData.CriticalDamage * 0.01f);
+                damage = Mathf.RoundToInt(damage * (executor.UserData.CriticalDamage * 0.01f));
             }
             
             // 演出を実行する
@@ -76,8 +76,8 @@ namespace CryStar.CommandBattle.Command
             // 基本ダメージ計算式
             // 攻撃力: アタッカー物理攻撃
             int baseDamage = attacker.Attack;
-            // 実効防御力: ディフェンダーの物理防御 × (1 - アタッカーの防御無視率)
-            int defense = (int)(defender.Defense * (1 - attacker.ArmorPenetration / 100f));
+            // 実効防御力: ディフェンダーの物理防御 × 0.5 × (1 - アタッカーの防御無視率)
+            int defense = (int)(defender.Defense * 0.5f * (1 - attacker.ArmorPenetration / 100f));
             // 最終物理ダメージ = 物理攻撃 × (100 / (100 + 実効防御力))
             int damage = Mathf.Max(1, (int)(baseDamage * (100f / (100f + defense))));
             
