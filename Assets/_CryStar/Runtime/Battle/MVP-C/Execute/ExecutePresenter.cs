@@ -37,6 +37,10 @@ namespace CryStar.CommandBattle
         /// </summary>
         private async UniTask Execute()
         {
+            // 敵AIのコマンドを追加
+            await _model.AddEnemyCommands();
+            
+            // コマンドリストを取得する
             var commandList = _model.GetCommandList();
 
             foreach (var entry in commandList)

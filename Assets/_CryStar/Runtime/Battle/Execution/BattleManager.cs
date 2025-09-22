@@ -262,14 +262,38 @@ namespace CryStar.CommandBattle.Execution
         }
 
         /// <summary>
+        /// 敵のAI行動を追加
+        /// </summary>
+        public async UniTask AddEnemyCommands()
+        {
+            foreach (var enemy in _data.EnemyData.Where(u => u.IsAlive))
+            {
+                // TODO: 仮実装として常に攻撃としている
+                var command = BattleCommandFactory.GetCommand(CommandType.Attack);
+                var aliveUnits = _data.UnitData.Where(u => u.IsAlive).ToArray();
+        
+                if (command != null && aliveUnits.Length > 0)
+                {
+                    
+                    // ランダムにターゲットを選択
+                    var randomIndex = UnityEngine.Random.Range(0, aliveUnits.Length);
+                    var targets = new[] { aliveUnits[randomIndex] };
+            
+                    var entry = new BattleCommandEntryData(enemy, command, targets);
+                    _commandList.Add(entry);
+            
+                    // コマンドアイコンを表示
+                    await _view.AddCommandIcon(entry);
+                }
+            }
+        }
+        
+        /// <summary>
         /// コマンドリストを作成する
         /// </summary>
         /// <returns></returns>
         public List<BattleCommandEntryData> CreateCommandList()
         {
-            // 敵のAI行動を追加
-            AddEnemyCommands();
-            
             // コマンドを優先度順にソート（コマンドの優先順->攻撃速度）
             _commandList = _commandList
                 .OrderByDescending(entry => entry.Priority)
@@ -455,32 +479,6 @@ namespace CryStar.CommandBattle.Execution
             if (removedCount > 0)
             {
                 LogUtility.Info($"{target.Name}のコマンドを{removedCount}個削除しました");
-            }
-        }
-        
-        /// <summary>
-        /// 敵のAI行動を追加
-        /// </summary>
-        private void AddEnemyCommands()
-        {
-            foreach (var enemy in _data.EnemyData.Where(u => u.IsAlive))
-            {
-                // TODO: 仮実装として常に攻撃としている
-                var command = BattleCommandFactory.GetCommand(CommandType.Attack);
-                var aliveUnits = _data.UnitData.Where(u => u.IsAlive).ToArray();
-        
-                if (command != null && aliveUnits.Length > 0)
-                {
-                    // ランダムにターゲットを選択
-                    var randomIndex = UnityEngine.Random.Range(0, aliveUnits.Length);
-                    var targets = new[] { aliveUnits[randomIndex] };
-            
-                    var entry = new BattleCommandEntryData(enemy, command, targets);
-                    _commandList.Add(entry);
-            
-                    // コマンドアイコンを表示
-                    _view.AddCommandIcon(entry).Forget();
-                }
             }
         }
         
