@@ -1,13 +1,13 @@
 using CryStar.CommandBattle.Data;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CryStar.CommandBattle.UI
 {
     /// <summary>
     /// コマンドのアイコン表示
     /// </summary>
-    [RequireComponent(typeof(CustomImage))]
     public class CommandIcon : MonoBehaviour
     {
         /// <summary>
@@ -15,6 +15,9 @@ namespace CryStar.CommandBattle.UI
         /// </summary>
         [SerializeField]
         private CustomImage _icon;
+        
+        [SerializeField]
+        private Text _name;
         
         private BattleCommandEntryData _entryData;
 
@@ -27,7 +30,10 @@ namespace CryStar.CommandBattle.UI
         {
             _entryData = commandData;
             
-            await _icon.ChangeSpriteAsync("Assets/AssetStoreTools/Images/Battle/UI/Selector/Selector_Attack.png");
+            // キャラクター名を表示
+            _name.text = $"{commandData.Executor.Name} Stand-by";
+            _icon.color = commandData.Executor.UserData.CharacterColor;
+            
             gameObject.SetActive(true);
         }
 
