@@ -53,6 +53,9 @@ namespace CryStar.CommandBattle
         
         private bool _isAnimating = false;
 
+        private Action _onIdea;
+        private Action _onItem;
+
         #region Life cycle
 
         private void Awake()
@@ -66,7 +69,7 @@ namespace CryStar.CommandBattle
             // 初期状態を非表示に設定
             SetInitialState();
         }
-
+        
         private void OnDestroy()
         {
             Exit();
@@ -85,6 +88,10 @@ namespace CryStar.CommandBattle
             _item.onClick.SafeReplaceListener(() => OnButtonClicked(_item, () => onItem?.Invoke()));
             _guard.onClick.SafeReplaceListener(() => OnButtonClicked(_guard, () => onGuard?.Invoke()));
             _back.onClick.SafeReplaceListener(() => OnButtonClicked(_back, () => onBack?.Invoke()));
+            
+            // パネル表示のために保存しておく
+            _onIdea = onIdea;
+            _onItem = onItem;
         }
         
         /// <summary>
@@ -458,11 +465,25 @@ namespace CryStar.CommandBattle
                 // ホバー時のパンチエフェクト
                 var punchSequence = DOTween.Sequence();
                 punchSequence.Append(button.transform.DOScale(targetScale, _hoverDuration).SetEase(Ease.OutCubic));
+                punchSequence.OnComplete(() =>
+                {
+                    // パネルを開くものはその処理を行う
+                    if (button == _idea)
+                    {
+                        _onIdea?.Invoke();
+                    }
+                    else if(button == _item)
+                    {
+                        _onItem?.Invoke();
+                    }
+                });
                 punchSequence.Play();
                 
                 // ホバー時のグローエフェクトの座標移動・表示させる
                 _glowEffect.transform.position = button.transform.position;
                 _glowEffect.DOFade(_glowDefaultIntensity, 0.2f).SetEase(Ease.OutCubic);
+
+                
             }
             else
             {
