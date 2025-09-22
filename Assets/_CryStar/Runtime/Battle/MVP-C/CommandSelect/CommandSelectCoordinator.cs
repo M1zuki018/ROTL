@@ -35,5 +35,25 @@ namespace CryStar.CommandBattle
             _presenter?.Exit();
             base.Exit();
         }
+
+        public override void Block()
+        {
+            if (_presenter.CheckShowedOverlay())
+            {
+                // もしオーバーレイが開かれている状態であればBlock処理は行わない
+                return;
+            }
+            
+            base.Block();
+        }
+
+        /// <summary>
+        /// 次の選択へ進める処理
+        /// NOTE: アイデアやスキルのコーディネーターが利用する
+        /// </summary>
+        public void NextPhase()
+        {
+            _presenter.NextPhase();
+        }
     }
 }

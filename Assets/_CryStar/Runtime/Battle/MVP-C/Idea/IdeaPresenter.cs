@@ -17,7 +17,7 @@ namespace CryStar.CommandBattle
             _model = new IdeaModel();
             
             _model.Setup();
-            _view.Setup(onIdeaSelected: _model.HandleIdeaSelected);
+            _view.Setup(onIdeaSelected: _model.HandleIdeaSelected, onClose: _model.HandleClose);
         }
 
         /// <summary>

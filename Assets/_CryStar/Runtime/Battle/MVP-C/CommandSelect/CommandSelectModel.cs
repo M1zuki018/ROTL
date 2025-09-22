@@ -63,8 +63,8 @@ namespace CryStar.CommandBattle
         {
             TryGetBattleManager();
             
-            _battleManager.PlaySelectedSe(false).Forget();
-            _battleManager.CoordinatorManager.TransitionToPhase(BattlePhaseType.Idea);
+            // スキル画面を表示する
+            _battleManager.CoordinatorManager.PushCoordinator(BattlePhaseType.Idea);
         }
 
         /// <summary>
@@ -107,6 +107,38 @@ namespace CryStar.CommandBattle
         }
         
         /// <summary>
+        /// ボタンのホバー時の処理
+        /// </summary>
+        public void Hover()
+        {
+            // オーバーレイが表示されていた場合はそれを閉じる
+            if (_battleManager.CoordinatorManager.GetCurrentCoordinatorIndex()
+                != (int)BattlePhaseType.CommandSelect)
+            {
+                _battleManager.CoordinatorManager.PopCoordinator();
+            }
+        }
+        
+        /// <summary>
+        /// 次の行動に進める
+        /// </summary>
+        public void Next()
+        {
+            _battleManager.PlaySelectedSe(true).Forget();
+            
+            // 次のコマンド選択に移れるか確認
+            if (_battleManager.CheckNextCommandSelect())
+            {
+                _battleManager.CoordinatorManager.TransitionToPhase(BattlePhaseType.CommandSelect);
+            }
+            else
+            {
+                // バトル実行に移る
+                _battleManager.CoordinatorManager.TransitionToPhase(BattlePhaseType.Execute);
+            }
+        }
+        
+        /// <summary>
         /// 最初のキャラクターの選択を始めるときのSEを再生する
         /// </summary>
         private void PlayFirstSelectSe()
@@ -122,25 +154,6 @@ namespace CryStar.CommandBattle
             TryGetBattleManager();
             _battleManager.PlayStartCommandSelectSe().Forget();
         }
-        
-        /// <summary>
-        /// 次の行動に進める
-        /// </summary>
-        private void Next()
-        {
-            _battleManager.PlaySelectedSe(true).Forget();
-            
-            // 次のコマンド選択に移れるか確認
-            if (_battleManager.CheckNextCommandSelect())
-            {
-                _battleManager.CoordinatorManager.TransitionToPhase(BattlePhaseType.CommandSelect);
-            }
-            else
-            {
-                // バトル実行に移る
-                _battleManager.CoordinatorManager.TransitionToPhase(BattlePhaseType.Execute);
-            }
-        }
 
         /// <summary>
         /// バトルマネージャーが取得できているか確認し、取得できていなかったらServiceLocatorから取得する
@@ -151,6 +164,15 @@ namespace CryStar.CommandBattle
             {
                 _battleManager = ServiceLocator.GetLocal<BattleManager>();
             }
+        }
+
+        /// <summary>
+        /// オーバーレイが開かれているか確認
+        /// </summary>
+        public bool CheckShowedOverlay()
+        {
+            return _battleManager.CoordinatorManager.GetCurrentCoordinatorIndex()
+                != (int)BattlePhaseType.CommandSelect;
         }
     }
 }

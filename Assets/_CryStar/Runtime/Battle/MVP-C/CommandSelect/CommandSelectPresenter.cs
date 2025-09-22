@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace CryStar.CommandBattle
 {
@@ -24,7 +25,8 @@ namespace CryStar.CommandBattle
                 onIdea: _model.Idea,
                 onItem: _model.Item,
                 onGuard: _model.Guard,
-                onBack: _model.Back);
+                onBack: _model.Back,
+                onHover: _model.Hover);
             
             // 左側のキャラクターの画像を設定する
             _view.SetCharacterPreview(_model.GetCharacterSprite()).Forget();
@@ -32,7 +34,7 @@ namespace CryStar.CommandBattle
             // ぼかしの色をキャラクターカラーに変更する
             _view.SetEffectColor(_model.GetCharacterColor());
             
-            _view.PlayAnimation();
+            _view.CallEntranceAnimation();
         }
 
         /// <summary>
@@ -40,7 +42,7 @@ namespace CryStar.CommandBattle
         /// </summary>
         public void Cancel()
         {
-            _model.Back();
+            _view.CallExitAnimation(_model.Back);
         }
         
         /// <summary>
@@ -49,6 +51,23 @@ namespace CryStar.CommandBattle
         public void Exit()
         {
             _view?.Exit();
+        }
+
+        /// <summary>
+        /// オーバーレイが開かれているか確認
+        /// </summary>
+        public bool CheckShowedOverlay()
+        {
+            return _model.CheckShowedOverlay();
+        }
+
+        /// <summary>
+        /// 次へ進める処理
+        /// </summary>
+        public void NextPhase()
+        {
+            // 退場アニメーションと次へ進む処理を実行
+            _view.CallExitAnimationWithSkill(_model.Next);
         }
     }
 }

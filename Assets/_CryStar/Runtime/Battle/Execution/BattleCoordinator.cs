@@ -14,5 +14,13 @@ namespace CryStar.CommandBattle.Execution
         {
             base.TransitionTo((int)phaseType);
         }
+
+        /// <summary>
+        /// 現在の画面の上に新しい画面をオーバーレイとして表示する
+        /// </summary>
+        public void PushCoordinator(BattlePhaseType phaseType)
+        {
+            base.PushCoordinator((int)phaseType);
+        }
     }
 }
