@@ -82,6 +82,10 @@ namespace CryStar.CommandBattle
         private Tween _floatTween;
         private Sequence _exitSequence;
 
+        // Canvas Scaler のスケール係数
+        private float _canvasScaleFactor = 1f;
+        private Canvas _canvas;
+
         #endregion
 
         #region Life cycle
@@ -91,6 +95,17 @@ namespace CryStar.CommandBattle
         /// </summary>
         private void Awake()
         {
+            // Canvas Scaler の情報を取得
+            InitializeCanvasScaler();
+        }
+
+        /// <summary>
+        /// Start - Canvas Scaler の計算が完了してから実行
+        /// </summary>
+        private void Start()
+        {
+            // Canvas Scaler の計算完了後にスケール係数を更新
+            UpdateCanvasScaleFactor();
             // 初期位置とスケールを保存
             SaveInitialTransforms();
             // 初期状態を設定（非表示）
@@ -106,6 +121,59 @@ namespace CryStar.CommandBattle
         }
 
         #endregion
+
+        /// <summary>
+        /// Canvas Scaler の初期化
+        /// </summary>
+        private void InitializeCanvasScaler()
+        {
+            _canvas = GetComponentInParent<Canvas>();
+            if (_canvas == null)
+            {
+                Debug.LogWarning("Canvas が見つかりません。Canvas Scaler の補正が無効になります。");
+            }
+        }
+
+        /// <summary>
+        /// Canvas Scaler のスケール係数を更新
+        /// </summary>
+        private void UpdateCanvasScaleFactor()
+        {
+            if (_canvas != null && _canvas.renderMode != RenderMode.WorldSpace)
+            {
+                var canvasScaler = _canvas.GetComponent<CanvasScaler>();
+                if (canvasScaler != null && canvasScaler.uiScaleMode == CanvasScaler.ScaleMode.ScaleWithScreenSize)
+                {
+                    // Canvas Scaler の実際のスケール係数を取得
+                    var referenceResolution = canvasScaler.referenceResolution;
+                    var screenSize = new Vector2(Screen.width, Screen.height);
+                    
+                    float scaleFactorX = screenSize.x / referenceResolution.x;
+                    float scaleFactorY = screenSize.y / referenceResolution.y;
+                    
+                    switch (canvasScaler.screenMatchMode)
+                    {
+                        case CanvasScaler.ScreenMatchMode.MatchWidthOrHeight:
+                            _canvasScaleFactor = Mathf.Lerp(scaleFactorX, scaleFactorY, canvasScaler.matchWidthOrHeight);
+                            break;
+                        case CanvasScaler.ScreenMatchMode.Expand:
+                            _canvasScaleFactor = Mathf.Min(scaleFactorX, scaleFactorY);
+                            break;
+                        case CanvasScaler.ScreenMatchMode.Shrink:
+                            _canvasScaleFactor = Mathf.Max(scaleFactorX, scaleFactorY);
+                            break;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Canvas Scaler を考慮したオフセット値を取得
+        /// </summary>
+        private Vector3 GetScaledOffset(Vector3 offset)
+        {
+            return offset * _canvasScaleFactor;
+        }
 
         /// <summary>
         /// Setup
@@ -158,6 +226,8 @@ namespace CryStar.CommandBattle
         /// </summary>
         public void PlayAnimation()
         {
+            // アニメーション開始時にスケール係数を更新
+            UpdateCanvasScaleFactor();
             PlayEntranceAnimation();
         }
 
@@ -172,7 +242,6 @@ namespace CryStar.CommandBattle
         /// <summary>
         /// キャラクター名を設定する
         /// </summary>
-        
         public void SetTargetName(string name)
         {
             _name.SetTargetName(name);
@@ -210,19 +279,19 @@ namespace CryStar.CommandBattle
             _infomation.CanvasGroup.alpha = 0f;
             _name.CanvasGroup.alpha = 0f;
 
-            // キャラクターを小さくして右に配置
+            // キャラクターを小さくして右に配置（Canvas Scaler を考慮）
             _character.transform.localScale = Vector3.zero;
-            _character.transform.localPosition = _characterInitialPosition + Vector3.right * 200f;
+            _character.transform.localPosition = _characterInitialPosition + GetScaledOffset(Vector3.right * 200f);
 
-            // 左上UIを左上に移動
+            // 左上UIを左上に移動（Canvas Scaler を考慮）
             _upperLeftCanvasGourp.transform.localPosition =
-                _upperLeftInitialPosition + Vector3.up * 100f + Vector3.left * 100f;
+                _upperLeftInitialPosition + GetScaledOffset(Vector3.up * 100f + Vector3.left * 100f);
 
-            // 情報UIを下に移動
-            _infomation.transform.localPosition = _infoInitialPosition + Vector3.down * 300f;
+            // 情報UIを下に移動（Canvas Scaler を考慮）
+            _infomation.transform.localPosition = _infoInitialPosition + GetScaledOffset(Vector3.down * 300f);
 
-            // 名前UIを上に移動
-            _name.transform.localPosition = _nameInitialPosition + Vector3.up * 50f;
+            // 名前UIを上に移動（Canvas Scaler を考慮）
+            _name.transform.localPosition = _nameInitialPosition + GetScaledOffset(Vector3.up * 50f);
         }
 
         /// <summary>
@@ -283,9 +352,8 @@ namespace CryStar.CommandBattle
             // アニメーション完了後にアイドルアニメーション開始
             _entranceSequence.OnComplete(StartFloatingAnimation);
         }
-    
 
-    /// <summary>
+        /// <summary>
         /// キャラクターの浮遊アニメーション開始（ずっと繰り返す）
         /// </summary>
         private void StartFloatingAnimation()
@@ -293,8 +361,11 @@ namespace CryStar.CommandBattle
             // 既存のシーケンスがあればキル
             _floatTween?.Kill();
             
+            // Canvas Scaler を考慮した振幅を計算
+            float scaledAmplitude = _floatAmplitude * _canvasScaleFactor;
+            
             _floatTween = _character.transform.DOLocalMoveY(
-                _characterInitialPosition.y + _floatAmplitude, _floatDuration
+                _characterInitialPosition.y + scaledAmplitude, _floatDuration
             )
             .SetEase(Ease.InOutSine)
             .SetLoops(-1, LoopType.Yoyo);
@@ -313,9 +384,9 @@ namespace CryStar.CommandBattle
 
             _exitSequence = DOTween.Sequence();
 
-            // 名前UIを上に移動してフェードアウト
+            // 名前UIを上に移動してフェードアウト（Canvas Scaler を考慮）
             _exitSequence.Append(
-                _name.transform.DOLocalMove(_nameInitialPosition + Vector3.up * 50f, _exitDuration * 0.3f)
+                _name.transform.DOLocalMove(_nameInitialPosition + GetScaledOffset(Vector3.up * 50f), _exitDuration * 0.3f)
                     .SetEase(Ease.InCubic)
             );
             
@@ -323,9 +394,9 @@ namespace CryStar.CommandBattle
                 _name.CanvasGroup.DOFade(0f, _exitDuration * 0.3f)
             );
 
-            // 情報UI
+            // 情報UI（Canvas Scaler を考慮）
             _exitSequence.Join(
-                _infomation.transform.DOLocalMove(_infoInitialPosition + Vector3.down * 100f, _exitDuration * 0.4f)
+                _infomation.transform.DOLocalMove(_infoInitialPosition + GetScaledOffset(Vector3.down * 100f), _exitDuration * 0.4f)
                     .SetEase(Ease.InCubic)
             );
             
@@ -333,24 +404,24 @@ namespace CryStar.CommandBattle
                 _infomation.CanvasGroup.DOFade(0f, _exitDuration * 0.4f)
             );
 
-            // 左上UI
+            // 左上UI（Canvas Scaler を考慮）
             _exitSequence.Join(
                 _upperLeftCanvasGourp.DOFade(0f, _exitDuration * 0.4f)
             );
             
             _exitSequence.Join(
-                _upperLeftCanvasGourp.transform.DOLocalMove(_upperLeftInitialPosition + Vector3.up * 100f + Vector3.left * 100f, _exitDuration * 0.4f)
+                _upperLeftCanvasGourp.transform.DOLocalMove(_upperLeftInitialPosition + GetScaledOffset(Vector3.up * 100f + Vector3.left * 100f), _exitDuration * 0.4f)
                     .SetEase(Ease.InCubic)
             );
 
-            // キャラクターのアニメーション
+            // キャラクターのアニメーション（Canvas Scaler を考慮）
             _exitSequence.Append(
                 DOTween.To(() => _character.transform.localScale, x => _character.transform.localScale = x, Vector3.zero, _exitDuration * 0.4f)
                     .SetEase(Ease.OutQuint, 1.2f)
             );
             
             _exitSequence.Join(
-                _character.transform.DOLocalMove(_characterInitialPosition + Vector3.right * 200f, _exitDuration * 0.4f)
+                _character.transform.DOLocalMove(_characterInitialPosition + GetScaledOffset(Vector3.right * 200f), _exitDuration * 0.4f)
                     .SetEase(Ease.InCubic)
             );
             
