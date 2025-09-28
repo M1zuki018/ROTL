@@ -111,9 +111,19 @@ namespace CryStar.CommandBattle.UI
         /// <summary>
         /// コマンドアイコンを実行順に並び変える
         /// </summary>
-        public async UniTask SortingCommandIcons()
+        public void SortingCommandIcons()
         {
-            // TODO:
+            // アクティブなアイコンを優先度順にソート
+            _activeIcons = _activeIcons
+                .OrderBy(icon => icon.EntryData.Priority)
+                .ThenByDescending(icon => icon.EntryData.Executor.Speed)
+                .ToList();
+    
+            // Transform内の順序を更新
+            for (int i = 0; i < _activeIcons.Count; i++)
+            {
+                _activeIcons[i].transform.SetSiblingIndex(i);
+            }
         }
 
         /// <summary>

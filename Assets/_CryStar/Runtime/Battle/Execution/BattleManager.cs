@@ -314,6 +314,9 @@ namespace CryStar.CommandBattle.Execution
                 .ThenByDescending(entry => entry.Executor.Speed)
                 .ToList();
             
+            // アイコンのソートも実行する
+            _view.SortingCommandIcons();
+            
             return _commandList;
         }
 
@@ -494,15 +497,24 @@ namespace CryStar.CommandBattle.Execution
         private void RemoveCommands(int targetUnitIndex)
         {
             var target = _data.UnitData[targetUnitIndex];
-            var initialCount = _commandList.Count;
-    
-            // 対象キャラクター以外のコマンドのみを残す
-            _commandList = _commandList.Where(command => 
-                command.Executor.UserData.CharacterID != target.UserData.CharacterID).ToList();
-    
-            // TODO: コマンドを削除するときに_view.RemoveCommandIcon(BattleCommandEntryData)を呼ぶ
+            var targetCharacterID = target.UserData.CharacterID;
+            var removedCount = 0;
+
+            // 後ろから削除することでインデックスの問題を回避
+            for (int i = _commandList.Count - 1; i >= 0; i--)
+            {
+                var command = _commandList[i];
+                if (command.Executor.UserData.CharacterID == targetCharacterID)
+                {
+                    // 行動アイコンから削除
+                    _view.RemoveCommandIcon(command).Forget(); 
+                    
+                    // 内部の実行リストからも削除
+                    _commandList.RemoveAt(i);
+                    removedCount++;
+                }
+            }
             
-            var removedCount = initialCount - _commandList.Count;
             if (removedCount > 0)
             {
                 LogUtility.Info($"{target.Name}のコマンドを{removedCount}個削除しました");

@@ -41,6 +41,12 @@ namespace CryStar.CommandBattle.UI
         /// </summary>
         [SerializeField]
         private float _floatAmplitude = 10f;
+
+        /// <summary>
+        /// ダメージを受けたときの色
+        /// </summary>
+        [SerializeField] 
+        private Color _damagedColor;
         
         /// <summary>
         /// ダメージテキストのオブジェクトプールの参照
@@ -108,7 +114,19 @@ namespace CryStar.CommandBattle.UI
             damageText.rectTransform.localPosition = _viewPosition;
             damageText.SetText(value.ToString());
             
-            await UniTask.Delay(500); // TODO: 仮置き。ここでアニメーションをする
+            _icon.rectTransform.DOShakePosition(0.05f, new Vector3(10, 3, 0), 10, 90f, false, true).SetEase(Ease.OutCubic);
+            
+            // フラッシュ演出のあとカラーを戻す
+            // TODO: 攻撃を受けた回数だけフラッシュさせてもいいかも
+            var sequence = DOTween.Sequence();
+            sequence.Append(_icon.DOFade(0.1f, 0.05f).SetEase(Ease.OutCubic));
+            sequence.Append(_icon.DOColor(_damagedColor, 0.05f).SetEase(Ease.OutCubic));
+            sequence.Join(_icon.rectTransform.DOScale(Vector3.one * 0.99f, 0.05f).SetEase(Ease.OutCubic));
+            sequence.Append(_icon.DOFade(1, 0.05f).SetEase(Ease.InOutSine));
+            sequence.Append(_icon.DOColor(Color.white, 0.05f).SetEase(Ease.InOutSine));
+            sequence.Join(_icon.rectTransform.DOScale(Vector3.one, 0.1f).SetEase(Ease.InOutSine));
+            
+            await UniTask.Delay(300); // TODO: 仮置き。ここでアニメーションをする
 
             _damageTextPool.Release(damageText);
         }
