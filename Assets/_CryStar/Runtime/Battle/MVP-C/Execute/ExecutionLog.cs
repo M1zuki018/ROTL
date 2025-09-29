@@ -96,12 +96,13 @@ namespace CryStar.CommandBattle
             pos.x = _initialPositionX + _startOffset;
             transform.localPosition = pos;
             
-            // 表示
-            gameObject.SetActive(true);
-            
             // 念のためキルしておく
             _showSequence?.Kill();
+            _hideSequence?.Kill(true);
             _showSequence = DOTween.Sequence();
+            
+            // 表示
+            gameObject.SetActive(true);
             
             // フェードインしながら定位置へスライド
             _showSequence.Append(_canvasGroup.DOFade(1f, _showDuration).SetEase(Ease.OutQuad));
@@ -122,8 +123,6 @@ namespace CryStar.CommandBattle
             // フェードアウトしながら左側へスライド
             _hideSequence.Append(_canvasGroup.DOFade(0f, _showDuration).SetEase(Ease.InQuad));
             _hideSequence.Join(transform.DOLocalMoveX(_initialPositionX + _startOffset, _showDuration).SetEase(Ease.InCubic));
-            
-            _hideSequence.OnComplete(() => gameObject.SetActive(false));
             
             return _hideSequence;
         }

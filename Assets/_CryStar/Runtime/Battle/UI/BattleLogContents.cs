@@ -22,13 +22,6 @@ namespace CryStar.CommandBattle
         /// </summary>
         private int _totalLogCount = 0;
         
-        private Sequence _sequence;
-
-        private void OnDestroy()
-        {
-            Dispose();
-        }
-
         /// <summary>
         /// テキストを設定
         /// </summary>
@@ -36,6 +29,9 @@ namespace CryStar.CommandBattle
         {
             var showIndex = _usedLogIndex;
             _logArray[showIndex].SetText(text);
+            
+            Debug.LogError($"{text} 表示");
+            
             // 一番下に表示されるようにHierarchyの順序を最後尾に移動
             _logArray[showIndex].transform.SetAsLastSibling();
             
@@ -45,17 +41,17 @@ namespace CryStar.CommandBattle
             // NOTE: 1を足した上で、配列の範囲内になるように剰余の計算を行う
             _usedLogIndex = (_usedLogIndex + 1) % _logArray.Length;
             
-            // 念のためキル
-            _sequence?.Kill();
-            _sequence = DOTween.Sequence();
-            
             // 配列が一周した場合、次に上書きされるログを非表示にする
             if (_totalLogCount > _logArray.Length - 1)
             {
-                _sequence.Append(_logArray[_usedLogIndex].Hide());
+                _logArray[_usedLogIndex].Hide().OnComplete(() =>
+                {
+                    _logArray[_usedLogIndex].gameObject.SetActive(false);
+                    _logArray[showIndex].Show();
+                });
             }
-            
-            _sequence.Append(_logArray[showIndex].Show());
+
+            _logArray[showIndex].Show();
         }
 
         /// <summary>
@@ -71,14 +67,6 @@ namespace CryStar.CommandBattle
             // インデックスとカウントをリセット
             _usedLogIndex = 0;
             _totalLogCount = 0;
-
-            Dispose();
-        }
-
-        private void Dispose()
-        {
-            _sequence?.Kill();
-            _sequence = null;
         }
     }
 }
