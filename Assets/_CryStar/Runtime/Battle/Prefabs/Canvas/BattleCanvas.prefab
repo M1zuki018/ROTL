@@ -1971,7 +1971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5660737462689453996, guid: 88132f33ff6cfec498b7fe94810ee40e, type: 3}
       propertyPath: m_Text
-      value: "\u25BC\u9003\u3052\u5834\u306A\u3069\u306A\u3044"
+      value: "\u80CC\u3092\u5411\u3051\u308B\u308F\u3051\u306B\u306F\u3044\u304B\u306A\u3044"
       objectReference: {fileID: 0}
     - target: {fileID: 5660737462689453996, guid: 88132f33ff6cfec498b7fe94810ee40e, type: 3}
       propertyPath: m_FontData.m_Font
@@ -2860,7 +2860,9 @@ PrefabInstance:
       value: Win
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3246672818879385756, guid: bc5cd32b92997694f8a17c91a4b8259d, type: 3}
+    - {fileID: 8671107968010412484, guid: bc5cd32b92997694f8a17c91a4b8259d, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc5cd32b92997694f8a17c91a4b8259d, type: 3}
