@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using CryStar.Core;
-using Cysharp.Threading.Tasks;
 using UnityEngine;
 
 /// <summary>

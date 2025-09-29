@@ -403,6 +403,23 @@ namespace CryStar.CommandBattle.Execution
             }
         }
 
+        /// <summary>
+        /// 行動ログを表示する
+        /// </summary>
+        public void SetLog(string logMessage)
+        {
+            _view.SetLog(logMessage);
+        }
+        
+        /// <summary>
+        /// ログの表示をリセットする
+        /// </summary>
+        public void ResetLogs()
+        {
+            _view.ResetLogs();
+        }
+
+
         #region サウンド関連
 
         /// <summary>

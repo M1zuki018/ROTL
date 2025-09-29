@@ -51,7 +51,7 @@ namespace CryStar.CommandBattle
                     continue;
                 }
                 
-                _view.SetText($"{entry.Executor.Name}の{entry.Command.DisplayName}");
+                _model.BattleManager.SetLog($"{entry.Executor.Name}の{entry.Command.DisplayName}");
                 
                 // 少し待つ
                 await UniTask.Delay(500);
@@ -59,7 +59,7 @@ namespace CryStar.CommandBattle
                 var message = await _model.ExecuteCommandAndGetMessage(entry);
                 
                 // メッセージを表示
-                _view.SetText(message);
+                _model.BattleManager.SetLog(message);
                 
                 // 少し待つ
                 await UniTask.Delay(300);

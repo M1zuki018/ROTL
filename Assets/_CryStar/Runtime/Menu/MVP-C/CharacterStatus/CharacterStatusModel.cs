@@ -4,7 +4,6 @@ using CryStar.Data.User;
 using CryStar.Menu.Enums;
 using CryStar.Menu.Execution;
 using CryStar.Menu.UI;
-using iCON.Enums;
 
 namespace CryStar.Menu
 {

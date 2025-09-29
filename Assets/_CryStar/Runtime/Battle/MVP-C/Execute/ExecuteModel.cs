@@ -17,6 +17,8 @@ namespace CryStar.CommandBattle
         /// </summary>
         private BattleManager _battleManager;
 
+        public BattleManager BattleManager => _battleManager;
+
         /// <summary>
         /// Setup
         /// </summary>
@@ -24,7 +26,7 @@ namespace CryStar.CommandBattle
         {
             _battleManager = ServiceLocator.GetLocal<BattleManager>();
         }
-
+        
         /// <summary>
         /// 敵AIの行動を追加する
         /// </summary>

@@ -1,6 +1,5 @@
 using System;
 using System.Threading;
-using System.Threading.Tasks;
 using CryStar.Core.Enums;
 using CryStar.Data.Scene;
 using CryStar.Utility;

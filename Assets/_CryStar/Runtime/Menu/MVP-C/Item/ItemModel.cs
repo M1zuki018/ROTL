@@ -1,12 +1,9 @@
 using System.Collections.Generic;
 using CryStar.Core;
-using CryStar.Core.UserData;
 using CryStar.Item;
-using CryStar.Item.Data;
 using CryStar.Menu.Enums;
 using CryStar.Menu.Execution;
 using CryStar.Menu.UI;
-using iCON.Enums;
 
 namespace CryStar.Menu
 {

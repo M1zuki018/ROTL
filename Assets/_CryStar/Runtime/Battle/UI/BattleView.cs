@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using CryStar.CommandBattle.Data;
-using CryStar.Menu.UI;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -46,6 +45,12 @@ namespace CryStar.CommandBattle.UI
         /// </summary>
         [SerializeField]
         private DamageTextPool _damageTextPool;
+        
+        /// <summary>
+        /// 行動ログを管理するクラス
+        /// </summary>
+        [SerializeField]
+        private BattleLogContents _logContents;
         
         /// <summary>
         /// 表示中のアイコンのリスト
@@ -159,6 +164,28 @@ namespace CryStar.CommandBattle.UI
                 _commandIconPool.Release(icon);
             }
             _activeIcons.Clear();
+        }
+
+        /// <summary>
+        /// ログを設定する
+        /// </summary>
+        public void SetLog(string logMessage)
+        {
+            if (_logContents != null)
+            {
+                _logContents.SetLog(logMessage);
+            }
+        }
+
+        /// <summary>
+        /// ログの表示をリセットする
+        /// </summary>
+        public void ResetLogs()
+        {
+            if (_logContents != null)
+            {
+                _logContents.Reset();
+            }
         }
 
         #region Private Methods

@@ -24,6 +24,12 @@ namespace CryStar.CommandBattle
             _battleManager = ServiceLocator.GetLocal<BattleManager>();
         }
 
+        public void Exit()
+        {
+            TryGetBattleManager();
+            _battleManager.ResetLogs();
+        }
+
         /// <summary>
         /// BGMを停止する
         /// </summary>
@@ -36,10 +42,19 @@ namespace CryStar.CommandBattle
         /// <summary>
         /// バトル結果のデータを取得する
         /// </summary>
-        public (string name, int experience) GetResultData()
+        public async UniTask GetResultData()
         {
             TryGetBattleManager();
-            return _battleManager.GetResultData();
+            
+            // 結果を取得
+            var resultData = _battleManager.GetResultData();
+            
+            // ログ表示
+            _battleManager.SetLog($"{resultData.name}の勝利");
+
+            await UniTask.Delay(100);
+            
+            _battleManager.SetLog($"経験値{resultData.experience}を手に入れた");
         }
 
         /// <summary>
