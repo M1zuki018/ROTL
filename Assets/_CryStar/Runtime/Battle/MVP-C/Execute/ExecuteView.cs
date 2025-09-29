@@ -22,12 +22,18 @@ namespace CryStar.CommandBattle
         /// </summary>
         private int _totalLogCount = 0;
         
+        private Sequence _sequence;
+
+        private void OnDestroy()
+        {
+            Dispose();
+        }
+        
         /// <summary>
         /// Setup
         /// </summary>
         public void Setup()
         {
-            // 引数にActionを羅列する
         }
 
         /// <summary>
@@ -37,22 +43,26 @@ namespace CryStar.CommandBattle
         {
             var showIndex = _usedLogIndex;
             _logArray[showIndex].SetText(text);
+            // 一番下に表示されるようにHierarchyの順序を最後尾に移動
+            _logArray[showIndex].transform.SetAsLastSibling();
             
             _totalLogCount++;
             
             // インデックスを更新
             // NOTE: 1を足した上で、配列の範囲内になるように剰余の計算を行う
             _usedLogIndex = (_usedLogIndex + 1) % _logArray.Length;
-
-            var sequence = DOTween.Sequence();
+            
+            // 念のためキル
+            _sequence?.Kill();
+            _sequence = DOTween.Sequence();
             
             // 配列が一周した場合、次に上書きされるログを非表示にする
-            if (_totalLogCount > _logArray.Length)
+            if (_totalLogCount > _logArray.Length - 1)
             {
-                sequence.Append(_logArray[_usedLogIndex].Hide());
+                _sequence.Append(_logArray[_usedLogIndex].Hide());
             }
             
-            sequence.Append(_logArray[showIndex].Show());
+            _sequence.Append(_logArray[showIndex].Show());
         }
 
         /// <summary>
@@ -62,16 +72,20 @@ namespace CryStar.CommandBattle
         {
             foreach (var log in _logArray)
             {
-                // テキストはリセットして空にしておく
-                log.SetText("");
-                
-                // 非表示にする
-                log.Hide();
+                log.Exit();
             }
             
             // インデックスとカウントをリセット
             _usedLogIndex = 0;
             _totalLogCount = 0;
+
+            Dispose();
+        }
+
+        private void Dispose()
+        {
+            _sequence?.Kill();
+            _sequence = null;
         }
     }
 }

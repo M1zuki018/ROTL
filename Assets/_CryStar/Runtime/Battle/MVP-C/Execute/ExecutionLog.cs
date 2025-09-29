@@ -25,18 +25,29 @@ namespace CryStar.CommandBattle
         /// 表示アニメーションのスピード
         /// </summary>
         [SerializeField]
-        private float _animDuration = 0.2f;
+        private float _showDuration = 0.3f;
         
         /// <summary>
         /// 初期位置
         /// </summary>
-        private Vector3 _initialPosition;
+        private float _initialPositionX;
         
         /// <summary>
-        /// 移動後の位置
+        /// 開始位置のオフセット
         /// </summary>
-        private Vector3 MovedPosition => _initialPosition + Vector3.left * 200f;
+        [SerializeField]
+        private float _startOffset = -100f;
 
+        /// <summary>
+        /// 表示アニメーションのシーケンス
+        /// </summary>
+        private Sequence _showSequence;
+        
+        /// <summary>
+        /// 非表示アニメーションのシーケンス
+        /// </summary>
+        private Sequence _hideSequence;
+        
         #region Life cycle
 
         /// <summary>
@@ -57,7 +68,7 @@ namespace CryStar.CommandBattle
             }
             
             // 初期位置を保存
-            //_initialPosition = transform.localPosition;
+            _initialPositionX = transform.localPosition.x;
             
             // 透明度は0の状態で初期化
             _canvasGroup.alpha = 0;
@@ -80,17 +91,23 @@ namespace CryStar.CommandBattle
         /// </summary>
         public Tween Show()
         {
-            // 左側にずらした状態にしておく
-            transform.localPosition = MovedPosition;
+            // 出現位置を設定
+            var pos = transform.localPosition;
+            pos.x = _initialPositionX + _startOffset;
+            transform.localPosition = pos;
             
             // 表示
             gameObject.SetActive(true);
             
-            var sequence = DOTween.Sequence();
-            sequence.Append(_canvasGroup.DOFade(1f, _animDuration));
-            //sequence.Join(transform.DOMove(transform.localPosition, _animDuration));
+            // 念のためキルしておく
+            _showSequence?.Kill();
+            _showSequence = DOTween.Sequence();
             
-            return sequence;
+            // フェードインしながら定位置へスライド
+            _showSequence.Append(_canvasGroup.DOFade(1f, _showDuration).SetEase(Ease.OutQuad));
+            _showSequence.Join(transform.DOLocalMoveX(_initialPositionX, _showDuration).SetEase(Ease.OutCubic));
+            
+            return _showSequence;
         }
 
         /// <summary>
@@ -98,14 +115,36 @@ namespace CryStar.CommandBattle
         /// </summary>
         public Tween Hide()
         {
-            var sequence = DOTween.Sequence();
-            sequence.Append(_canvasGroup.DOFade(0f, _animDuration));
-            //sequence.Join(transform.DOMove(MovedPosition, _animDuration));
-
-            // 非表示
-            sequence.OnComplete(() => gameObject.SetActive(false));
+            // 念のためキルしておく
+            _hideSequence?.Kill();
+            _hideSequence = DOTween.Sequence();
             
-            return sequence;
+            // フェードアウトしながら左側へスライド
+            _hideSequence.Append(_canvasGroup.DOFade(0f, _showDuration).SetEase(Ease.InQuad));
+            _hideSequence.Join(transform.DOLocalMoveX(_initialPositionX + _startOffset, _showDuration).SetEase(Ease.InCubic));
+            
+            _hideSequence.OnComplete(() => gameObject.SetActive(false));
+            
+            return _hideSequence;
+        }
+
+        public void Exit()
+        {
+            // テキストを空にする
+            _text.text = "";
+
+            // 非表示処理を呼び出し
+            Hide();
+
+            Dispose();
+        }
+        
+        private void Dispose()
+        {
+            _showSequence?.Kill(true);
+            _hideSequence?.Kill(true);
+            _showSequence = null;
+            _hideSequence = null;
         }
     }
 }
