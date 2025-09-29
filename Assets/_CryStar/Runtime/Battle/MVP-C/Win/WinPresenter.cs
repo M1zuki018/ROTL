@@ -30,6 +30,7 @@ namespace CryStar.CommandBattle
         public void Exit()
         {
             _view?.Exit();
+            _model?.Exit();
         }
 
         private async UniTask Enter()
@@ -37,8 +38,7 @@ namespace CryStar.CommandBattle
             _model.FinishBGM();
             
             // 戦闘結果のパネルを表示する
-            var resultData = _model.GetResultData();
-            _view.SetText(resultData.name, resultData.experience);
+            await _model.GetResultData();
             
             await UniTask.Delay(4000);
 
