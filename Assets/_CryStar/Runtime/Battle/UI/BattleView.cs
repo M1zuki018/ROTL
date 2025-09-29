@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CryStar.CommandBattle.Data;
+using CryStar.Menu.UI;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -108,6 +109,14 @@ namespace CryStar.CommandBattle.UI
             await icon.OnGet(commandData);
         }
 
+        /// <summary>
+        /// キャラクターアイコンを表示する
+        /// </summary>
+        public void IsActiveCharacterIcon(bool isActive)
+        {
+            _unitIconParent.gameObject.SetActive(isActive);
+        }
+        
         /// <summary>
         /// コマンドアイコンを実行順に並び変える
         /// </summary>

@@ -250,6 +250,14 @@ namespace CryStar.CommandBattle.Execution
         }
         
         /// <summary>
+        /// キャラクターアイコンを表示する
+        /// </summary>
+        public void IsActiveCharacterIcon(bool isActive)
+        {
+            _view.IsActiveCharacterIcon(isActive);
+        }
+        
+        /// <summary>
         /// 次のキャラクターのコマンド選択に移る
         /// </summary>
         /// <returns>次に移れる場合はtrue</returns>

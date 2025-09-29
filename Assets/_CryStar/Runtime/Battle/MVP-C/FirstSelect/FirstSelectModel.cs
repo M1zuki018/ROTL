@@ -25,6 +25,18 @@ namespace CryStar.CommandBattle
             {
                 _battleManager = ServiceLocator.GetLocal<BattleManager>();
             }
+            
+            // キャラクターアイコンを非表示にする
+            _battleManager.IsActiveCharacterIcon(false);
+        }
+        
+        /// <summary>
+        /// Exit
+        /// </summary>
+        public void Exit()
+        {
+            // キャラクターアイコンを表示する
+            _battleManager.IsActiveCharacterIcon(true);
         }
 
         /// <summary>
