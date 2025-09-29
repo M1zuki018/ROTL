@@ -165,6 +165,8 @@ namespace CryStar.CommandBattle.Execution
             // バトルデータ作成
             _data = new BattleData(new List<int>{1, 3}, new List<int>{2}, bgmPath);
             
+            // キャラクターのアイコンは非表示の状態で始める
+            _view.IsActiveCharacterIcon(false);
             // アイコンを用意する
             _view.SetupIcons(_data.UnitData, _data.EnemyData).Forget();
 
@@ -247,6 +249,14 @@ namespace CryStar.CommandBattle.Execution
             _view.AddCommandIcon(entry).Forget();
             
             LogUtility.Info($"{executor.Name}のコマンド登録: {commandType}");
+        }
+        
+        /// <summary>
+        /// キャラクターアイコンを表示する
+        /// </summary>
+        public void IsActiveCharacterIcon(bool isActive)
+        {
+            _view.IsActiveCharacterIcon(isActive);
         }
         
         /// <summary>

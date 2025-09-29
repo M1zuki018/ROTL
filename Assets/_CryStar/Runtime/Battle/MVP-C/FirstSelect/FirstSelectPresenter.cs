@@ -29,6 +29,7 @@ namespace CryStar.CommandBattle
         public void Exit()
         {
             _view?.Exit();
+            _model?.Exit();
         }
     }
 }
