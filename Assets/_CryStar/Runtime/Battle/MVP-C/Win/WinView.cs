@@ -1,4 +1,3 @@
-using CryStar.Attribute;
 using UnityEngine;
 
 namespace CryStar.CommandBattle
