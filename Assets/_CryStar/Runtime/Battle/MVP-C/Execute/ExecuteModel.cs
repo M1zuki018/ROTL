@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using CryStar.CommandBattle.Data;
 using CryStar.CommandBattle.Enums;
 using CryStar.CommandBattle.Execution;
+using CryStar.CommandBattle.UI;
 using CryStar.Core;
 using Cysharp.Threading.Tasks;
 
@@ -17,6 +18,8 @@ namespace CryStar.CommandBattle
         /// </summary>
         private BattleManager _battleManager;
 
+        public BattleManager BattleManager => _battleManager;
+
         /// <summary>
         /// Setup
         /// </summary>
@@ -24,7 +27,7 @@ namespace CryStar.CommandBattle
         {
             _battleManager = ServiceLocator.GetLocal<BattleManager>();
         }
-
+        
         /// <summary>
         /// 敵AIの行動を追加する
         /// </summary>
