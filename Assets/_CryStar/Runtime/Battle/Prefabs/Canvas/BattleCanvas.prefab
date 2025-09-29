@@ -817,11 +817,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7429503487704889573, guid: 51e275372745e1941bedb66e9527b127, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1920
+      value: 960
       objectReference: {fileID: 0}
     - target: {fileID: 7429503487704889573, guid: 51e275372745e1941bedb66e9527b127, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1080
+      value: 694.37
       objectReference: {fileID: 0}
     - target: {fileID: 7429503487704889573, guid: 51e275372745e1941bedb66e9527b127, type: 3}
       propertyPath: m_LocalPosition.x
@@ -853,11 +853,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7429503487704889573, guid: 51e275372745e1941bedb66e9527b127, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -480
       objectReference: {fileID: 0}
     - target: {fileID: 7429503487704889573, guid: 51e275372745e1941bedb66e9527b127, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 165.21
       objectReference: {fileID: 0}
     - target: {fileID: 7429503487704889573, guid: 51e275372745e1941bedb66e9527b127, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1187,7 +1187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3570343536345582855, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.00063877
+      value: -0.0008676757
       objectReference: {fileID: 0}
     - target: {fileID: 3764305982898282148, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_FontData.m_Font
@@ -1267,7 +1267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6376537957926664985, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_Value
-      value: 1.0000032
+      value: 1.000004
       objectReference: {fileID: 0}
     - target: {fileID: 7300842422626318850, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_FontData.m_Font
