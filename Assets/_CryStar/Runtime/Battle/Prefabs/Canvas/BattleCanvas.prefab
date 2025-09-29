@@ -388,6 +388,7 @@ MonoBehaviour:
   - {fileID: 7292379994829157967}
   - {fileID: 4930215402207387028}
   - {fileID: 4708111274624934357}
+  _autoHideDelay: 1
 --- !u!1 &2305539225731988639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1965,18 +1966,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: TryEscape
       objectReference: {fileID: 0}
-    - target: {fileID: 4071778512620069552, guid: 88132f33ff6cfec498b7fe94810ee40e, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660737462689453996, guid: 88132f33ff6cfec498b7fe94810ee40e, type: 3}
-      propertyPath: m_Text
-      value: "\u80CC\u3092\u5411\u3051\u308B\u308F\u3051\u306B\u306F\u3044\u304B\u306A\u3044"
-      objectReference: {fileID: 0}
-    - target: {fileID: 5660737462689453996, guid: 88132f33ff6cfec498b7fe94810ee40e, type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: bef5480e84a91e349803621421fe777d, type: 3}
     - target: {fileID: 9078537940442508249, guid: 88132f33ff6cfec498b7fe94810ee40e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2248,7 +2237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3570343536345582855, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.0008676757
+      value: -0.00032842907
       objectReference: {fileID: 0}
     - target: {fileID: 3764305982898282148, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_FontData.m_Font
@@ -2328,7 +2317,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6376537957926664985, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_Value
-      value: 1.000004
+      value: 1.0000018
       objectReference: {fileID: 0}
     - target: {fileID: 7300842422626318850, guid: 4078384084b9b5d43b1d25e05510fe33, type: 3}
       propertyPath: m_FontData.m_Font
