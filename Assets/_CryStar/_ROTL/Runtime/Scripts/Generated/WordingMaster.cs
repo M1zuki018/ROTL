@@ -26,7 +26,7 @@ public static class WordingMaster
         { "BATTLE_FIRSTSELECT_ESCAPE", "にげる" },
         { "BATTLE_IDEA_COMMAND", "command" },
         { "BATTLE_IDEA_ACTOR", "actor" },
-        { "BATTLE_FAILED_ESCAPE", "▼逃げ場などない" },
+        { "BATTLE_FAILED_ESCAPE", "背を向けるわけにはいかない" },
         { "TITLE_NEWGAME", "最初から" },
         { "TITLE_LOAD", "つづきから" },
         { "TITLE_CONFIG", "設定" },

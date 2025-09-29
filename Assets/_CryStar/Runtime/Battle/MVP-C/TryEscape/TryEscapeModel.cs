@@ -27,6 +27,11 @@ namespace CryStar.CommandBattle
         /// 逃走失敗キャンバスを表示しておく時間（秒）
         /// </summary>
         private const float FAILURE_DISPLAY_INTERVAL = 3f;
+
+        /// <summary>
+        /// 逃走失敗時に表示する文言キー
+        /// </summary>
+        private const string MESSAGE_KEY = "BATTLE_FAILED_ESCAPE";
         
         /// <summary>
         /// BattleManager
@@ -51,6 +56,10 @@ namespace CryStar.CommandBattle
         /// </summary>
         public void Exit()
         {
+            TryGetBattleManager();
+            
+            // ログをリセット
+            _battleManager.ResetLogs();
             Dispose();
         }
 
@@ -86,6 +95,8 @@ namespace CryStar.CommandBattle
 
             try
             {
+                // 失敗メッセージを表示する
+                manager.SetLog(WordingMaster.GetText(MESSAGE_KEY));
                 await UniTask.Delay(TimeSpan.FromSeconds(FAILURE_DISPLAY_INTERVAL), cancellationToken: _cts.Token);
             }
             catch (OperationCanceledException)
