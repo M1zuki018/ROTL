@@ -29,12 +29,6 @@ namespace CryStar.CommandBattle
         /// </summary>
         public void Exit()
         {
-            if (_model?.BattleManager != null)
-            {
-                // ログのリセットを行う
-                _model.BattleManager.ResetLogs();
-            }
-            
             _view?.Exit();
         }
 
