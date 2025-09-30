@@ -1,4 +1,5 @@
 using CryStar.PerProject;
+using DG.Tweening;
 using UnityEngine;
 
 namespace CryStar.CommandBattle
@@ -26,6 +27,11 @@ namespace CryStar.CommandBattle
             {
                 _canvasGroup = GetComponent<CanvasGroup>();
             }
+
+            // 初期化
+            _firstLine.text = "";
+            _secondLine.text = "";
+            _thirdLine.text = "";
         }
 
         /// <summary>
