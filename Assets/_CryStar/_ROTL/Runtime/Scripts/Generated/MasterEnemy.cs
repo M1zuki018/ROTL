@@ -8,7 +8,7 @@ public static class MasterEnemy
         {
             // フロース
             2, new BattleTargetData(TargetType.Bind, RaceType.Human, AttackType.Technical, AttackType.Precision,
-                "30", "???", "Lydiance Kingdom Knights Order", "Skirmisher Captain")
+                "30", "???", "Skirmisher Captain", "Lydiance Kingdom Knights Order")
         },
     };
     
