@@ -45,12 +45,13 @@ namespace CryStar.CommandBattle
             // キャラクターの画像差し替え
             await _view.SetCharacterPreview(_model.GetCharacterSprite());
             
+            // 名前などほかのコンテンツの初期化を行う
             _view.SetTargetName(targetData.Job, _model.GetTargetName(), targetData.Affiliation);
             _view.SetTargetInfo(targetData.RaceType, targetData.AttackType, targetData.WeaknessType,
                 targetData.RecommendedLevel, targetData.AdditionalExplanation);
+            _view.SetAnalysis(targetData.TargetType);
             
-            // TODO: 名前などほかのコンテンツの初期化を行う
-            
+            // アニメーション再生
             _view.PlayAnimation();
         }
     }

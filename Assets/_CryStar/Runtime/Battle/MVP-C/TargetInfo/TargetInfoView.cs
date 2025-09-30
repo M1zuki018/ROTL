@@ -124,59 +124,6 @@ namespace CryStar.CommandBattle
         #endregion
 
         /// <summary>
-        /// Canvas Scaler の初期化
-        /// </summary>
-        private void InitializeCanvasScaler()
-        {
-            _canvas = GetComponentInParent<Canvas>();
-            if (_canvas == null)
-            {
-                Debug.LogWarning("Canvas が見つかりません。Canvas Scaler の補正が無効になります。");
-            }
-        }
-
-        /// <summary>
-        /// Canvas Scaler のスケール係数を更新
-        /// </summary>
-        private void UpdateCanvasScaleFactor()
-        {
-            if (_canvas != null && _canvas.renderMode != RenderMode.WorldSpace)
-            {
-                var canvasScaler = _canvas.GetComponent<CanvasScaler>();
-                if (canvasScaler != null && canvasScaler.uiScaleMode == CanvasScaler.ScaleMode.ScaleWithScreenSize)
-                {
-                    // Canvas Scaler の実際のスケール係数を取得
-                    var referenceResolution = canvasScaler.referenceResolution;
-                    var screenSize = new Vector2(Screen.width, Screen.height);
-                    
-                    float scaleFactorX = screenSize.x / referenceResolution.x;
-                    float scaleFactorY = screenSize.y / referenceResolution.y;
-                    
-                    switch (canvasScaler.screenMatchMode)
-                    {
-                        case CanvasScaler.ScreenMatchMode.MatchWidthOrHeight:
-                            _canvasScaleFactor = Mathf.Lerp(scaleFactorX, scaleFactorY, canvasScaler.matchWidthOrHeight);
-                            break;
-                        case CanvasScaler.ScreenMatchMode.Expand:
-                            _canvasScaleFactor = Mathf.Min(scaleFactorX, scaleFactorY);
-                            break;
-                        case CanvasScaler.ScreenMatchMode.Shrink:
-                            _canvasScaleFactor = Mathf.Max(scaleFactorX, scaleFactorY);
-                            break;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Canvas Scaler を考慮したオフセット値を取得
-        /// </summary>
-        private Vector3 GetScaledOffset(Vector3 offset)
-        {
-            return offset * _canvasScaleFactor;
-        }
-
-        /// <summary>
         /// Setup
         /// </summary>
         public void Setup(Action transitionAction)
@@ -237,6 +184,77 @@ namespace CryStar.CommandBattle
             _name.SetTargetName(targetName);
             _name.SetAffiliation(affiliation);
         }
+
+        /// <summary>
+        /// ターゲットタイプを設定する
+        /// </summary>
+        public void SetAnalysis(TargetType targetType)
+        {
+            var text = targetType switch
+            {
+                TargetType.Bind => WordingMaster.GetText("TARGET_TYPE_BIND"),
+                TargetType.Hostile => WordingMaster.GetText("TARGET_TYPE_HOSTILE"),
+                TargetType.Elimination => WordingMaster.GetText("TARGET_TYPE_ELIMINATION"),
+                _ => WordingMaster.GetText("TARGET_TYPE_HOSTILE"),
+            };
+            
+            _analysis.text = text;
+        }
+
+        #region Private Methods
+        
+        /// <summary>
+        /// Canvas Scaler の初期化
+        /// </summary>
+        private void InitializeCanvasScaler()
+        {
+            _canvas = GetComponentInParent<Canvas>();
+            if (_canvas == null)
+            {
+                Debug.LogWarning("Canvas が見つかりません。Canvas Scaler の補正が無効になります。");
+            }
+        }
+
+        /// <summary>
+        /// Canvas Scaler のスケール係数を更新
+        /// </summary>
+        private void UpdateCanvasScaleFactor()
+        {
+            if (_canvas != null && _canvas.renderMode != RenderMode.WorldSpace)
+            {
+                var canvasScaler = _canvas.GetComponent<CanvasScaler>();
+                if (canvasScaler != null && canvasScaler.uiScaleMode == CanvasScaler.ScaleMode.ScaleWithScreenSize)
+                {
+                    // Canvas Scaler の実際のスケール係数を取得
+                    var referenceResolution = canvasScaler.referenceResolution;
+                    var screenSize = new Vector2(Screen.width, Screen.height);
+                    
+                    float scaleFactorX = screenSize.x / referenceResolution.x;
+                    float scaleFactorY = screenSize.y / referenceResolution.y;
+                    
+                    switch (canvasScaler.screenMatchMode)
+                    {
+                        case CanvasScaler.ScreenMatchMode.MatchWidthOrHeight:
+                            _canvasScaleFactor = Mathf.Lerp(scaleFactorX, scaleFactorY, canvasScaler.matchWidthOrHeight);
+                            break;
+                        case CanvasScaler.ScreenMatchMode.Expand:
+                            _canvasScaleFactor = Mathf.Min(scaleFactorX, scaleFactorY);
+                            break;
+                        case CanvasScaler.ScreenMatchMode.Shrink:
+                            _canvasScaleFactor = Mathf.Max(scaleFactorX, scaleFactorY);
+                            break;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Canvas Scaler を考慮したオフセット値を取得
+        /// </summary>
+        private Vector3 GetScaledOffset(Vector3 offset)
+        {
+            return offset * _canvasScaleFactor;
+        }
         
         /// <summary>
         ///  カバーボタンがおされたときの処理
@@ -260,6 +278,8 @@ namespace CryStar.CommandBattle
                 PlayExitAnimation(() => transitionAction?.Invoke());
             }
         }
+        
+        #endregion
 
         #region Animation
 
