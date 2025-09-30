@@ -1,3 +1,4 @@
+using System.Linq;
 using Cysharp.Threading.Tasks;
 
 namespace CryStar.CommandBattle
@@ -48,6 +49,14 @@ namespace CryStar.CommandBattle
                 if (!entry.Executor.IsAlive)
                 {
                     // 実行者が死亡している場合はスキップ
+                    continue;
+                }
+                
+                // ターゲットが全員死亡しているかチェック
+                bool hasAliveTarget = entry.Targets.Any(t => t.IsAlive);
+                if (!hasAliveTarget)
+                {
+                    // 全ターゲットが死亡している場合はスキップ
                     continue;
                 }
                 
