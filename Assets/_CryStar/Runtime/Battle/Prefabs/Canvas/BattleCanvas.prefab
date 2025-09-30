@@ -1523,7 +1523,7 @@ MonoBehaviour:
   _coordinatorManager: {fileID: 1172079534740235444}
   _view: {fileID: 4214799092703513015}
   _soundPathData: {fileID: 11400000, guid: 46aefffc39deea64e81a8d6705d2891b, type: 2}
-  _bgmType: 3
+  _bgmType: 2
   _damagedSePath: Assets/AssetStoreTools/Sounds/SE/SE_Damaged.mp3
   _selectSePath: Assets/AssetStoreTools/Sounds/SE/SE_Select1.mp3
   _selectSePath2: Assets/AssetStoreTools/Sounds/SE/SE_Select2.mp3
@@ -2679,41 +2679,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 551116319726865246, guid: 58d533db2eb62bd4db91692e702359fb, type: 3}
-      propertyPath: m_Text
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3825743183681909179, guid: 58d533db2eb62bd4db91692e702359fb, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6261199769251196458, guid: 58d533db2eb62bd4db91692e702359fb, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7168415166998622416, guid: 58d533db2eb62bd4db91692e702359fb, type: 3}
-      propertyPath: _exitDuration
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7168415166998622416, guid: 58d533db2eb62bd4db91692e702359fb, type: 3}
-      propertyPath: _entranceDuration
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7207471753061708524, guid: 58d533db2eb62bd4db91692e702359fb, type: 3}
       propertyPath: m_Name
       value: TargetInfo
-      objectReference: {fileID: 0}
-    - target: {fileID: 7512167044711387454, guid: 58d533db2eb62bd4db91692e702359fb, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7512167044711387454, guid: 58d533db2eb62bd4db91692e702359fb, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7512167044711387454, guid: 58d533db2eb62bd4db91692e702359fb, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
