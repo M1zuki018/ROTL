@@ -8,7 +8,8 @@ public static class MasterEnemy
         {
             // フロース
             2, new BattleTargetData(TargetType.Bind, RaceType.Human, AttackType.Technical, AttackType.Precision,
-                "30", "???", "Skirmisher Captain", "Lydiance Kingdom Knights Order")
+                "30", "___Longed to serve the king in blind faith, but I must be the one to rescue him",
+                "Skirmisher Captain", "Lydiance Kingdom Knights Order")
         },
     };
     
