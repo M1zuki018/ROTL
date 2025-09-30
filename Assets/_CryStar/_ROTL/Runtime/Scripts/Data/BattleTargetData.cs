@@ -45,6 +45,15 @@ namespace CryStar.PerProject
         /// </summary>
         private string _position;
         
+        public TargetType TargetType => _targetType;
+        public RaceType RaceType => _raceType;
+        public AttackType AttackType => _attackType;
+        public AttackType WeaknessType => _weaknessType;
+        public string RecommendedLevel => _recommendedLevel;
+        public string AdditionalExplanation => _additionalExplanation;
+        public string Affiliation => _affiliation;
+        public string Position => _position;
+        
         /// <summary>
         /// コンストラクタ
         /// </summary>
