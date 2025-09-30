@@ -45,7 +45,7 @@ namespace CryStar.CommandBattle
             // キャラクターの画像差し替え
             await _view.SetCharacterPreview(_model.GetCharacterSprite());
             
-            _view.SetTargetName(_model.GetTargetName());
+            _view.SetTargetName(targetData.Job, _model.GetTargetName(), targetData.Affiliation);
             _view.SetTargetInfo(targetData.RaceType, targetData.AttackType, targetData.WeaknessType,
                 targetData.RecommendedLevel, targetData.AdditionalExplanation);
             

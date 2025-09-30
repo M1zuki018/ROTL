@@ -218,14 +218,6 @@ namespace CryStar.CommandBattle
         }
 
         /// <summary>
-        /// キャラクター名を設定する
-        /// </summary>
-        public void SetTargetName(string name)
-        {
-            _name.SetTargetName(name);
-        }
-
-        /// <summary>
         /// ターゲット情報を設定する
         /// </summary>
         public void SetTargetInfo(RaceType raceType, AttackType attackType, AttackType weaknessType,
@@ -234,6 +226,16 @@ namespace CryStar.CommandBattle
             _infomation.SetFirstLine(raceType, attackType, weaknessType);
             _infomation.SetSecondLine(recommendedLevel);
             _infomation.SetThirdLine(additionalExplanation);
+        }
+
+        /// <summary>
+        /// キャラクター名を設定する
+        /// </summary>
+        public void SetTargetName(string job, string targetName, string affiliation)
+        {
+            _name.SetJob(job);
+            _name.SetTargetName(targetName);
+            _name.SetAffiliation(affiliation);
         }
         
         /// <summary>
