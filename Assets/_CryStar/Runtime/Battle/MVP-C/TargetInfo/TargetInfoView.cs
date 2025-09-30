@@ -1,4 +1,5 @@
 using System;
+using CryStar.PerProject;
 using CryStar.Utility;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -185,29 +186,6 @@ namespace CryStar.CommandBattle
         }
 
         /// <summary>
-        ///  カバーボタンがおされたときの処理
-        /// </summary>
-        private void HandleCoverClicked(Action transitionAction)
-        {
-            // 登場アニメーション中かつ、浮遊アニメーションがまだ未再生であればアニメーションをスキップする
-            // NOTE: 一度登場アニメーションが終わると浮遊アニメーションが始まるためこのように条件を付けている
-            if (_entranceSequence != null && _floatTween == null)
-            {
-                // エントランスアニメーションを完了させた状態でキル
-                _entranceSequence.Kill(true);
-                return;
-            }
-
-            // 登場アニメーションが終了済み
-            // 浮遊アニメーション再生中
-            // 退場アニメーション未再生の場合、退場アニメーションと次の画面遷移処理を呼び出す
-            if (_floatTween != null && _exitSequence == null)
-            {
-                PlayExitAnimation(() => transitionAction?.Invoke());
-            }
-        }
-
-        /// <summary>
         /// Exit
         /// </summary>
         public void Exit()
@@ -245,6 +223,40 @@ namespace CryStar.CommandBattle
         public void SetTargetName(string name)
         {
             _name.SetTargetName(name);
+        }
+
+        /// <summary>
+        /// ターゲット情報を設定する
+        /// </summary>
+        public void SetTargetInfo(RaceType raceType, AttackType attackType, AttackType weaknessType,
+            string recommendedLevel, string additionalExplanation)
+        {
+            _infomation.SetFirstLine(raceType, attackType, weaknessType);
+            _infomation.SetSecondLine(recommendedLevel);
+            _infomation.SetThirdLine(additionalExplanation);
+        }
+        
+        /// <summary>
+        ///  カバーボタンがおされたときの処理
+        /// </summary>
+        private void HandleCoverClicked(Action transitionAction)
+        {
+            // 登場アニメーション中かつ、浮遊アニメーションがまだ未再生であればアニメーションをスキップする
+            // NOTE: 一度登場アニメーションが終わると浮遊アニメーションが始まるためこのように条件を付けている
+            if (_entranceSequence != null && _floatTween == null)
+            {
+                // エントランスアニメーションを完了させた状態でキル
+                _entranceSequence.Kill(true);
+                return;
+            }
+
+            // 登場アニメーションが終了済み
+            // 浮遊アニメーション再生中
+            // 退場アニメーション未再生の場合、退場アニメーションと次の画面遷移処理を呼び出す
+            if (_floatTween != null && _exitSequence == null)
+            {
+                PlayExitAnimation(() => transitionAction?.Invoke());
+            }
         }
 
         #region Animation
@@ -370,7 +382,7 @@ namespace CryStar.CommandBattle
             .SetEase(Ease.InOutSine)
             .SetLoops(-1, LoopType.Yoyo);
         }
-
+        
         /// <summary>
         /// エグジットアニメーションを再生
         /// エントランスアニメーションの逆向きを再生する

@@ -1,6 +1,7 @@
 using CryStar.CommandBattle.Enums;
 using CryStar.CommandBattle.Execution;
 using CryStar.Core;
+using CryStar.PerProject;
 using Cysharp.Threading.Tasks;
 
 namespace CryStar.CommandBattle
@@ -59,6 +60,15 @@ namespace CryStar.CommandBattle
         public string GetTargetName()
         {
             return _battleManager.Data.EnemyData[0].UserData.Name;
+        }
+
+        /// <summary>
+        /// ターゲットデータを取得する
+        /// </summary>
+        public BattleTargetData GetTargetData()
+        {
+            var characterId = _battleManager.Data.EnemyData[0].UserData.CharacterID;
+            return MasterEnemy.GetBattleTarget(characterId);
         }
 
         /// <summary>
