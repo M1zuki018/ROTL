@@ -27,11 +27,27 @@ namespace CryStar.CommandBattle
         #endregion
 
         /// <summary>
+        /// 役職を設定する
+        /// </summary>
+        public void SetJob(string job)
+        {
+            _job.text = job;
+        }
+        
+        /// <summary>
         /// 名前を設定する
         /// </summary>
         public void SetTargetName(string targetName)
         {
             _name.text = targetName;
+        }
+
+        /// <summary>
+        /// 所属を設定する
+        /// </summary>
+        public void SetAffiliation(string affiliation)
+        {
+            _affiliation.text = affiliation;   
         }
     }
 }

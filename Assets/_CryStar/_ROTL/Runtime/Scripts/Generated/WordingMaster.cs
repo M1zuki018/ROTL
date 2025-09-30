@@ -60,6 +60,10 @@ public static class WordingMaster
         { "PARAM_CRITICAL_DAMAGE", "クリティカルダメージ" },
         { "STATUS", "ステータス" },
         { "EQUIOMENT", "装備" },
+        { "TARGET_TYPE_BIND", "CONTRACT BIND"},
+        { "TARGET_TYPE_HOSTILE", "HOSTILE TARGET"},
+        { "TARGET_TYPE_ELIMINATION", "ELIMINATION TARGET"},
+        { "RECOMMENDED_LEVEL", "Recommended Level" },
     };
 
     public static string GetText(string key)

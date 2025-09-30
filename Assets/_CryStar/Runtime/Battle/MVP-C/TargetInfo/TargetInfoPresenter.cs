@@ -37,15 +37,21 @@ namespace CryStar.CommandBattle
         /// </summary>
         private async UniTask SetupSequence()
         {
+            // ターゲット情報を取得
+            var targetData = _model.GetTargetData();
+            
             // TODO: ボイス再生
             
             // キャラクターの画像差し替え
             await _view.SetCharacterPreview(_model.GetCharacterSprite());
             
-            _view.SetTargetName(_model.GetTargetName());
+            // 名前などほかのコンテンツの初期化を行う
+            _view.SetTargetName(targetData.Job, _model.GetTargetName(), targetData.Affiliation);
+            _view.SetTargetInfo(targetData.RaceType, targetData.AttackType, targetData.WeaknessType,
+                targetData.RecommendedLevel, targetData.AdditionalExplanation);
+            _view.SetAnalysis(targetData.TargetType);
             
-            // TODO: 名前などほかのコンテンツの初期化を行う
-            
+            // アニメーション再生
             _view.PlayAnimation();
         }
     }

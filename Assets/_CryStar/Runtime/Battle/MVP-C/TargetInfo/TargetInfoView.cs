@@ -1,4 +1,5 @@
 using System;
+using CryStar.PerProject;
 using CryStar.Utility;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
@@ -123,6 +124,86 @@ namespace CryStar.CommandBattle
         #endregion
 
         /// <summary>
+        /// Setup
+        /// </summary>
+        public void Setup(Action transitionAction)
+        {
+            // パネルを閉じるときのアニメーションを登録
+            _cover.onClick.SafeReplaceListener(() => HandleCoverClicked(() => transitionAction?.Invoke()));
+        }
+
+        /// <summary>
+        /// Exit
+        /// </summary>
+        public void Exit()
+        {
+            // 全てのアニメーションを停止
+            _entranceSequence?.Kill(true);
+            _floatTween?.Kill();
+            _exitSequence?.Kill();
+
+            _cover.onClick.SafeRemoveAllListeners();
+        }
+
+        /// <summary>
+        /// エントランスアニメーションを開始する
+        /// NOTE: UIを更新し終わったあとに開始したい
+        /// </summary>
+        public void PlayAnimation()
+        {
+            // アニメーション開始時にスケール係数を更新
+            UpdateCanvasScaleFactor();
+            PlayEntranceAnimation();
+        }
+
+        /// <summary>
+        /// キャラクターの画像を設定する
+        /// </summary>
+        public async UniTask SetCharacterPreview(string iconPath)
+        {
+            await _character.ChangeSpriteAsync(iconPath);
+        }
+
+        /// <summary>
+        /// ターゲット情報を設定する
+        /// </summary>
+        public void SetTargetInfo(RaceType raceType, AttackType attackType, AttackType weaknessType,
+            string recommendedLevel, string additionalExplanation)
+        {
+            _infomation.SetFirstLine(raceType, attackType, weaknessType);
+            _infomation.SetSecondLine(recommendedLevel);
+            _infomation.SetThirdLine(additionalExplanation);
+        }
+
+        /// <summary>
+        /// キャラクター名を設定する
+        /// </summary>
+        public void SetTargetName(string job, string targetName, string affiliation)
+        {
+            _name.SetJob(job);
+            _name.SetTargetName(targetName);
+            _name.SetAffiliation(affiliation);
+        }
+
+        /// <summary>
+        /// ターゲットタイプを設定する
+        /// </summary>
+        public void SetAnalysis(TargetType targetType)
+        {
+            var text = targetType switch
+            {
+                TargetType.Bind => WordingMaster.GetText("TARGET_TYPE_BIND"),
+                TargetType.Hostile => WordingMaster.GetText("TARGET_TYPE_HOSTILE"),
+                TargetType.Elimination => WordingMaster.GetText("TARGET_TYPE_ELIMINATION"),
+                _ => WordingMaster.GetText("TARGET_TYPE_HOSTILE"),
+            };
+            
+            _analysis.text = text;
+        }
+
+        #region Private Methods
+        
+        /// <summary>
         /// Canvas Scaler の初期化
         /// </summary>
         private void InitializeCanvasScaler()
@@ -174,16 +255,7 @@ namespace CryStar.CommandBattle
         {
             return offset * _canvasScaleFactor;
         }
-
-        /// <summary>
-        /// Setup
-        /// </summary>
-        public void Setup(Action transitionAction)
-        {
-            // パネルを閉じるときのアニメーションを登録
-            _cover.onClick.SafeReplaceListener(() => HandleCoverClicked(() => transitionAction?.Invoke()));
-        }
-
+        
         /// <summary>
         ///  カバーボタンがおされたときの処理
         /// </summary>
@@ -206,46 +278,8 @@ namespace CryStar.CommandBattle
                 PlayExitAnimation(() => transitionAction?.Invoke());
             }
         }
-
-        /// <summary>
-        /// Exit
-        /// </summary>
-        public void Exit()
-        {
-            // 全てのアニメーションを停止
-            _entranceSequence?.Kill(true);
-            _floatTween?.Kill();
-            _exitSequence?.Kill();
-
-            _cover.onClick.SafeRemoveAllListeners();
-        }
-
-        /// <summary>
-        /// エントランスアニメーションを開始する
-        /// NOTE: UIを更新し終わったあとに開始したい
-        /// </summary>
-        public void PlayAnimation()
-        {
-            // アニメーション開始時にスケール係数を更新
-            UpdateCanvasScaleFactor();
-            PlayEntranceAnimation();
-        }
-
-        /// <summary>
-        /// キャラクターの画像を設定する
-        /// </summary>
-        public async UniTask SetCharacterPreview(string iconPath)
-        {
-            await _character.ChangeSpriteAsync(iconPath);
-        }
-
-        /// <summary>
-        /// キャラクター名を設定する
-        /// </summary>
-        public void SetTargetName(string name)
-        {
-            _name.SetTargetName(name);
-        }
+        
+        #endregion
 
         #region Animation
 
@@ -370,7 +404,7 @@ namespace CryStar.CommandBattle
             .SetEase(Ease.InOutSine)
             .SetLoops(-1, LoopType.Yoyo);
         }
-
+        
         /// <summary>
         /// エグジットアニメーションを再生
         /// エントランスアニメーションの逆向きを再生する
