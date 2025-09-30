@@ -43,7 +43,7 @@ namespace CryStar.PerProject
         /// <summary>
         /// 役職
         /// </summary>
-        private string _position;
+        private string _job;
         
         public TargetType TargetType => _targetType;
         public RaceType RaceType => _raceType;
@@ -52,13 +52,13 @@ namespace CryStar.PerProject
         public string RecommendedLevel => _recommendedLevel;
         public string AdditionalExplanation => _additionalExplanation;
         public string Affiliation => _affiliation;
-        public string Position => _position;
+        public string Job => _job;
         
         /// <summary>
         /// コンストラクタ
         /// </summary>
         public BattleTargetData(TargetType targetType, RaceType raceType, AttackType attackType, AttackType weaknessType, 
-            string recommendedLevel, string additionalExplanation, string affiliation, string position)
+            string recommendedLevel, string additionalExplanation, string affiliation, string job)
         {
             _targetType = targetType;
             _raceType = raceType;
@@ -67,7 +67,7 @@ namespace CryStar.PerProject
             _recommendedLevel = recommendedLevel;
             _additionalExplanation = additionalExplanation;
             _affiliation = affiliation;
-            _position = position;
+            _job = job;
         }
     }
 }
