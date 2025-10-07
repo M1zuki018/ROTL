@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using CryStar.Core;
 using CryStar.Core.UserData;
 using CryStar.Data.User;
+using CryStar.MasterData;
 using UnityEngine;
 
 namespace CryStar.CommandBattle.Data
@@ -55,7 +56,7 @@ namespace CryStar.CommandBattle.Data
         /// <summary>
         /// キャラクターカラー
         /// </summary>
-        public Color CharacterColor => MasterBattleCharacter.GetCharacterColor(_characterID);
+        public Color CharacterColor => MasterBattleCharacter.GetColor(_characterID);
         
         /// <summary>
         /// 最大HP
