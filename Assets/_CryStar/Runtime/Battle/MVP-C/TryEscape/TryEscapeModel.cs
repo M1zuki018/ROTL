@@ -3,6 +3,7 @@ using System.Threading;
 using CryStar.CommandBattle.Enums;
 using CryStar.CommandBattle.Execution;
 using CryStar.Core;
+using CryStar.MasterData;
 using Cysharp.Threading.Tasks;
 
 namespace CryStar.CommandBattle

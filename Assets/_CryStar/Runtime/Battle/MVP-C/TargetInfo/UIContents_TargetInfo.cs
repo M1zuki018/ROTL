@@ -1,5 +1,5 @@
+using CryStar.MasterData;
 using CryStar.PerProject;
-using DG.Tweening;
 using UnityEngine;
 
 namespace CryStar.CommandBattle

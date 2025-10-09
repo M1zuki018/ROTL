@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using CryStar.MasterData;
 using CryStar.Utility;
 using UnityEngine;
 using UnityEngine.UI;
