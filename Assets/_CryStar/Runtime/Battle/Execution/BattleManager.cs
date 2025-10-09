@@ -9,6 +9,7 @@ using CryStar.CommandBattle.Enums;
 using CryStar.CommandBattle.UI;
 using CryStar.Core;
 using CryStar.Core.Enums;
+using CryStar.MasterData;
 using CryStar.PerProject;
 using CryStar.Utility;
 using CryStar.Utility.Enum;
@@ -148,10 +149,13 @@ namespace CryStar.CommandBattle.Execution
 
         #region Life cycle
 
-        private void Awake()
+        private async void Awake()
         {
             // サービスロケーターに登録（特にGlobalで使用する必要はないのでLocalで登録する）
             ServiceLocator.Register(this, ServiceType.Local);
+
+            await MasterDataManager.Instance.GetAsync<WordingMaster>(); // 仮
+            await MasterDataManager.Instance.GetAsync<MasterBattleCharacter>();
         }
 
         private void Start()
