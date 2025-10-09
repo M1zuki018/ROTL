@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5d17a21594effb4e9591490b009e7aa, type: 3}
-  m_Name: MasterData_Resident_BundledAssetGroupSchema
+  m_Name: master_cached_BundledAssetGroupSchema
   m_EditorClassIdentifier: 
-  m_Group: {fileID: 11400000, guid: 59b580e8d6bceef48adf7baecf812fd7, type: 2}
+  m_Group: {fileID: 11400000, guid: 51add1d4a7f575844acd88a51e5d5ed3, type: 2}
   m_InternalBundleIdMode: 1
   m_Compression: 1
   m_IncludeAddressInCatalog: 1

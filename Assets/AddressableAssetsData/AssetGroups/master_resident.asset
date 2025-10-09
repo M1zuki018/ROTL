@@ -10,11 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: MasterData_Resident
+  m_Name: master_resident
   m_EditorClassIdentifier: 
-  m_GroupName: MasterData_Resident
+  m_GroupName: master_resident
   m_GUID: 632733e78d7ec6e45b2599e9276bf9b2
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 2625e0ebc59bfc14f8a8c398bacf71fc
+    m_Address: MasterData/Resident/wording
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 88bf57f4290cd4a4599baf520c95f505
+    m_Address: MasterData/Resident/character_battle
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9a7cf7b10808c5f4cb1579ce17d834d3, type: 2}
   m_SchemaSet:

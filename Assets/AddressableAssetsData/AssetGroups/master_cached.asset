@@ -10,11 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: MasterData_Cached
+  m_Name: master_cached
   m_EditorClassIdentifier: 
-  m_GroupName: MasterData_Cached
+  m_GroupName: master_cached
   m_GUID: 02b35cfe18deb1c4aa337a5dd021a653
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 62f228086bd0e9e4489190ec1232b720
+    m_Address: Assets/AssetStoreTools/MasterData/Cached/item.json
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ac8a05042d53b3e419a86e0456bbdf8a
+    m_Address: MasterData/Cached/character_growth
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 9a7cf7b10808c5f4cb1579ce17d834d3, type: 2}
   m_SchemaSet:
