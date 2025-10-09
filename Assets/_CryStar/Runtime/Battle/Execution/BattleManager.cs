@@ -9,6 +9,7 @@ using CryStar.CommandBattle.Enums;
 using CryStar.CommandBattle.UI;
 using CryStar.Core;
 using CryStar.Core.Enums;
+using CryStar.MasterData;
 using CryStar.PerProject;
 using CryStar.Utility;
 using CryStar.Utility.Enum;
@@ -152,10 +153,7 @@ namespace CryStar.CommandBattle.Execution
         {
             // サービスロケーターに登録（特にGlobalで使用する必要はないのでLocalで登録する）
             ServiceLocator.Register(this, ServiceType.Local);
-        }
-
-        private void Start()
-        {
+            
             var bgmPath = _soundPathData.GetPath(_bgmType);
             if (bgmPath == null)
             {
@@ -164,6 +162,13 @@ namespace CryStar.CommandBattle.Execution
             
             // バトルデータ作成
             _data = new BattleData(new List<int>{1, 3}, new List<int>{2}, bgmPath);
+        }
+
+        private async void Start()
+        {
+            // 必要なマスターデータを全て読み込む
+            await MasterDataManager.Instance.GetAsync<MasterGrowthCharacter>();
+            await MasterDataManager.Instance.GetAsync<MasterBattleCharacter>();
             
             // キャラクターのアイコンは非表示の状態で始める
             _view.IsActiveCharacterIcon(false);
@@ -176,6 +181,7 @@ namespace CryStar.CommandBattle.Execution
                 _audioManager = ServiceLocator.GetGlobal<AudioManager>();
             }
 
+            var bgmPath = _soundPathData.GetPath(_bgmType);
             if (bgmPath != null)
             {
                 // 戦闘BGMを再生する

@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using CryStar.MasterData;
 using CryStar.Utility;
 using CryStar.Utility.Enum;
+using Cysharp.Threading.Tasks;
 
 namespace CryStar.Data.User
 {
@@ -28,7 +30,7 @@ namespace CryStar.Data.User
             }
             
             // Characterのマスターデータに登録されているキャラクター数の数だけ、ユーザーデータ生成処理を行う
-            for (int i = 1; i <= MasterCharacter.RegisteredCharacterCount; i++)
+            for (int i = 1; i <= MasterGrowthCharacter.RegisteredCharacterCount(); i++)
             {
                 var index = i;
                 _characters[index] = new InGameCharacterData(index);

@@ -1,26 +1,29 @@
+using System;
 using CryStar.Item.Enums;
+using UnityEngine;
 
 namespace CryStar.Item.Data
 {
     /// <summary>
     /// アイテムのデータクラス
     /// </summary>
+    [Serializable]
     public class ItemData
     {
         #region Private Fields
         
-        private int _id;
-        private string _name;
-        private string _description;
-        private RarityType _rarity;
-        private string _iconPath;
-        private int _maxStackCount;
-        private int _sortOrder;
-        private int _sellPrice;
-        private int _categoryId;
-        private int _subCategoryId;
-        private bool _useInBattle;
-        private bool _useInField;
+        [SerializeField] private int _id;
+        [SerializeField] private string _name;
+        [SerializeField] private string _description;
+        [SerializeField]  private RarityType _rarity;
+        [SerializeField] private string _iconPath;
+        [SerializeField] private int _maxStackCount;
+        [SerializeField] private int _sortOrder;
+        [SerializeField] private int _sellPrice;
+        [SerializeField] private int _categoryId;
+        [SerializeField] private int _subCategoryId;
+        [SerializeField] private bool _useInBattle;
+        [SerializeField] private bool _useInField;
 
         #endregion
         

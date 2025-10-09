@@ -1,4 +1,5 @@
 using System;
+using CryStar.MasterData;
 using CryStar.PerProject;
 using CryStar.Utility;
 using Cysharp.Threading.Tasks;

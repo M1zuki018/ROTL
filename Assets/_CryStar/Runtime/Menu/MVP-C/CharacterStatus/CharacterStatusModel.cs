@@ -1,6 +1,7 @@
 using CryStar.Core;
 using CryStar.Core.UserData;
 using CryStar.Data.User;
+using CryStar.MasterData;
 using CryStar.Menu.Enums;
 using CryStar.Menu.Execution;
 using CryStar.Menu.UI;
@@ -50,20 +51,20 @@ namespace CryStar.Menu
             return new UIContents_Status.ViewData()
             {
                 Level = level,
-                Hp = MasterCharacter.GetHp(characterId, level) - userData.DecreaseHp + userData.BonusHp,
+                Hp = MasterGrowthCharacter.GetHp(characterId, level) - userData.DecreaseHp + userData.BonusHp,
                 Will = 5, // TODO
                 Stamina = 50, // TODO
-                Sp = MasterCharacter.GetSp(characterId, level) - userData.DecreaseSp + userData.BonusSp,
-                PhysicalAttack = MasterCharacter.GetAttack(characterId, level) + userData.BonusAttack,
-                SkillAttack = MasterCharacter.GetAttack(characterId, level) + userData.BonusAttack, // TODO
-                Intelligence = MasterCharacter.GetStatusResistance(characterId, level) + userData.BonusStatusResistance,
-                PhysicalDefense = MasterCharacter.GetDefense(characterId, level) + userData.BonusDefense,
-                SkillDefense = MasterCharacter.GetDefense(characterId, level) + userData.BonusDefense, // TODO
-                Speed = MasterCharacter.GetSpeed(characterId, level) + userData.BonusSpeed,
-                DodgeSpeed = MasterCharacter.GetDodgeSpeed(characterId, level) + userData.BonusDodgeSpeed,
-                ArmorPenetration = MasterCharacter.GetArmorPenetration(characterId, level) + userData.BonusArmorPenetration,
-                CriticalRate = MasterCharacter.GetCriticalRate(characterId, level) + userData.BonusCriticalRate,
-                CriticalDamage = MasterCharacter.GetCriticalDamage(characterId, level) + userData.BonusCriticalDamage
+                Sp = MasterGrowthCharacter.GetSp(characterId, level) - userData.DecreaseSp + userData.BonusSp,
+                PhysicalAttack = MasterGrowthCharacter.GetAttack(characterId, level) + userData.BonusAttack,
+                SkillAttack = MasterGrowthCharacter.GetAttack(characterId, level) + userData.BonusAttack, // TODO
+                Intelligence = MasterGrowthCharacter.GetStatusResistance(characterId, level) + userData.BonusStatusResistance,
+                PhysicalDefense = MasterGrowthCharacter.GetDefense(characterId, level) + userData.BonusDefense,
+                SkillDefense = MasterGrowthCharacter.GetDefense(characterId, level) + userData.BonusDefense, // TODO
+                Speed = MasterGrowthCharacter.GetSpeed(characterId, level) + userData.BonusSpeed,
+                DodgeSpeed = MasterGrowthCharacter.GetDodgeSpeed(characterId, level) + userData.BonusDodgeSpeed,
+                ArmorPenetration = MasterGrowthCharacter.GetArmorPenetration(characterId, level) + userData.BonusArmorPenetration,
+                CriticalRate = MasterGrowthCharacter.GetCriticalRate(characterId, level) + userData.BonusCriticalRate,
+                CriticalDamage = MasterGrowthCharacter.GetCriticalDamage(characterId, level) + userData.BonusCriticalDamage
             };
         }
 

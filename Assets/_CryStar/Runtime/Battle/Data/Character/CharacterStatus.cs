@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using CryStar.Core;
 using CryStar.Core.UserData;
 using CryStar.Data.User;
+using CryStar.MasterData;
 using UnityEngine;
 
 namespace CryStar.CommandBattle.Data
@@ -55,17 +56,17 @@ namespace CryStar.CommandBattle.Data
         /// <summary>
         /// キャラクターカラー
         /// </summary>
-        public Color CharacterColor => MasterBattleCharacter.GetCharacterColor(_characterID);
+        public Color CharacterColor => MasterBattleCharacter.GetColor(_characterID);
         
         /// <summary>
         /// 最大HP
         /// </summary>
-        public int MaxHp => MasterCharacter.GetHp(_characterID, _data.Level) + _data.BonusHp;
+        public int MaxHp => MasterGrowthCharacter.GetHp(_characterID, _data.Level) + _data.BonusHp;
         
         /// <summary>
         /// 最大SP
         /// </summary>
-        public int MaxSp => MasterCharacter.GetSp(_characterID, _data.Level) + _data.BonusSp;
+        public int MaxSp => MasterGrowthCharacter.GetSp(_characterID, _data.Level) + _data.BonusSp;
 
         /// <summary>
         /// 現在のHP
@@ -85,48 +86,48 @@ namespace CryStar.CommandBattle.Data
         /// <summary>
         /// 攻撃力
         /// </summary>
-        public int Attack => MasterCharacter.GetAttack(_characterID, _data.Level) + _data.BonusAttack;
+        public int Attack => MasterGrowthCharacter.GetAttack(_characterID, _data.Level) + _data.BonusAttack;
         
         /// <summary>
         /// 防御力
         /// </summary>
-        public int Defense => MasterCharacter.GetDefense(_characterID, _data.Level) + _data.BonusDefense;
+        public int Defense => MasterGrowthCharacter.GetDefense(_characterID, _data.Level) + _data.BonusDefense;
         
         /// <summary>
         /// スキル倍率
         /// </summary>
-        public float SkillMultiplier => MasterCharacter.GetSkillMultiplier(_characterID, _data.Level) + _data.BonusSkillMultiplier;
+        public float SkillMultiplier => MasterGrowthCharacter.GetSkillMultiplier(_characterID, _data.Level) + _data.BonusSkillMultiplier;
         
         /// <summary>
         /// 状態異常耐性
         /// </summary>
-        public int StatusResistance => MasterCharacter.GetStatusResistance(_characterID, _data.Level) + _data.BonusStatusResistance;
+        public int StatusResistance => MasterGrowthCharacter.GetStatusResistance(_characterID, _data.Level) + _data.BonusStatusResistance;
         
         /// <summary>
         /// 攻撃速度
         /// </summary>
-        public int Speed => MasterCharacter.GetSpeed(_characterID, _data.Level) + _data.BonusSpeed;
+        public int Speed => MasterGrowthCharacter.GetSpeed(_characterID, _data.Level) + _data.BonusSpeed;
         
         /// <summary>
         /// 回避速度
         /// </summary>
-        public int DodgeSpeed => MasterCharacter.GetDodgeSpeed(_characterID, _data.Level) + _data.BonusDodgeSpeed;
+        public int DodgeSpeed => MasterGrowthCharacter.GetDodgeSpeed(_characterID, _data.Level) + _data.BonusDodgeSpeed;
 
         /// <summary>
         /// 防御無視
         /// </summary>
-        public int ArmorPenetration => MasterCharacter.GetArmorPenetration(_characterID, _data.Level) +
+        public int ArmorPenetration => MasterGrowthCharacter.GetArmorPenetration(_characterID, _data.Level) +
                                        _data.BonusArmorPenetration;
         
         /// <summary>
         /// クリティカル率
         /// </summary>
-        public int CriticalRate => MasterCharacter.GetCriticalRate(_characterID, _data.Level) + _data.BonusCriticalRate;
+        public int CriticalRate => MasterGrowthCharacter.GetCriticalRate(_characterID, _data.Level) + _data.BonusCriticalRate;
         
         /// <summary>
         /// クリティカルダメージ
         /// </summary>
-        public int CriticalDamage => MasterCharacter.GetCriticalDamage(_characterID, _data.Level) + _data.BonusCriticalDamage;
+        public int CriticalDamage => MasterGrowthCharacter.GetCriticalDamage(_characterID, _data.Level) + _data.BonusCriticalDamage;
         
         /// <summary>
         /// IdeaのIDリスト
